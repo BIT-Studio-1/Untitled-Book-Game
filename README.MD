@@ -14,8 +14,9 @@ All the playable books in the game. Their features, basic story flow, and other 
 The Adventure book follows the story of a lone knight exploring a cave, solving puzzles to progress deeper in to the maze and battling monsters who stand in his way.
 The player is controlled by simple multi-choice questions, and the results of these decisions is communicated to the player thought onscreen dialog and simple visual animations. 
 
-### Untitled Book
+### Murder Mystery Book- Jake Clearwater
 
+The Murder Mystery book follows the story of a detective called to a family gathered to solve the murder in the family. Investigate clues, explore the crime scene and figure out who the killer is through multi-choice questions with consiquences for each question.
 
 ### Untitled Book
 
