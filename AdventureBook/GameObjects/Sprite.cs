@@ -13,6 +13,8 @@ namespace AdventureBook.GameObjects
         // MEMBERS /////////////////////////////////////////////////////////////
 
         private int width, height, frames = 1, currentFrame = 0;
+        bool animate;
+        bool loop;
         private char[][][] textures;
 
         public string Name { get; set; }
@@ -21,16 +23,21 @@ namespace AdventureBook.GameObjects
 
         public Sprite(string name, string pathToTextFile)
         {
-            Name = name;
+            Name    = name;
+            animate = false;
+
+            // load the text file into the texture
             LoadTextureFromFile(pathToTextFile);
         }
 
-        public Sprite(string name, string[] pathToTextFiles)
+        public Sprite(string name, string[] pathToTextFiles, bool loop = true)
         {
             Name = name;
 
+            frames  = pathToTextFiles.Length;
+            animate = true;
+
             // load each frame into the texture
-            frames = pathToTextFiles.Length;
             for (int frame = 0; frame < frames; frame++) LoadTextureFromFile(pathToTextFiles[frame], frame);
         }
 
