@@ -6,7 +6,7 @@ namespace AdventureBook
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            _ = new AdventureBook.Game.AdventureBookGame();
         }
     }
 }
