@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Threading;
+using System.Windows.Input;
 using System.Collections.Generic;
 using System.Linq;
+
 
 using AdventureBook.GameObjects;
 
@@ -36,13 +38,14 @@ namespace AdventureBook.Game
         public AdventureBookGame()
         {
             // create the input thread
-            InputThread     = new Thread(method => InputLoop());
+            InputThread     = new Thread(InputLoop);
 
             // store the pressed keys
             foreach (string key in new string[] { "w", "a", "s", "d", "space", "return", "up", "down", "left", "right" }) pressedKeys.Add(key, false);
 
             // create the game assets
 
+            
 
             // start the game
             // [ This method could be configured to be the entry point of my game from the "library" menu ]
@@ -84,14 +87,15 @@ namespace AdventureBook.Game
 
 
 
-
                 // reset the pressed keys
-                pressedKeys.Keys.ToList().ForEach(
-                    key => pressedKeys[key] = false
-                    );
+                pressedKeys.Keys.ToList().ForEach(key => pressedKeys[key] = false);
+
+                Thread.Sleep(100);
+                Console.Clear();
             }
             while (isRunning);
         }
+
 
         /// <summary>
         /// Processes the pressed keys updating a dictionary of pressed keys
@@ -101,6 +105,7 @@ namespace AdventureBook.Game
             do
             {
                 ConsoleKeyInfo character = Console.ReadKey(false);
+
                 switch (character.Key)
                 {
                     case ConsoleKey.W:
