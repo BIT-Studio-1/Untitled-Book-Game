@@ -10,7 +10,6 @@ namespace AdventureBook.GameObjects
         static private int healthMax            = 100;
         static private int powerMax             = 100;
 
-        static private int level                = 1;
         static private int health               = healthMax;
         static private int attack               = 30;
         static private int power                = powerMax;
@@ -49,6 +48,11 @@ namespace AdventureBook.GameObjects
             if (health > healthMax) health = healthMax;
         }
 
+        // update the protagonists stats – supports negitive increments
+        public static void increaseHealthMax(int ammount)       => healthMax += ammount;
+        public static void increasePowerMax(int ammount)        => powerMax += ammount;
+        public static void increaseInventorySize(int ammount)   => inventorySize += ammount;
+        public static void increaseAttack(int ammount)          => attack += ammount;      
 
         /// <summary>
         /// Adds an item to the protagonists inventory
