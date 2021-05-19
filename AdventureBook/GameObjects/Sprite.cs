@@ -12,8 +12,8 @@ namespace AdventureBook.GameObjects
     {
         // MEMBERS /////////////////////////////////////////////////////////////
 
-        private int width, height;
-        private char[][] texture;
+        private int width, height, frames = 1, currentFrame = 0;
+        private char[][][] textures;
 
         public string Name { get; set; }
 
@@ -23,6 +23,15 @@ namespace AdventureBook.GameObjects
         {
             Name = name;
             LoadTextureFromFile(pathToTextFile);
+        }
+
+        public Sprite(string name, string[] pathToTextFiles)
+        {
+            Name = name;
+
+            // load each frame into the texture
+            frames = pathToTextFiles.Length;
+            for (int frame = 0; frame < frames; frame++) LoadTextureFromFile(pathToTextFiles[frame], frame);
         }
 
         ~Sprite() => Console.WriteLine("Sprite object deconstructed!");
@@ -38,8 +47,9 @@ namespace AdventureBook.GameObjects
         /// texture was successfully loaded
         /// </summary>
         /// <param name="path">relative filepath to the text file</param>
+        /// <param name="frame">the frame index to load the texture into</param>
         /// <returns>True if the text file was correctly encoded into the array</returns>
-        private bool LoadTextureFromFile(string path)
+        private bool LoadTextureFromFile(string path, int frame = 0)
         {
             try
             {
@@ -48,9 +58,9 @@ namespace AdventureBook.GameObjects
                 height          = file.Length;
                 width           = file[0].Length;
 
-                texture = new char[width][];
+                textures[frame] = new char[width][];
 
-                for (int row = 0; row < width; row++) texture[row] = file[row].ToCharArray();
+                for (int row = 0; row < width; row++) textures[frame][row] = file[row].ToCharArray();
 
                 return true;
             }
@@ -59,11 +69,12 @@ namespace AdventureBook.GameObjects
 
 
         /// <summary>
-        /// Prints the texture of this sprite to the screen
+        /// Prints the specified frame texture of this sprite to the screen
         /// </summary>
         /// <param name="x">x location to start printing the sprite</param>
         /// <param name="y">y location to start printing the sprite</param>
-        public void PrintSprite(int x, int y)
+        /// <param name="frame">the specific frame of the sprite to print</param>
+        public void PrintSprite(int x, int y, int frame = 0)
         {
             for (int row = 0; row < height; row++)
             {
@@ -72,7 +83,7 @@ namespace AdventureBook.GameObjects
                     // TODO > Will implement transparancy on sprites
 
                     Console.SetCursorPosition(x + row, y);
-                    Console.Write(texture[row].ToString());
+                    Console.Write(textures[frame][row].ToString());
                 }
                 catch (Exception) { throw new Exception("[ PrintSprite() ] Failed to print sprite to the screen!");  }
             }
