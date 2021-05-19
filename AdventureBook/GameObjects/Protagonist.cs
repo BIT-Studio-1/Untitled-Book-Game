@@ -82,11 +82,11 @@ namespace AdventureBook.GameObjects
 
 
         // update the protagonists stats – supports negitive increments
-        public static void IncreaseHealthMax(int amount)       => healthMax += amount;
-        public static void IncreasePowerMax(int amount)        => powerMax += amount;
-        public static void IncreaseInventorySize(int amount)   => inventorySize += amount;
-        public static void IncreaseAttack(int amount)          => attack += amount;
+        public static void IncreaseHealthMax(int amount)        => healthMax += amount;
+        public static void IncreasePowerMax(int amount)         => powerMax += amount;
+        public static void IncreaseInventorySize(int amount)    => inventorySize += amount;
 
+        public static void IncreaseAttack(int amount)           => attack += amount;
         public static void SetAttack(int newAttack)             => attack = newAttack;
 
 
