@@ -7,15 +7,15 @@ namespace AdventureBook.GameObjects
     {
         // MEMBERS /////////////////////////////////////////////////////////////
 
-        static private int healthMax            = 100;
-        static private int powerMax             = 100;
+        static private int healthMax                = 100;
+        static private int powerMax                 = 100;
 
-        static private int health               = healthMax;
-        static private int attack               = 30;
-        static private int power                = powerMax;
+        static private int health                   = healthMax;
+        static private int attack                   = 30;
+        static private int power                    = powerMax;
 
-        static private int inventorySize        = 5;
-        static private List<Item> inventory     = new List<Item>();
+        static private int inventorySize            = 5;
+        static private List<Item> inventory         = new List<Item>();
 
         // METHODS /////////////////////////////////////////////////////////////
 
@@ -24,6 +24,7 @@ namespace AdventureBook.GameObjects
 
         public static List<Item> GetInventory()     => inventory;
         public static Item GetInventory(int index)  => inventory[(index < inventorySize - 1 && index > -1) ? index : inventorySize - 1];
+
 
         /// <summary>
         /// called to take health off the player in a battle or by other story twists
@@ -43,7 +44,7 @@ namespace AdventureBook.GameObjects
 
 
         /// <summary>
-        /// called to give the protagonist health by the given amount
+        /// Called to give the protagonist health by the given amount
         /// </summary>
         /// <param name="amount">The amount of health the protagonist regains</param>
         public static void RegainHeatlth(int amount)
@@ -53,11 +54,12 @@ namespace AdventureBook.GameObjects
             if (health > healthMax) health = healthMax;
         }
 
+
         /// <summary>
-        /// l
+        /// The protagonist looses power by this ammount
         /// </summary>
         /// <param name="amount"></param>
-        /// <returns></returns>
+        /// <returns>True if the protagonist looses all his power else false</returns>
         public static bool LosePower(int amount)
         {
             power -= amount;
@@ -71,7 +73,7 @@ namespace AdventureBook.GameObjects
 
 
         /// <summary>
-        /// the protagonist gains power by amount
+        /// The protagonist gains power by amount
         /// </summary>
         /// <param name="amount">ammount of power to gain</param>
         public static void GainPower(int amount)
@@ -81,7 +83,8 @@ namespace AdventureBook.GameObjects
         }
 
 
-        // update the protagonists stats – supports negitive increments
+        // Update the protagonists stats – supports negitive increments
+
         public static void IncreaseHealthMax(int amount)        => healthMax += amount;
         public static void IncreasePowerMax(int amount)         => powerMax += amount;
         public static void IncreaseInventorySize(int amount)    => inventorySize += amount;
@@ -93,14 +96,14 @@ namespace AdventureBook.GameObjects
         /// <summary>
         /// Adds an item to the protagonists inventory
         /// </summary>
-        /// <param name="item">the item to be picked up</param>
-        /// <param name="amount">the amount of this item to be picked up</param>
-        /// <returns></returns>
+        /// <param name="item">The item to be picked up</param>
+        /// <param name="amount">The amount of this item to be picked up</param>
+        /// <returns>True if the item was picked up, else false</returns>
         public static bool PickUpItem(Item item)
         {
             if (inventory.Count > inventorySize) return false;
 
-            // add  the item and call its onCollection() handler
+            // Add the item and call its onCollection() handler
             inventory.Add(item);
             item.OnCollection();
 
