@@ -5,9 +5,15 @@ namespace AdventureBook.GameObjects
     {
         // MEMBERS /////////////////////////////////////////////////////////////
 
+        private Action effect;
+
         // CONSTRUCTORS AND FINALISER //////////////////////////////////////////
 
-        public Item(string name, string pathToTexture, string onCollectionText = "")
+        public Item(string name,                    // name of item
+                    string pathToTexture,           // path to texture
+                    Action effect,                  // effect called onCollection()
+                    string onCollectionText = ""    // message printed when collected
+            )
             : base(name, pathToTexture)
         {
             // apply default onCollection text if left blank
@@ -21,10 +27,7 @@ namespace AdventureBook.GameObjects
         /// <summary>
         /// called when the protagonist picks up an instance of this item
         /// </summary>
-        public virtual void OnCollection()
-        {
-
-        }
-
+        public virtual void OnCollection() => effect();
+        
     }
 }
