@@ -45,7 +45,13 @@ namespace AdventureBook.Game
 
             // create the game assets
 
+            BluntSword = new Item("Blunt Sword",
+                                "../Sprites/bluntSword.txt",
+                                () => Protagonist.SetAttack(5),
+                                "You weld the blunt sword - its use escapes reason"
+                                );
 
+            Protagonist.PickUpItem(BluntSword);
 
             // start the game
             // [ This method could be configured to be the entry point of my game from the "library" menu ]
@@ -91,7 +97,7 @@ namespace AdventureBook.Game
                 pressedKeys.Keys.ToList().ForEach(key => pressedKeys[key] = false);
 
                 Thread.Sleep(100);
-                Console.Clear();
+                //Console.Clear();
             }
             while (isRunning);
         }
