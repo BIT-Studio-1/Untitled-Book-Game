@@ -41,7 +41,7 @@ namespace AdventureBook.Game
             InputThread = new Thread(InputLoop);
 
             // store the pressed keys
-            foreach (string key in new string[] { "w", "a", "s", "d", "space", "return", "up", "down", "left", "right" }) pressedKeys.Add(key, false);
+            foreach (string key in new string[] { "select", "return", "up", "down", "left", "right" }) pressedKeys.Add(key, false);
 
             // create the game assets
 
@@ -110,27 +110,27 @@ namespace AdventureBook.Game
                 {
                     case ConsoleKey.W:
                     case ConsoleKey.UpArrow:
-                        pressedKeys["w"] = pressedKeys["up"] = true;
+                        pressedKeys["up"] = true;
                         break;
 
                     case ConsoleKey.A:
                     case ConsoleKey.LeftArrow:
-                        pressedKeys["a"] = pressedKeys["left"] = true;
+                        pressedKeys["left"] = true;
                         break;
 
                     case ConsoleKey.S:
                     case ConsoleKey.DownArrow:
-                        pressedKeys["s"] = pressedKeys["down"] = true;
+                        pressedKeys["down"] = true;
                         break;
 
                     case ConsoleKey.D:
                     case ConsoleKey.RightArrow:
-                        pressedKeys["d"] = pressedKeys["right"] = true;
+                        pressedKeys["right"] = true;
                         break;
 
                     case ConsoleKey.Spacebar:
                     case ConsoleKey.Enter:
-                        pressedKeys["space"] = pressedKeys["return"] = true;
+                        pressedKeys["select"] = true;
                         break;
 
                     default:
@@ -160,10 +160,10 @@ namespace AdventureBook.Game
         }
 
         // checks whether the specified keys are being pressed or not
-        public bool IsSelectPressed()   => pressedKeys["space"] || pressedKeys["return"];
-        public bool IsUpPressed()       => pressedKeys["up"]    || pressedKeys["w"];
-        public bool IsDownPressed()     => pressedKeys["down"]  || pressedKeys["s"];
-        public bool IsRightPressed()    => pressedKeys["right"] || pressedKeys["d"];
-        public bool IsLeftPressed()     => pressedKeys["left"]  || pressedKeys["a"];
+        public bool IsSelectPressed()   => pressedKeys["select"];
+        public bool IsUpPressed()       => pressedKeys["up"];
+        public bool IsDownPressed()     => pressedKeys["down"];
+        public bool IsRightPressed()    => pressedKeys["right"];
+        public bool IsLeftPressed()     => pressedKeys["left"];
     }
 }
