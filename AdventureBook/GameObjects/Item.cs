@@ -6,6 +6,7 @@ namespace AdventureBook.GameObjects
         // MEMBERS /////////////////////////////////////////////////////////////
 
         private Action effect;
+        private string collectionMessage;
 
         // CONSTRUCTORS AND FINALISER //////////////////////////////////////////
 
@@ -17,7 +18,16 @@ namespace AdventureBook.GameObjects
             : base(name, pathToTexture)
         {
             // apply default onCollection text if left blank
-            if (onCollectionText == string.Empty) onCollectionText = $"You picked up a '{name}'";
+            if (onCollectionText == string.Empty)
+            {
+                collectionMessage = $"You picked up a '{name}'";
+            }
+            else
+            {
+                collectionMessage = onCollectionText;
+            }
+
+            this.effect = effect;
         }
 
         ~Item() => Console.WriteLine("Item object deconstructed!");
@@ -27,7 +37,11 @@ namespace AdventureBook.GameObjects
         /// <summary>
         /// called when the protagonist picks up an instance of this item
         /// </summary>
-        public virtual void OnCollection() => effect();
+        public virtual void OnCollection()
+        {
+            Console.WriteLine(collectionMessage);
+            effect();
+        }
         
     }
 }
