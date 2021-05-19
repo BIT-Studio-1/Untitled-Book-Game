@@ -33,14 +33,19 @@ namespace AdventureBook.GameObjects
         public static bool TakeDamage(int damage)
         {
             health -= damage;
-            return (health <= 0);
+            if (health <= 0)
+            {
+                health = 0;
+                return true;
+            }
+            return false;
         }
 
 
         /// <summary>
-        /// called to give the protagonist health by the given ammount
+        /// called to give the protagonist health by the given amount
         /// </summary>
-        /// <param name="amount">The ammount of health the protagonist regains</param>
+        /// <param name="amount">The amount of health the protagonist regains</param>
         public static void RegainHeatlth(int amount)
         {
             // increment the health, removing overflow
@@ -48,11 +53,42 @@ namespace AdventureBook.GameObjects
             if (health > healthMax) health = healthMax;
         }
 
+        /// <summary>
+        /// l
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <returns></returns>
+        public static bool LosePower(int amount)
+        {
+            power -= amount;
+            if (power < 0)
+            {
+                power = 0;
+                return true;
+            }
+            return false;
+        }
+
+
+        /// <summary>
+        /// the protagonist gains power by amount
+        /// </summary>
+        /// <param name="amount">ammount of power to gain</param>
+        public static void GainPower(int amount)
+        {
+            power += amount;
+            if (power > powerMax) power = powerMax;
+        }
+
+
         // update the protagonists stats – supports negitive increments
-        public static void increaseHealthMax(int ammount)       => healthMax += ammount;
-        public static void increasePowerMax(int ammount)        => powerMax += ammount;
-        public static void increaseInventorySize(int ammount)   => inventorySize += ammount;
-        public static void increaseAttack(int ammount)          => attack += ammount;      
+        public static void increaseHealthMax(int amount)       => healthMax += amount;
+        public static void increasePowerMax(int amount)        => powerMax += amount;
+        public static void increaseInventorySize(int amount)   => inventorySize += amount;
+        public static void increaseAttack(int amount)          => attack += amount;
+
+        public static void SetAttack(int newAttack)             => attack = newAttack;
+
 
         /// <summary>
         /// Adds an item to the protagonists inventory
