@@ -3,6 +3,8 @@ using System.Threading;
 using System.Collections.Generic;
 using System.Linq;
 
+using AdventureBook.GameObjects;
+
 //
 //  Created by Aardhyn Lavender
 //  19/05/2021
@@ -12,6 +14,15 @@ namespace AdventureBook.Game
 {
     public class AdventureBookGame
     {
+        // GAME ASSET DECLARATIONS /////////////////////////////////////////////
+
+        internal Item firstSword;
+        internal Item firstShield;
+
+        internal Item earlyHealingPotion;
+        internal Item BluntSword;
+        internal Item BlurryMap;
+
         // MEMBERS /////////////////////////////////////////////////////////////
 
         private Thread InputThread;
@@ -31,7 +42,6 @@ namespace AdventureBook.Game
             foreach (string key in new string[] { "w", "a", "s", "d", "space", "return", "up", "down", "left", "right" }) pressedKeys.Add(key, false);
 
             // create the game assets
-
 
 
             // start the game
