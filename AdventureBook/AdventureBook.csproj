@@ -5,4 +5,18 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Assets\" />
+    <Folder Include="GameObjects\" />
+    <Folder Include="StoryFiles\" />
+    <Folder Include="Assets\Protagonist\" />
+    <Folder Include="Assets\UserInterface\" />
+    <Folder Include="Assets\Sprites\" />
+    <Folder Include="Game\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="GameObjects\Item.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
 </Project>
