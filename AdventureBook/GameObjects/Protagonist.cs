@@ -51,21 +51,6 @@ namespace AdventureBook.GameObjects
 
 
         /// <summary>
-        /// called to increase the protagonists stats
-        /// </summary>
-        /// <param name="newHealthMax">new max health level</param>
-        /// <param name="newPowerMax">new max power level</param>
-        /// <param name="newAttack">new attack level</param>
-        public static void LevelUp(int newHealthMax, int newPowerMax, int newAttack)
-        {
-            healthMax   = newHealthMax;
-            powerMax    = newPowerMax;
-            attack      = newAttack;
-
-            level++;
-        }
-
-        /// <summary>
         /// Adds an item to the protagonists inventory
         /// </summary>
         /// <param name="item">the item to be picked up</param>
