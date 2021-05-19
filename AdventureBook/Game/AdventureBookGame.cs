@@ -38,14 +38,14 @@ namespace AdventureBook.Game
         public AdventureBookGame()
         {
             // create the input thread
-            InputThread     = new Thread(InputLoop);
+            InputThread = new Thread(InputLoop);
 
             // store the pressed keys
             foreach (string key in new string[] { "w", "a", "s", "d", "space", "return", "up", "down", "left", "right" }) pressedKeys.Add(key, false);
 
             // create the game assets
 
-            
+
 
             // start the game
             // [ This method could be configured to be the entry point of my game from the "library" menu ]
@@ -64,7 +64,7 @@ namespace AdventureBook.Game
 
             // grab the current console colors
             originalBackgroundColor = Console.BackgroundColor;
-            originalForgroundColor  = Console.ForegroundColor;
+            originalForgroundColor = Console.ForegroundColor;
 
             // update the colors
             Console.ForegroundColor = ConsoleColor.Green;
@@ -158,5 +158,12 @@ namespace AdventureBook.Game
             Console.ForegroundColor = originalForgroundColor;
             Console.BackgroundColor = originalBackgroundColor;
         }
+
+        // checks whether the specified keys are being pressed or not
+        public bool IsSelectPressed()   => pressedKeys["space"] || pressedKeys["return"];
+        public bool IsUpPressed()       => pressedKeys["up"]    || pressedKeys["w"];
+        public bool IsDownPressed()     => pressedKeys["down"]  || pressedKeys["s"];
+        public bool IsRightPressed()    => pressedKeys["right"] || pressedKeys["d"];
+        public bool IsLeftPressed()     => pressedKeys["left"]  || pressedKeys["a"];
     }
 }
