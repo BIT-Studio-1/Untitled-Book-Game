@@ -89,11 +89,15 @@ namespace AdventureBook.GameObjects
         /// <param name="frame">the specific frame of the sprite to print</param>
         public void PrintSprite(int x, int y, int frame = 0)
         {
+            // dont allow frames to be specified for static textures
+            if (frames == 1) frame = 0;
+
             try
             {
-                
+                // try to print the texture to the screen buffer
+                Screen.Print(textures[frame], x, y);
             }
-            catch (Exception) { throw new Exception("[ PrintSprite() ] Failed to print sprite to the screen!");  }
+            catch (Exception) { throw new Exception("[ Sprite::PrintSprite() ] Failed to print sprite to the screen buffer!");  }
         }
     }
 }
