@@ -30,7 +30,7 @@ namespace AdventureBook.Game
             // create a new screen array
             char[][] newScreen = new char[width][];
             for (int x = 0; x < width; x++)
-                for (int y = 0; y < height; y++) newScreen[x] = new char[width];
+                for (int y = 0; y < height; y++) newScreen[y] = new char[width];
 
             // set the screen to the new screen
             screen = newScreen;
@@ -42,7 +42,7 @@ namespace AdventureBook.Game
         /// </summary>
         public static void Clear() {
             for (int x = 0; x < width; x++)
-                for (int y = 0; y < height; y++) screen[x][y] = ' ';
+                for (int y = 0; y < height; y++) screen[y][x] = ' '; // U+2001 not space
         }
 
         /// <summary>
