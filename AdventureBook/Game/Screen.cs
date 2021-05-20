@@ -25,7 +25,7 @@ namespace AdventureBook.Game
         {
             // update the size
             width   = Console.WindowWidth;
-            height  = Console.WindowHeight;
+            height  = Console.WindowHeight - 1;
 
             // create a new screen array
             char[][] newScreen = new char[width][];
