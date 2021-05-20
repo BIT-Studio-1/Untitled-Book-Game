@@ -15,7 +15,7 @@ namespace AdventureBook.Game
             height  = Console.WindowHeight;
 
             screen = new char[width][];
-            for (int x = 0; x < width; x++) for (int y = 0; y < height; y++) screen[x][y] = ' ';
+            for (int x = 0; x < width; x++) for (int y = 0; y < height; y++) screen[x] = new char[width];
         }
 
         public static int GetWidth()    => width;
