@@ -23,7 +23,6 @@
     <Folder Include="GameObjects\" />
     <Folder Include="StoryFiles\" />
     <Folder Include="Assets\Protagonist\" />
-    <Folder Include="Game\" />
   </ItemGroup>
 
   <ItemGroup>
