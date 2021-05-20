@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 
+using AdventureBook.Game;
+
 //
 //  Created by Aardhyn Lavender
 //  19/05/2021
@@ -87,17 +89,11 @@ namespace AdventureBook.GameObjects
         /// <param name="frame">the specific frame of the sprite to print</param>
         public void PrintSprite(int x, int y, int frame = 0)
         {
-            for (int row = 0; row < height; row++)
+            try
             {
-                try
-                {
-                    // TODO > Will implement transparancy on sprites
-
-                    Console.SetCursorPosition(x, y + row);
-                    Console.Write(new String(textures[frame][row]));
-                }
-                catch (Exception) { throw new Exception("[ PrintSprite() ] Failed to print sprite to the screen!");  }
+                
             }
+            catch (Exception) { throw new Exception("[ PrintSprite() ] Failed to print sprite to the screen!");  }
         }
     }
 }
