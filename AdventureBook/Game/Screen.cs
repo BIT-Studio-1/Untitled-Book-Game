@@ -44,12 +44,20 @@ namespace AdventureBook.Game
         /// </summary>
         public static void Render()
         {
-            Console.SetCursorPosition(0, 0);
             for (int row = 0; row < height; row++)
             {
                 Console.SetCursorPosition(0, row);
                 Console.WriteLine(new string(screen[row]));
             }
+        }
+
+        /// <summary>
+        /// copies the 2d Jagged array to the Screen buffer for rendering
+        /// </summary>
+        /// <param name="texture"></param>
+        public static void Print(char[][] texture)
+        {
+            
         }
 
 
