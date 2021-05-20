@@ -107,6 +107,10 @@ namespace AdventureBook.Game
                 // reset the pressed keys
                 pressedKeys.Keys.ToList().ForEach(key => pressedKeys[key] = false);
 
+                // render the screen
+                Screen.Render();
+
+                // pause
                 Thread.Sleep(100);
             }
             while (isRunning);
