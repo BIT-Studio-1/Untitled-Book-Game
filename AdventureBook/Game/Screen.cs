@@ -39,6 +39,19 @@ namespace AdventureBook.Game
                 for (int y = 0; y < height; y++) screen[x][y] = ' ';
         }
 
+        /// <summary>
+        /// copies the characters in the screen buffer to the console
+        /// </summary>
+        public static void Render()
+        {
+            Console.SetCursorPosition(0, 0);
+            for (int row = 0; row < height; row++)
+            {
+                Console.SetCursorPosition(0, row);
+                Console.WriteLine(new string(screen[row]));
+            }
+        }
+
 
         // custom getters
 
