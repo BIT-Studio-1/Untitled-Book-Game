@@ -18,6 +18,10 @@ namespace AdventureBook.Game
             for (int x = 0; x < width; x++) for (int y = 0; y < height; y++) screen[x] = new char[width];
         }
 
+        public static void Clear() {
+            for (int x = 0; x < width; x++) for (int y = 0; y < height; y++) screen[x][y] = ' ';
+        }
+
         public static int GetWidth()    => width;
         public static int GetHeight()   => height;
         public static int GetCenterX()  => width / 2;
