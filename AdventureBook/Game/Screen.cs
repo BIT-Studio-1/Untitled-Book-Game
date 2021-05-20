@@ -61,11 +61,10 @@ namespace AdventureBook.Game
         /// <summary>
         /// copies the 2d Jagged array to the Screen buffer for rendering
         /// </summary>
-        /// <param name="texture"></param>
-        public static void Print(char[][] texture)
-        {
-            
-        }
+        /// <param name="texture">Texture to copy to the screen buffer</param>
+        /// <param name="x">X location to place the texture</param>
+        /// <param name="y">Y location to place the texture</param>
+        public static void Print(char[][] texture, int x, int y) => JaggedCopy(texture, screen, x, y, true);
 
 
         // custom getters
