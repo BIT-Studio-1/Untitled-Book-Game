@@ -64,7 +64,8 @@ namespace AdventureBook.Game
             Protagonist.PickUpItem(BluntSword);
 
             // start the game
-            // [ This method could be configured to be the entry point of my game from the "library" menu ]
+
+            Screen.SetToConsole(); // configure the Screen buffer
 
             OpenBook();
         }
