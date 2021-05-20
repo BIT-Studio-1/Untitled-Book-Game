@@ -4,7 +4,6 @@ using System.Windows.Input;
 using System.Collections.Generic;
 using System.Linq;
 
-
 using AdventureBook.GameObjects;
 
 //
@@ -16,6 +15,9 @@ namespace AdventureBook.Game
 {
     public class AdventureBookGame
     {
+        const int FPS       = 60;
+        const int TICKSPEED = 1000 / FPS;
+
         // GAME ASSET DECLARATIONS /////////////////////////////////////////////
 
         internal Sprite ItemCollectionMenu;
@@ -32,7 +34,8 @@ namespace AdventureBook.Game
         private Thread InputThread;
         private Thread PhysicsThread;
 
-        private bool isRunning = false;
+        private bool isRunning  = false;
+        private int gameTick = 0;
 
         private Dictionary<string, bool> pressedKeys = new Dictionary<string, bool>();
 
@@ -194,10 +197,22 @@ namespace AdventureBook.Game
         }
 
         // checks whether the specified keys are being pressed or not
+
         public bool IsSelectPressed()   => pressedKeys["select"];
         public bool IsUpPressed()       => pressedKeys["up"];
         public bool IsDownPressed()     => pressedKeys["down"];
         public bool IsRightPressed()    => pressedKeys["right"];
         public bool IsLeftPressed()     => pressedKeys["left"];
+
+        // misc
+
+        /// <summary>
+        /// steps the physics world to keep animates at a smooth rate
+        /// </summary>
+        private void Step()
+        {
+            gameTick++;
+            Thread.Sleep(TICKSPEED);
+        }
     }
 }
