@@ -102,29 +102,40 @@ namespace AdventureBook.Game
             bool replaceWhiteSpace = true
             )
         {
+            // make a copy of the source
             char[][] safeSource = source;
 
-            for (int y = 0; y < source.Length; y++)
+            // default width and height
+            if (width <= 0) width   = source[0].Length;
+            if (height <= 0) height = source.Length;
+
+            for (int y = srcY; y < height; y++)
             {
                 try
                 {
-                    // replace whitespace with 'see-through' of matrix below
+                    // replace whitespace with 'see-through' of array 'below'
                     if (replaceWhiteSpace)
                     {
                         do
                         {
+                            // find whitespace ' ' characters
                             int index = safeSource[y].ToList().IndexOf(' ');
+
+                            // break if none found
                             if (index == -1) break;
 
+                            // replace the whitespace character with whatever character is in
+                            // this index in the desination array
                             safeSource[y][index] = destination[destY + y][destX + index];
 
                         } while (true);
                     }
 
-                    try { Array.ConstrainedCopy(safeSource[y], 0, destination[destY + y], destX, source[y].Length); }
+                    // attempt to copy the array
+                    try { Array.ConstrainedCopy(safeSource[y][srcX..(srcX + width)], 0, destination[destY + y], destX, source[y].Length); }
                     catch (Exception) { /* unhandled exception */ }
                 }
-                catch (System.ArgumentException) { return; }
+                catch (System.ArgumentException) { /* unhandled exception */ }
             }
         }
     }
