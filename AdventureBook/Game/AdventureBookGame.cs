@@ -108,7 +108,6 @@ namespace AdventureBook.Game
                 pressedKeys.Keys.ToList().ForEach(key => pressedKeys[key] = false);
 
                 Thread.Sleep(100);
-                //Console.Clear();
             }
             while (isRunning);
         }
