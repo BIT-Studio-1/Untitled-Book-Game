@@ -70,7 +70,7 @@ namespace AdventureBook.GameObjects
                 textures        = new char[1][][];
                 textures[0]     = new char[width][];
 
-                for (int row = 0; row < width; row++) textures[frame][row] = file[row].ToCharArray();
+                for (int row = 0; row < height; row++) textures[frame][row] = file[row].ToCharArray();
 
                 return true;
             }
