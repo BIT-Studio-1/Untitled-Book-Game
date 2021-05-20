@@ -51,6 +51,7 @@ namespace AdventureBook.Game
             }
         }
 
+
         /// <summary>
         /// copies the 2d Jagged array to the Screen buffer for rendering
         /// </summary>
@@ -72,5 +73,49 @@ namespace AdventureBook.Game
 
         public static int CenterSpriteX(Sprite sprite) => GetCenterX() - sprite.GetWidth() / 2;
         public static int CenterSpriteY(Sprite sprite) => GetCenterY() - sprite.GetHeight() / 2;
+
+
+        /// <summary>
+        /// Copies a 2D jagged array data structure to another 2D jagged array at
+        /// a specified cooordinate supporting transparancy on space characters
+        /// </summary>
+        /// <param name="source">Array to copy</param>
+        /// <param name="destination">Array to paste</param>
+        /// <param name="destX">X location on the destination to paste the source</param>
+        /// <param name="destY">Y location on the destination to paste the source</param>
+        /// <param name="replaceWhiteSpace">whether spaces should be treated as transparent characters</param>
+        public static void JaggedCopy(
+            char[][] source,
+            char[][] destination,
+            int destX = 0,
+            int destY = 0,
+            bool replaceWhiteSpace = true
+            )
+        {
+            char[][] safeSource = source;
+
+            for (int y = 0; y < source.Length; y++)
+            {
+                try
+                {
+                    // replace whitespace with 'see-through' of matrix below
+                    if (replaceWhiteSpace)
+                    {
+                        do
+                        {
+                            int index = safeSource[y].ToList().IndexOf(' ');
+                            if (index == -1) break;
+
+                            safeSource[y][index] = destination[destY + y][destX + index];
+
+                        } while (true);
+                    }
+
+                    try { Array.ConstrainedCopy(safeSource[y], 0, destination[destY + y], destX, source[y].Length); }
+                    catch (Exception) { /* unhandled exception */ }
+                }
+                catch (System.ArgumentException) { return; }
+            }
+        }
     }
 }
