@@ -18,6 +18,8 @@ namespace AdventureBook.Game
     {
         // GAME ASSET DECLARATIONS /////////////////////////////////////////////
 
+        internal Sprite ItemCollectionMenu;
+
         internal Item firstSword;
         internal Item firstShield;
 
@@ -45,8 +47,16 @@ namespace AdventureBook.Game
 
             // create the game assets
 
+            // UI
+
+            ItemCollectionMenu = new Sprite("itemCollectionMenu", 
+                                            "Assets/UserInterface/ItemCollection.txt"
+                                            );
+
+            // items
+
             BluntSword = new Item("Blunt Sword",
-                                "../Sprites/bluntSword.txt",
+                                "Assets/Sprites/bluntSword.txt",
                                 () => Protagonist.SetAttack(5),
                                 "You weld the blunt sword - its use escapes reason"
                                 );
@@ -91,7 +101,7 @@ namespace AdventureBook.Game
             {
                 // do game logic...
 
-
+                ItemCollectionMenu.PrintSprite(10, 10);
 
                 // reset the pressed keys
                 pressedKeys.Keys.ToList().ForEach(key => pressedKeys[key] = false);
