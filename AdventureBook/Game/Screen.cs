@@ -64,8 +64,8 @@ namespace AdventureBook.Game
         /// <param name="texture">Texture to copy to the screen buffer</param>
         /// <param name="x">X location to place the texture</param>
         /// <param name="y">Y location to place the texture</param>
-        public static void Print(char[][] texture, int x, int y)
-            => JaggedCopy(texture, screen, x, y, true);
+        public static void Print(char[][] texture, int srcX, int width, int height, int srcY, int desX, int desY)
+            => JaggedCopy(texture, screen, srcX, srcY, width, height, desX, desY, true);
 
 
         // custom getters
