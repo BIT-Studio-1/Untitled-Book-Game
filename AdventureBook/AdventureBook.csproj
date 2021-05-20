@@ -6,11 +6,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Sprites\bluntSword.txt" />
+    <None Remove="Assets\UserInterface\ItemCollection.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Sprites\bluntSword.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\UserInterface\ItemCollection.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="GameObjects\" />
     <Folder Include="StoryFiles\" />
     <Folder Include="Assets\Protagonist\" />
-    <Folder Include="Assets\Sprites\" />
     <Folder Include="Game\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="Assets\Sprites\bluntSword.txt" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="GameObjects\Item.cs">
