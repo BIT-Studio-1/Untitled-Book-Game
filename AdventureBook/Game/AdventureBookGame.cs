@@ -30,6 +30,8 @@ namespace AdventureBook.Game
         // MEMBERS /////////////////////////////////////////////////////////////
 
         private Thread InputThread;
+        private Thread PhysicsThread;
+
         private bool isRunning = false;
 
         private Dictionary<string, bool> pressedKeys = new Dictionary<string, bool>();
@@ -39,8 +41,9 @@ namespace AdventureBook.Game
 
         public AdventureBookGame()
         {
-            // create the input thread
-            InputThread = new Thread(InputLoop);
+            // initalize threads
+            InputThread     = new Thread(InputLoop);
+            PhysicsThread   = new Thread(GameLoop);
 
             // store the pressed keys
             foreach (string key in new string[] { "select", "return", "up", "down", "left", "right" }) pressedKeys.Add(key, false);
@@ -91,7 +94,9 @@ namespace AdventureBook.Game
             // start the game and input loops
             isRunning = true;
             InputThread.Start();
-            GameLoop();
+            PhysicsThread.Start();
+
+            // start the game logic
         }
 
         /// <summary>
@@ -101,10 +106,6 @@ namespace AdventureBook.Game
         {
             do
             {
-                // do game logic...
-
-                ItemCollectionMenu.PrintSprite(10, 10);
-
                 // reset the pressed keys
                 pressedKeys.Keys.ToList().ForEach(key => pressedKeys[key] = false);
 
@@ -159,6 +160,18 @@ namespace AdventureBook.Game
                 }
             }
             while (isRunning);
+        }
+
+        /// <summary>
+        /// Called to start the game logic like displaying sprites, telling the story, picking up items etc.
+        /// </summary>
+        public void BeginGame()
+        {
+            // where it all begins...
+
+
+
+
         }
 
 
