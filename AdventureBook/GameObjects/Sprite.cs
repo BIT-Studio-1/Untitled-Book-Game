@@ -8,7 +8,7 @@ using System.IO;
 
 namespace AdventureBook.GameObjects
 {
-    public abstract class Sprite
+    public class Sprite
     {
         // MEMBERS /////////////////////////////////////////////////////////////
 
@@ -60,18 +60,22 @@ namespace AdventureBook.GameObjects
         {
             try
             {
-                string[] file   = (string[])File.ReadLines(path);
+                string[] file   = File.ReadAllLines(path);
 
                 height          = file.Length;
                 width           = file[0].Length;
 
-                textures[frame] = new char[width][];
+                textures        = new char[1][][];
+                textures[0]     = new char[width][];
 
                 for (int row = 0; row < width; row++) textures[frame][row] = file[row].ToCharArray();
 
                 return true;
             }
-            catch (Exception) { return false; }
+            catch (Exception error) {
+                Console.WriteLine(error);
+                return false; 
+            }
         }
 
 
@@ -89,8 +93,8 @@ namespace AdventureBook.GameObjects
                 {
                     // TODO > Will implement transparancy on sprites
 
-                    Console.SetCursorPosition(x + row, y);
-                    Console.Write(textures[frame][row].ToString());
+                    Console.SetCursorPosition(x, y + row);
+                    Console.Write(new String(textures[frame][row]));
                 }
                 catch (Exception) { throw new Exception("[ PrintSprite() ] Failed to print sprite to the screen!");  }
             }
