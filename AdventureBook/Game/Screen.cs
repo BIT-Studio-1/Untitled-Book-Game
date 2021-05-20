@@ -93,12 +93,12 @@ namespace AdventureBook.Game
         public static void JaggedCopy(
             char[][] source,
             char[][] destination,
-            int srcX    = 0,
-            int srcY    = 0,
-            int width   = 0,
-            int height  = 0,
-            int destX   = 0,
-            int destY   = 0,
+            int srcX,
+            int srcY,
+            int width,
+            int height,
+            int destX,
+            int destY,
             bool replaceWhiteSpace = true
             )
         {
