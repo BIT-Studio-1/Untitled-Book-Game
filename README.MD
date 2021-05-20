@@ -18,8 +18,8 @@ The player is controlled by simple multi-choice questions, and the results of th
 
 The Murder Mystery book follows the story of a detective called to a family gathered to solve the murder in the family. Investigate clues, explore the crime scene and figure out who the killer is through multi-choice questions with consiquences for each question.
 
-### Untitled Book
-
+### Cat book!
+Just a chill day in the life of a cat. Do cat things, solve cat puzzles. Have a great cat-based time.
 
 ### Untitled Book
 
