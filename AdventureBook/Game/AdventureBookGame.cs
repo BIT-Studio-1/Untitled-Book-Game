@@ -66,6 +66,7 @@ namespace AdventureBook.Game
             // start the game
 
             Screen.SetToConsole(); // configure the Screen buffer
+            Screen.Clear();
 
             OpenBook();
         }
