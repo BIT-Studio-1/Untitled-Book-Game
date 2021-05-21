@@ -11,6 +11,7 @@
     <None Remove="Assets\scenes\distantMountain.txt" />
     <None Remove="Assets\scenes\DistantTrees.txt" />
     <None Remove="Assets\scenes\closerTrees.txt" />
+    <None Remove="Assets\Sprites\GameTitle.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,6 +28,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Assets\scenes\closerTrees.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Sprites\GameTitle.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
