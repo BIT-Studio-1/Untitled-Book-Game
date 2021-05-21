@@ -8,6 +8,8 @@
   <ItemGroup>
     <None Remove="Assets\Sprites\bluntSword.txt" />
     <None Remove="Assets\UserInterface\ItemCollection.txt" />
+    <None Remove="Assets\scenes\distantMountain.txt" />
+    <None Remove="Assets\scenes\DistantTrees.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,6 +18,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Assets\UserInterface\ItemCollection.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\scenes\distantMountain.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\scenes\DistantTrees.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
 
