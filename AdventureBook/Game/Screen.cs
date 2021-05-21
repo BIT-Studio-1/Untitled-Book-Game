@@ -28,7 +28,8 @@ namespace AdventureBook.Game
             height  = Console.WindowHeight - 1;
 
             // create a new screen array
-            char[][] newScreen = new char[width][];
+            char[][] newScreen = new char[height][];
+
             for (int x = 0; x < width; x++)
                 for (int y = 0; y < height; y++) newScreen[y] = new char[width];
 
@@ -40,7 +41,8 @@ namespace AdventureBook.Game
         /// <summary>
         /// sets the screen to ' ' characters
         /// </summary>
-        public static void Clear() {
+        public static void Clear()
+        {
             for (int x = 0; x < width; x++)
                 for (int y = 0; y < height; y++) screen[y][x] = ' '; // ' ' U+2001 not space
         }
@@ -77,7 +79,7 @@ namespace AdventureBook.Game
             }
             else
             {
-                startX = desX;
+                startX = 0;
                 endX = desX + texture[0].Length - 1;
                 if (endX > width) endX = width;
             }
@@ -90,9 +92,10 @@ namespace AdventureBook.Game
             }
             else
             {
-                startY = desY;
-                endY = desY + texture.Length - 1;
+                startY = 0;
+                endY = startY + texture.Length - 1;
                 if (endY > height) endY = height;
+
             }
 
             JaggedCopy(texture, screen, startX, endX, startY, endY, desX, desY, true);
@@ -135,30 +138,22 @@ namespace AdventureBook.Game
         {
             char[][] safeSource = source[startY .. endY];
 
-            for (int y = 0; y < source.Length; y++)
+            for (int y = startY; y < endY; y++)
             {
-                try
+                // replace whitespace with 'see-through' of matrix below
+                if (replaceWhiteSpace)
                 {
-                    // replace whitespace with 'see-through' of matrix below
-                    if (replaceWhiteSpace)
+                    do
                     {
-                        do
-                        {
-                            int index = safeSource[y].ToList().IndexOf(' ');
-                            if (index == -1) break;
+                        int index = safeSource[y].ToList().IndexOf(' ');
+                        if (index == -1) break;
 
-                            safeSource[y][index] = destination[destY + y][destX + index];
-                        } 
-                        while (true);
-                    }
-
-                    Console.WriteLine("askjdflskdf");
-                    Console.WriteLine(new string(safeSource[y][startX..endX]));
-
-                    try { Array.ConstrainedCopy(safeSource[y][startX .. endX], 0, destination[destY + y], destX, source[y].Length); }
-                    catch (Exception) { /* unhandled exception */ }
+                        safeSource[y][index] = destination[destY + y][destX + index];
+                    } 
+                    while (true);
                 }
-                catch (System.ArgumentException) { return; }
+
+                Array.ConstrainedCopy(safeSource[y], startX, destination[destY + y], destX, safeSource[y].Length);
             }
         }
     }
