@@ -33,6 +33,7 @@ namespace AdventureBook.Game
 
         private Thread InputThread;
         private Thread PhysicsThread;
+        private Thread TickerThread;
 
         private bool isRunning  = false;
         private int gameTick = 0;
@@ -47,6 +48,7 @@ namespace AdventureBook.Game
             // initalize threads
             InputThread     = new Thread(InputLoop);
             PhysicsThread   = new Thread(GameLoop);
+            TickerThread    = new Thread(Step);
 
             // store the pressed keys
             foreach (string key in new string[] { "select", "return", "up", "down", "left", "right" }) pressedKeys.Add(key, false);
@@ -101,7 +103,9 @@ namespace AdventureBook.Game
 
             // start the game logic
 
-            ItemCollectionMenu.PrintSprite(5, 5);
+
+
+
         }
 
         /// <summary>
@@ -109,6 +113,8 @@ namespace AdventureBook.Game
         /// </summary>
         public void GameLoop()
         {
+            int n = -40;
+
             do
             {
                 // reset the pressed keys
@@ -116,6 +122,8 @@ namespace AdventureBook.Game
 
                 // render the screen
                 Screen.Render();
+
+                if (gameTick % 1000 == 0) ItemCollectionMenu.PrintSprite(Screen.CenterSpriteX(ItemCollectionMenu), n++);
 
                 // pause
                 Thread.Sleep(100);
