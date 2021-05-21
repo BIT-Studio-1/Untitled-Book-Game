@@ -80,26 +80,27 @@ namespace AdventureBook.Game
             else
             {
                 startX = 0;
-                endX = texture[0].Length - 1;
-                if (endX > width) endX = width;
+                endX = texture[0].Length;
+                if (desX + texture[0].Length > width) endX = texture[0].Length - (desX + texture[0].Length - width);
             }
 
             if (desY < 0)
             {
                 startY = Math.Abs(desY);
-                endY = (startY + height > texture.Length - startY) ? height - 1 : desY + texture.Length;
+                endY = (texture.Length - desY > height) ? height - 1 : texture.Length;
                 desY = 0;
             }
             else
             {
                 startY = 0;
-                endY = startY + texture.Length;
-                if (endY > height) endY = height;
-
+                endY = texture.Length;
+                if (desY + texture.Length > height) endY = texture.Length - (desY + texture.Length - height);
             }
 
-
-            if (endX - startX > 0 && endY - startY > 0) JaggedCopy(texture, screen, startX, endX, startY, endY, desX, desY, true);
+            if (endX - startX > 0 && endY - startY > 0 && startX < texture[0].Length && startY < texture.Length)
+            {
+                JaggedCopy(texture, screen, startX, endX, startY, endY, desX, desY, true);
+            }
         }
 
 
@@ -139,7 +140,7 @@ namespace AdventureBook.Game
         {
             char[][] safeSource = source[startY .. endY];
 
-            for (int y = startY; y < endY; y++)
+            for (int y = 0; y < safeSource.Length; y++)
             {
                 // replace whitespace with 'see-through' of matrix below
                 if (replaceWhiteSpace)
