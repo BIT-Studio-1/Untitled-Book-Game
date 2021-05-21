@@ -100,6 +100,8 @@ namespace AdventureBook.Game
             PhysicsThread.Start();
 
             // start the game logic
+
+            ItemCollectionMenu.PrintSprite(5, 5);
         }
 
         /// <summary>
