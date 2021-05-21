@@ -74,13 +74,13 @@ namespace AdventureBook.Game
             if (desX < 0)
             {
                 startX = Math.Abs(desX);
-                endX = (startX + width > texture[0].Length - startX) ? width - 1 : desX + texture[0].Length;
+                endX = (texture[0].Length - desX > width) ? width - 1 : texture[0].Length;
                 desX = 0;
-            }
+            } 
             else
             {
                 startX = 0;
-                endX = desX + texture[0].Length - 1;
+                endX = texture[0].Length - 1;
                 if (endX > width) endX = width;
             }
 
@@ -98,7 +98,8 @@ namespace AdventureBook.Game
 
             }
 
-            JaggedCopy(texture, screen, startX, endX, startY, endY, desX, desY, true);
+
+            if (endX - startX > 0 && endY - startY > 0) JaggedCopy(texture, screen, startX, endX, startY, endY, desX, desY, true);
         }
 
 
@@ -153,7 +154,7 @@ namespace AdventureBook.Game
                     while (true);
                 }
 
-                Array.ConstrainedCopy(safeSource[y], startX, destination[destY + y], destX, safeSource[y].Length);
+                Array.ConstrainedCopy(safeSource[y], startX, destination[destY + y], destX, endX - startX);
             }
         }
     }
