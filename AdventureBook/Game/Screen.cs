@@ -66,41 +66,9 @@ namespace AdventureBook.Game
         /// <param name="texture">Texture to copy to the screen buffer</param>
         /// <param name="x">X location to place the texture</param>
         /// <param name="y">Y location to place the texture</param>
-        public static void Print(char[][] texture, int desX, int desY)
+        public static void Print(char[][] texture, int srcX, int srcY, int width, int height, int desX, int desY)
         {
-            int startX, endX, startY, endY;
-
-            // is the texture off the edge of the screen
-            if (desX < 0)
-            {
-                startX = Math.Abs(desX);
-                endX = (texture[0].Length - desX > width) ? width - 1 : texture[0].Length;
-                desX = 0;
-            } 
-            else
-            {
-                startX = 0;
-                endX = texture[0].Length;
-                if (desX + texture[0].Length > width) endX = texture[0].Length - (desX + texture[0].Length - width);
-            }
-
-            if (desY < 0)
-            {
-                startY = Math.Abs(desY);
-                endY = (texture.Length - desY > height) ? height - 1 : texture.Length;
-                desY = 0;
-            }
-            else
-            {
-                startY = 0;
-                endY = texture.Length;
-                if (desY + texture.Length > height) endY = texture.Length - (desY + texture.Length - height);
-            }
-
-            if (endX - startX > 0 && endY - startY > 0 && startX < texture[0].Length && startY < texture.Length)
-            {
-                JaggedCopy(texture, screen, startX, endX, startY, endY, desX, desY, true);
-            }
+            JaggedCopy(texture, screen, srcX, srcX + width, srcY, srcY + height, desX, desY);
         }
 
 
@@ -142,16 +110,16 @@ namespace AdventureBook.Game
 
             for (int y = 0; y < safeSource.Length; y++)
             {
-                // replace whitespace with 'see-through' of matrix below
+                //replace whitespace with 'see-through' of matrix below
                 if (replaceWhiteSpace)
                 {
                     do
                     {
-                        int index = safeSource[y].ToList().IndexOf(' ');
+                        int index = safeSource[y][startX .. endX].ToList().IndexOf(' ');
                         if (index == -1) break;
 
-                        safeSource[y][index] = destination[destY + y][destX + index];
-                    } 
+                        safeSource[y][startX + index] = destination[destY + y][index];
+                    }
                     while (true);
                 }
 
