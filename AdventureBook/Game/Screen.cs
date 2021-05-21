@@ -93,7 +93,7 @@ namespace AdventureBook.Game
             else
             {
                 startY = 0;
-                endY = startY + texture.Length - 1;
+                endY = startY + texture.Length;
                 if (endY > height) endY = height;
 
             }
