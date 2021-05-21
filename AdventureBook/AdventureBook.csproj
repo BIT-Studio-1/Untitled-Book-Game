@@ -10,6 +10,7 @@
     <None Remove="Assets\UserInterface\ItemCollection.txt" />
     <None Remove="Assets\scenes\distantMountain.txt" />
     <None Remove="Assets\scenes\DistantTrees.txt" />
+    <None Remove="Assets\scenes\closerTrees.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +24,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Assets\scenes\DistantTrees.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\scenes\closerTrees.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
@@ -41,5 +45,10 @@
     <Compile Update="GameObjects\Item.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Assets\scenes\closerTrees.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
