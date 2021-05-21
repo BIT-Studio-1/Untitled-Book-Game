@@ -20,6 +20,7 @@ namespace AdventureBook.Game
 
         // GAME ASSET DECLARATIONS /////////////////////////////////////////////
 
+        internal Sprite gameTitle;
         internal Sprite forestParalax1;
         internal Sprite forestParalax2;
         internal Sprite forestParalax3;
@@ -66,6 +67,8 @@ namespace AdventureBook.Game
 
 
             // UI
+
+            gameTitle = new Sprite("title", "Assets/Sprites/GameTitle.txt");
 
             ItemCollectionMenu = new Sprite("itemCollectionMenu", 
                                             "Assets/UserInterface/ItemCollection.txt"
@@ -189,7 +192,7 @@ namespace AdventureBook.Game
 
             int paralaxProgress = 1;
 
-            while (paralaxProgress < forestParalax1.GetWidth() - Screen.GetWidth())
+            while (paralaxProgress < forestParalax3.GetWidth() / 4 - Screen.GetWidth())
             {
                 Step();
                 if (gameTick % 10 == 0)
@@ -211,17 +214,21 @@ namespace AdventureBook.Game
                         0,
                         10
                     );
-
+  
                     forestParalax3.PrintSprite(
-                        forestParalax3.GetWidth() - Screen.GetWidth() - paralaxProgress * 3,
+                        forestParalax3.GetWidth() - Screen.GetWidth() - paralaxProgress * 4,
                         0,
                         Screen.GetWidth(),
                         forestParalax3.GetHeight(),
                         0,
                         15
                     );
+
+                    gameTitle.PrintSprite(0, 0, gameTitle.GetWidth(), gameTitle.GetHeight(), 1, 1, 0);
                 }
             }
+
+            Screen.Clear();
         }
 
 
