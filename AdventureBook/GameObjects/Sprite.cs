@@ -92,8 +92,8 @@ namespace AdventureBook.GameObjects
             // dont allow frames to be specified for static textures
             if (frames == 1) frame = 0;
 
-                // try to print the texture to the screen buffer
-                Screen.Print(textures[frame], x, y);
+            // try to print the texture to the screen buffer
+            Screen.Print(textures[frame], x, y);
         }
     }
 }
