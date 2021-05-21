@@ -42,7 +42,7 @@ namespace AdventureBook.Game
         /// </summary>
         public static void Clear() {
             for (int x = 0; x < width; x++)
-                for (int y = 0; y < height; y++) screen[y][x] = ' '; // U+2001 not space
+                for (int y = 0; y < height; y++) screen[y][x] = ' '; // ' ' U+2001 not space
         }
 
         /// <summary>
@@ -64,8 +64,39 @@ namespace AdventureBook.Game
         /// <param name="texture">Texture to copy to the screen buffer</param>
         /// <param name="x">X location to place the texture</param>
         /// <param name="y">Y location to place the texture</param>
-        public static void Print(char[][] texture, int srcX, int width, int height, int srcY, int desX, int desY)
-            => JaggedCopy(texture, screen, srcX, srcY, width, height, desX, desY, true);
+        public static void Print(char[][] texture, int desX, int desY)
+        {
+            int startX, endX, startY, endY;
+
+            // is the texture off the edge of the screen
+            if (desX < 0)
+            {
+                startX = Math.Abs(desX);
+                endX = (startX + width > texture[0].Length - startX) ? width - 1 : desX + texture[0].Length;
+                desX = 0;
+            }
+            else
+            {
+                startX = desX;
+                endX = desX + texture[0].Length - 1;
+                if (endX > width) endX = width;
+            }
+
+            if (desY < 0)
+            {
+                startY = Math.Abs(desY);
+                endY = (startY + height > texture.Length - startY) ? height - 1 : desY + texture.Length;
+                desY = 0;
+            }
+            else
+            {
+                startY = desY;
+                endY = desY + texture.Length - 1;
+                if (endY > height) endY = height;
+            }
+
+            JaggedCopy(texture, screen, startX, endX, startY, endY, desX, desY, true);
+        }
 
 
         // custom getters
@@ -93,49 +124,38 @@ namespace AdventureBook.Game
         public static void JaggedCopy(
             char[][] source,
             char[][] destination,
-            int srcX,
-            int srcY,
-            int width,
-            int height,
-            int destX,
-            int destY,
+            int startX,
+            int endX,
+            int startY,
+            int endY,
+            int destX = 0,
+            int destY = 0,
             bool replaceWhiteSpace = true
             )
         {
-            // make a copy of the source
-            char[][] safeSource = source;
+            char[][] safeSource = source[startY .. endY];
 
-            // default width and height
-            if (width <= 0) width   = source[0].Length;
-            if (height <= 0) height = source.Length;
-
-            for (int y = srcY; y < height; y++)
+            for (int y = 0; y < source.Length; y++)
             {
                 try
                 {
-                    // replace whitespace with 'see-through' of array 'below'
+                    // replace whitespace with 'see-through' of matrix below
                     if (replaceWhiteSpace)
                     {
                         do
                         {
-                            // find whitespace ' ' characters
                             int index = safeSource[y].ToList().IndexOf(' ');
-
-                            // break if none found
                             if (index == -1) break;
 
-                            // replace the whitespace character with whatever character is in
-                            // this index in the desination array
                             safeSource[y][index] = destination[destY + y][destX + index];
-
-                        } while (true);
+                        } 
+                        while (true);
                     }
 
-                    // attempt to copy the array
-                    try { Array.ConstrainedCopy(safeSource[y][srcX..(srcX + width)], 0, destination[destY + y], destX, source[y].Length); }
+                    try { Array.ConstrainedCopy(safeSource[y][startX .. endX], 0, destination[destY + y], destX, source[y].Length); }
                     catch (Exception) { /* unhandled exception */ }
                 }
-                catch (System.ArgumentException) { /* unhandled exception */ }
+                catch (System.ArgumentException) { return; }
             }
         }
     }
