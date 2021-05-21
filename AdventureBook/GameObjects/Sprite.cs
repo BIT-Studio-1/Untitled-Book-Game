@@ -68,7 +68,7 @@ namespace AdventureBook.GameObjects
                 width           = file[0].Length;
 
                 textures        = new char[1][][];
-                textures[0]     = new char[width][];
+                textures[0]     = new char[height][];
 
                 for (int row = 0; row < height; row++) textures[frame][row] = file[row].ToCharArray();
 
