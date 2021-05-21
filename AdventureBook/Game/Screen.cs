@@ -152,6 +152,9 @@ namespace AdventureBook.Game
                         while (true);
                     }
 
+                    Console.WriteLine("askjdflskdf");
+                    Console.WriteLine(new string(safeSource[y][startX..endX]));
+
                     try { Array.ConstrainedCopy(safeSource[y][startX .. endX], 0, destination[destY + y], destX, source[y].Length); }
                     catch (Exception) { /* unhandled exception */ }
                 }
