@@ -113,20 +113,23 @@ namespace AdventureBook.Game
         /// </summary>
         public void GameLoop()
         {
-            int n = -40;
+            int n = -10;
 
             do
             {
                 // reset the pressed keys
                 pressedKeys.Keys.ToList().ForEach(key => pressedKeys[key] = false);
 
+                if (gameTick % 2000 == 0) ItemCollectionMenu.PrintSprite(5, n++);
+
                 // render the screen
                 Screen.Render();
 
-                if (gameTick % 1000 == 0) ItemCollectionMenu.PrintSprite(Screen.CenterSpriteX(ItemCollectionMenu), n++);
-
                 // pause
                 Thread.Sleep(100);
+
+                // clear the screen
+                Screen.Clear();
             }
             while (isRunning);
         }
