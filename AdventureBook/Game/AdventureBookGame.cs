@@ -62,6 +62,7 @@ namespace AdventureBook.Game
 
             forestParalax1 = new Sprite("distantMountains", "Assets/scenes/distantMountain.txt");
             forestParalax2 = new Sprite("distantTrees", "Assets/scenes/DistantTrees.txt");
+            forestParalax3 = new Sprite("distantTrees2", "Assets/scenes/closerTrees.txt");
 
 
             // UI
@@ -186,11 +187,40 @@ namespace AdventureBook.Game
         {
             // opening paralax scene
 
-            int paralaxProgress = -100;
+            int paralaxProgress = 1;
 
-            while (paralaxProgress < 200)
+            while (paralaxProgress < forestParalax1.GetWidth() - Screen.GetWidth())
             {
-                if (Step() % 10 == 0) forestParalax1.PrintSprite(paralaxProgress++, 0);
+                Step();
+                if (gameTick % 10 == 0)
+                {
+                    forestParalax1.PrintSprite(
+                        forestParalax1.GetWidth() - Screen.GetWidth() - paralaxProgress++,
+                        0,
+                        Screen.GetWidth(),
+                        forestParalax1.GetHeight(),
+                        0,
+                        0
+                    );
+
+                    forestParalax2.PrintSprite(
+                        forestParalax2.GetWidth() - Screen.GetWidth() - paralaxProgress * 2,
+                        0,
+                        Screen.GetWidth(),
+                        forestParalax2.GetHeight(),
+                        0,
+                        10
+                    );
+
+                    forestParalax3.PrintSprite(
+                        forestParalax3.GetWidth() - Screen.GetWidth() - paralaxProgress * 3,
+                        0,
+                        Screen.GetWidth(),
+                        forestParalax3.GetHeight(),
+                        0,
+                        15
+                    );
+                }
             }
         }
 
