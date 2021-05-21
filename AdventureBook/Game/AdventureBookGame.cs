@@ -115,7 +115,7 @@ namespace AdventureBook.Game
                 pressedKeys.Keys.ToList().ForEach(key => pressedKeys[key] = false);
 
                 // render the screen
-                //Screen.Render();
+                Screen.Render();
 
                 // pause
                 Thread.Sleep(100);
