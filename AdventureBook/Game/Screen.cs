@@ -28,7 +28,8 @@ namespace AdventureBook.Game
             height  = Console.WindowHeight - 1;
 
             // create a new screen array
-            char[][] newScreen = new char[width][];
+            char[][] newScreen = new char[height][];
+
             for (int x = 0; x < width; x++)
                 for (int y = 0; y < height; y++) newScreen[y] = new char[width];
 
@@ -40,7 +41,8 @@ namespace AdventureBook.Game
         /// <summary>
         /// sets the screen to ' ' characters
         /// </summary>
-        public static void Clear() {
+        public static void Clear()
+        {
             for (int x = 0; x < width; x++)
                 for (int y = 0; y < height; y++) screen[y][x] = ' '; // ' ' U+2001 not space
         }
@@ -64,38 +66,9 @@ namespace AdventureBook.Game
         /// <param name="texture">Texture to copy to the screen buffer</param>
         /// <param name="x">X location to place the texture</param>
         /// <param name="y">Y location to place the texture</param>
-        public static void Print(char[][] texture, int desX, int desY)
+        public static void Print(char[][] texture, int srcX, int srcY, int width, int height, int desX, int desY)
         {
-            int startX, endX, startY, endY;
-
-            // is the texture off the edge of the screen
-            if (desX < 0)
-            {
-                startX = Math.Abs(desX);
-                endX = (startX + width > texture[0].Length - startX) ? width - 1 : desX + texture[0].Length;
-                desX = 0;
-            }
-            else
-            {
-                startX = desX;
-                endX = desX + texture[0].Length - 1;
-                if (endX > width) endX = width;
-            }
-
-            if (desY < 0)
-            {
-                startY = Math.Abs(desY);
-                endY = (startY + height > texture.Length - startY) ? height - 1 : desY + texture.Length;
-                desY = 0;
-            }
-            else
-            {
-                startY = desY;
-                endY = desY + texture.Length - 1;
-                if (endY > height) endY = height;
-            }
-
-            JaggedCopy(texture, screen, startX, endX, startY, endY, desX, desY, true);
+            JaggedCopy(texture, screen, srcX, srcX + width, srcY, srcY + height, desX, desY);
         }
 
 
@@ -135,30 +108,22 @@ namespace AdventureBook.Game
         {
             char[][] safeSource = source[startY .. endY];
 
-            for (int y = 0; y < source.Length; y++)
+            for (int y = 0; y < safeSource.Length; y++)
             {
-                try
+                //replace whitespace with 'see-through' of matrix below
+                if (replaceWhiteSpace)
                 {
-                    // replace whitespace with 'see-through' of matrix below
-                    if (replaceWhiteSpace)
+                    do
                     {
-                        do
-                        {
-                            int index = safeSource[y].ToList().IndexOf(' ');
-                            if (index == -1) break;
+                        int index = safeSource[y][startX .. endX].ToList().IndexOf(' ');
+                        if (index == -1) break;
 
-                            safeSource[y][index] = destination[destY + y][destX + index];
-                        } 
-                        while (true);
+                        safeSource[y][startX + index] = destination[destY + y][index];
                     }
-
-                    Console.WriteLine("askjdflskdf");
-                    Console.WriteLine(new string(safeSource[y][startX..endX]));
-
-                    try { Array.ConstrainedCopy(safeSource[y][startX .. endX], 0, destination[destY + y], destX, source[y].Length); }
-                    catch (Exception) { /* unhandled exception */ }
+                    while (true);
                 }
-                catch (System.ArgumentException) { return; }
+
+                Array.ConstrainedCopy(safeSource[y], startX, destination[destY + y], destX, endX - startX);
             }
         }
     }

@@ -20,6 +20,11 @@ namespace AdventureBook.Game
 
         // GAME ASSET DECLARATIONS /////////////////////////////////////////////
 
+        internal Sprite gameTitle;
+        internal Sprite forestParalax1;
+        internal Sprite forestParalax2;
+        internal Sprite forestParalax3;
+
         internal Sprite ItemCollectionMenu;
 
         internal Item firstSword;
@@ -33,6 +38,7 @@ namespace AdventureBook.Game
 
         private Thread InputThread;
         private Thread PhysicsThread;
+        private Thread TickerThread;
 
         private bool isRunning  = false;
         private int gameTick = 0;
@@ -53,7 +59,16 @@ namespace AdventureBook.Game
 
             // create the game assets
 
+            // sprites
+
+            forestParalax1 = new Sprite("distantMountains", "Assets/scenes/distantMountain.txt");
+            forestParalax2 = new Sprite("distantTrees", "Assets/scenes/DistantTrees.txt");
+            forestParalax3 = new Sprite("distantTrees2", "Assets/scenes/closerTrees.txt");
+
+
             // UI
+
+            gameTitle = new Sprite("title", "Assets/Sprites/GameTitle.txt");
 
             ItemCollectionMenu = new Sprite("itemCollectionMenu", 
                                             "Assets/UserInterface/ItemCollection.txt"
@@ -96,12 +111,12 @@ namespace AdventureBook.Game
 
             // start the game and input loops
             isRunning = true;
+
             InputThread.Start();
             PhysicsThread.Start();
 
             // start the game logic
-
-            ItemCollectionMenu.PrintSprite(5, 5);
+            BeginGame();
         }
 
         /// <summary>
@@ -115,10 +130,11 @@ namespace AdventureBook.Game
                 pressedKeys.Keys.ToList().ForEach(key => pressedKeys[key] = false);
 
                 // render the screen
-                //Screen.Render();
+                Screen.Render();
 
                 // pause
                 Thread.Sleep(100);
+
             }
             while (isRunning);
         }
@@ -172,11 +188,47 @@ namespace AdventureBook.Game
         /// </summary>
         public void BeginGame()
         {
-            // where it all begins...
+            // opening paralax scene
 
+            int paralaxProgress = 1;
 
+            while (paralaxProgress < forestParalax3.GetWidth() / 4 - Screen.GetWidth())
+            {
+                Step();
+                if (gameTick % 10 == 0)
+                {
+                    forestParalax1.PrintSprite(
+                        forestParalax1.GetWidth() - Screen.GetWidth() - paralaxProgress++,
+                        0,
+                        Screen.GetWidth(),
+                        forestParalax1.GetHeight(),
+                        0,
+                        0
+                    );
 
+                    forestParalax2.PrintSprite(
+                        forestParalax2.GetWidth() - Screen.GetWidth() - paralaxProgress * 2,
+                        0,
+                        Screen.GetWidth(),
+                        forestParalax2.GetHeight(),
+                        0,
+                        10
+                    );
+  
+                    forestParalax3.PrintSprite(
+                        forestParalax3.GetWidth() - Screen.GetWidth() - paralaxProgress * 4,
+                        0,
+                        Screen.GetWidth(),
+                        forestParalax3.GetHeight(),
+                        0,
+                        15
+                    );
 
+                    gameTitle.PrintSprite(0, 0, gameTitle.GetWidth(), gameTitle.GetHeight(), 1, 1, 0);
+                }
+            }
+
+            Screen.Clear();
         }
 
 
@@ -211,10 +263,11 @@ namespace AdventureBook.Game
         /// <summary>
         /// steps the physics world to keep animates at a smooth rate
         /// </summary>
-        private void Step()
+        private int Step()
         {
             gameTick++;
             Thread.Sleep(TICKSPEED);
+            return gameTick;
         }
     }
 }

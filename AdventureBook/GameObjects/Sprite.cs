@@ -68,7 +68,7 @@ namespace AdventureBook.GameObjects
                 width           = file[0].Length;
 
                 textures        = new char[1][][];
-                textures[0]     = new char[width][];
+                textures[0]     = new char[height][];
 
                 for (int row = 0; row < height; row++) textures[frame][row] = file[row].ToCharArray();
 
@@ -87,13 +87,13 @@ namespace AdventureBook.GameObjects
         /// <param name="x">x location to start printing the sprite</param>
         /// <param name="y">y location to start printing the sprite</param>
         /// <param name="frame">the specific frame of the sprite to print</param>
-        public void PrintSprite(int x, int y, int frame = 0)
+        public void PrintSprite(int srcX, int srcY, int width, int height, int desX, int desY, int frame = 0)
         {
             // dont allow frames to be specified for static textures
             if (frames == 1) frame = 0;
 
-                // try to print the texture to the screen buffer
-                Screen.Print(textures[frame], x, y);
+            // try to print the texture to the screen buffer
+            Screen.Print(textures[frame], srcX, srcY, width, height, desX, desY);
         }
     }
 }
