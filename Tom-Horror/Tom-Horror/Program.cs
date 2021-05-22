@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Horror_Book
@@ -9,6 +10,7 @@ namespace Horror_Book
         public static void Main(string[] args)
         {
             Car();
+            
 
             
         }
@@ -28,18 +30,49 @@ namespace Horror_Book
                 Console.Write(character);
                 Thread.Sleep(30);
             }
-            Console.WriteLine();
-            string[] Car = { "Open Boot", "Open glove box", "Look under steat" };
-            UserInPut = Console.ReadLine();
 
-            if (String.Equals(UserInPut, Car))
-            {
-                Console.WriteLine("Works");
-            }
-            else
-            {
-                Console.WriteLine("I dont Know What that is");
-            }
+            
+                Console.WriteLine();
+                UserInPut = Console.ReadLine();
+
+
+                //List<string> Car = new List<string>()
+                // {
+                //   "Open boot", "Open glove box", "Look under seat" 
+                //};
+
+                string Boot = "open boot", GloveBox = "open glove box", UnderSeat = " look under seat";
+
+
+                if (Boot.Contains(UserInPut))
+                {
+                    Console.Write("works");
+                                    Boot();
+                }
+                else if (GloveBox.Contains(UserInPut))
+                {
+                    Console.WriteLine("Works");
+                }
+                else if (UnderSeat.Contains(UserInPut))
+                {
+                    Console.WriteLine("Works");
+                }
+                else
+                {
+                    Console.WriteLine("I Do Not Under Stand");
+                    Console.WriteLine("Make Sure That You Are Not Using Capitals");
+                }
+
+            
+
+          //  if (Car.Contains(UserInPut, Car))
+          //  {
+          //    Console.WriteLine("Works");
+          // }
+          //  else
+          //  {
+          //   Console.WriteLine("I dont Know What that is");
+          //}
 
 
 
@@ -48,6 +81,11 @@ namespace Horror_Book
 
 
             Console.ReadLine();
+        }
+
+        public static void Boot()
+        {
+
         }
     }
 }
