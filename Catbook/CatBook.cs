@@ -5,7 +5,11 @@ namespace CAT
     class CatBook
     {
         //VARIABLES FOR ALL ROOMS eg- items and buffs. 
-        //cheese, no bell, scratchpost
+        //cheese, no bell, scratchpost, closed door
+        //boolean array 0=door, 1=bell, 2=scratchpost, 3=cheese, more later.
+        private static bool[] state = {false, false, false, false };
+        //also variable for room currently in
+        private static string currentRoom;
 
 
         //HELP TEXT
@@ -25,7 +29,13 @@ namespace CAT
         {
             //lounge will have one interact
             //mouse house
+            currentRoom = "lounge";
             Console.WriteLine("This is lounge");
+            Console.WriteLine("You hear mouse");
+            if (state[1] == false)
+            {
+                Console.WriteLine("Mouse hears you");
+            }
             whatDo();
         }
 
@@ -35,6 +45,7 @@ namespace CAT
         {
             //kitchen will have one interact
             //cheese
+            currentRoom = "kitchen";
             Console.WriteLine("This is kitchen");
             whatDo();
         }
@@ -45,6 +56,7 @@ namespace CAT
         {
             //lounge will have two interacts
             //scratching post and bed
+            currentRoom = "bedroom";
             Console.WriteLine("This is bedroom");
             whatDo();
         }
@@ -53,7 +65,9 @@ namespace CAT
         //HALLWAY
         public static void hallway()
         {
-            //hallway will have no interacts
+            //hallway will have one interact
+            //closed door
+            currentRoom = "hallway";
             Console.WriteLine("This is hallway");
             whatDo();
         }
@@ -77,6 +91,8 @@ namespace CAT
             switch (choice)
             {
                 case "GO LOUNGE":
+                    //if door closed, show closed door message
+                    //else go lounge
                     lounge();
                     break;
                 case "GO KITCHEN":
@@ -87,6 +103,11 @@ namespace CAT
                     break;
                 case "GO HALLWAY":
                     hallway();
+                    break;
+                case "DESTROY BELL":
+                    state[1] = true;
+                    Console.WriteLine("You have killed the bell");
+                    whatDo();
                     break;
                 case "EXIT":
                     Console.WriteLine("Okaybye!");
