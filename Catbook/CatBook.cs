@@ -4,6 +4,9 @@ namespace CAT
 {
     class CatBook
     {
+        //SWITCHES IN SWITCHES OK?
+        //LETS MAKE THIS MESSY.
+        //
         //VARIABLES FOR ALL ROOMS eg- items and buffs. 
         //cheese, no bell, scratchpost, closed door
         //boolean array 0=door, 1=bell, 2=scratchpost, 3=cheese, 4=vase, more later.
@@ -159,7 +162,7 @@ namespace CAT
                     {
                         Console.WriteLine("You already killed the vase");
                     }
-                    whatDo();
+                    counter();
                     break;
                 case "GO BEDROOM":
                     bedroom();
