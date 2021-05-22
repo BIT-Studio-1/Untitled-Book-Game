@@ -1,10 +1,25 @@
 ﻿using System;
+
 namespace UntitledBookGame
 {
-    public class HorrorGame
+    public partial class Program
     {
-        public HorrorGame()
+        public static void RunHorrorGame()
         {
+            // put your games entry code here
         }
+
+
+
+
+
+
+        // other game code, methods, etc.
+
+
+
+
+
+
     }
 }

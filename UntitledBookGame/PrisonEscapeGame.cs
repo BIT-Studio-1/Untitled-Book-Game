@@ -1,10 +1,25 @@
 ﻿using System;
+
 namespace UntitledBookGame
 {
-    public class PrisonEscapeGame
+    public partial class Program
     {
-        public PrisonEscapeGame()
+        public static void RunPrisonEscapeGame()
         {
+            // put your games entry code here
         }
+
+
+
+
+
+
+        // other game code, methods, etc.
+
+
+
+
+
+
     }
 }

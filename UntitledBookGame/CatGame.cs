@@ -1,10 +1,25 @@
 ﻿using System;
+
 namespace UntitledBookGame
 {
-    public class CatGame
+    public partial class Program
     {
-        public CatGame()
+        public static void RunCatGame()
         {
+            // put your games entry code here
         }
+
+
+
+
+
+
+        // other game code, methods, etc.
+
+
+
+
+
+
     }
 }

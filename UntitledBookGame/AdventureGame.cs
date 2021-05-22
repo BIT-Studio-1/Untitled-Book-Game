@@ -1,10 +1,12 @@
 ﻿using System;
+
 namespace UntitledBookGame
 {
-    public class AdventureGame
+    public partial class Program
     {
-        public AdventureGame()
+        public static void RunAdventureGame()
         {
+
         }
     }
 }
