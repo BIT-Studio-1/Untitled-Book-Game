@@ -8,7 +8,13 @@ namespace Horror_Book
     {
         public static void Main(string[] args)
         {
+            Car();
 
+            
+        }
+
+        public static void Car()
+        {
             string UserInPut;
             //------------------------------
             //This just writes out the text one letter at a time \\
