@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
+using System.Collections.Generic;
 
 using AdventureBook.GameObjects;
 
@@ -69,6 +71,40 @@ namespace AdventureBook.Game
         public static void Print(char[][] texture, int srcX, int srcY, int width, int height, int desX, int desY)
         {
             JaggedCopy(texture, screen, srcX, srcX + width, srcY, srcY + height, desX, desY);
+        }
+
+
+        public static void PrintText(string message, int x, int y, int width, int delay)
+        {
+            // delcare variables
+            string[] words = message.Split(" ");
+            List<string> lines = new List<string>();
+            string  line = "";
+
+            // break into lines
+            foreach (string word in words)
+            {
+                if (line.Length + word.Length + 1 > width)
+                {
+                    lines.Add(line);
+                    line = "";
+                }
+                line += " " + word;
+            }
+            lines.Add(line);
+            lines.ToArray();
+
+            for (int i = 0; i < lines.Count; i++)
+            {
+                char[][] texture = new char[1][];
+                texture[0] = lines[i].ToCharArray();
+
+                for (int j = 1; j < texture[0].Length; j++)
+                {
+                    JaggedCopy(texture, screen, 0, j + 1, 0, 1, x, y + i);
+                    Thread.Sleep(delay);
+                }
+            }   
         }
 
 
