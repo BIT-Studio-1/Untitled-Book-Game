@@ -231,7 +231,13 @@ namespace AdventureBook.Game
 
             Screen.Clear();
 
-            Screen.PrintText("this is some text that i am printing to the screen", 5, 5, 15, 100);
+            Screen.PrintText("A love of adventure compelled you to lift the dusty book off the shelf", 5, 5, 20, 50);
+            Screen.PrintText("You open to the first page and begin to read... but Somehow, the story begins to flow by itself", 30, 5, 20, 50);
+            Screen.PrintText("Time slows, reality warps, reality becomes but a dream... the story takes the stage", 5, 15, 50, 50);
+
+            Screen.Clear();
+
+            Screen.PrintText("you try to resist... but there is no longer any book to put down... you a slave to the untold story", 5, 5, 60, 100);
         }
 
 
