@@ -6,8 +6,8 @@ namespace CAT
     {
         //VARIABLES FOR ALL ROOMS eg- items and buffs. 
         //cheese, no bell, scratchpost, closed door
-        //boolean array 0=door, 1=bell, 2=scratchpost, 3=cheese, more later.
-        private static bool[] state = {false, false, false, false };
+        //boolean array 0=door, 1=bell, 2=scratchpost, 3=cheese, 4=vase, more later.
+        private static bool[] state = {false, false, false, false, false };
         //also variable for room currently in
         private static string currentRoom;
 
@@ -44,9 +44,36 @@ namespace CAT
         public static void kitchen()
         {
             //kitchen will have one interact
-            //cheese
+            //counter
             currentRoom = "kitchen";
             Console.WriteLine("This is kitchen");
+            if (state[4] == false)
+            {
+                Console.WriteLine("There is stuff on the counter");
+            }
+            whatDo();
+        }
+
+
+        //COUNTER
+        public static void counter()
+        {
+            //BREAK STUFF, STEAL CHEESE
+            currentRoom = "counter";
+            Console.WriteLine("Welcome to counter!");
+            Console.WriteLine("You aren't supposed to be up here");
+            if (state[4] == false)
+            {
+                Console.WriteLine("There is a nice vase up here");
+            }
+            if (state[3] == false)
+            {
+                Console.WriteLine("You see cheese");
+            }
+            else if(state[4] == false && state[3] == false)
+            {
+                Console.WriteLine("There is nothing here, how sad");
+            }
             whatDo();
         }
 
@@ -97,6 +124,42 @@ namespace CAT
                     break;
                 case "GO KITCHEN":
                     kitchen();
+                    break;
+                case "GO COUNTER":
+                    if(currentRoom == "kitchen")
+                    {
+                        counter();
+                    }
+                    else
+                    {
+                        Console.WriteLine("You aren't in kitchen!");
+                        whatDo();
+                    }
+                    break;
+                case "EAT CHEESE":
+                    if (state[3] == false)
+                    {
+                        Console.WriteLine("You ate some of the cheese");
+                        Console.WriteLine("You will regret this later");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No cheese");
+                    }
+                    whatDo();
+                    break;
+                case "DESTROY VASE":
+                    if (state[4] == false)
+                    {
+                        Console.WriteLine("You push the vase off the counter. It shatters");
+                        Console.WriteLine("Very satisfying");
+                        state[4] = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("You already killed the vase");
+                    }
+                    whatDo();
                     break;
                 case "GO BEDROOM":
                     bedroom();
