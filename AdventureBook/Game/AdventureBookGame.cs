@@ -38,7 +38,6 @@ namespace AdventureBook.Game
 
         private Thread InputThread;
         private Thread PhysicsThread;
-        private Thread TickerThread;
 
         private bool isRunning  = false;
         private int gameTick = 0;
@@ -195,7 +194,7 @@ namespace AdventureBook.Game
             while (paralaxProgress < forestParalax3.GetWidth() / 4 - Screen.GetWidth())
             {
                 Step();
-                if (gameTick % 10 == 0)
+                if (gameTick % 20 == 0)
                 {
                     forestParalax1.PrintSprite(
                         forestParalax1.GetWidth() - Screen.GetWidth() - paralaxProgress++,
@@ -226,9 +225,13 @@ namespace AdventureBook.Game
 
                     gameTitle.PrintSprite(0, 0, gameTitle.GetWidth(), gameTitle.GetHeight(), 1, 1, 0);
                 }
+
+                if (IsSelectPressed()) break;
             }
 
             Screen.Clear();
+
+            Screen.PrintText("this is some text that i am printing to the screen", 5, 5, 15, 100);
         }
 
 
