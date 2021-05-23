@@ -15,37 +15,98 @@ namespace AdventureBook.Game
 {
     public class AdventureBookGame
     {
-        const int FPS       = 60;
-        const int TICKSPEED = 1000 / FPS;
+        const int       FPS       = 60,
+                        TICKSPEED = 1000 / FPS;
 
         // GAME ASSET DECLARATIONS /////////////////////////////////////////////
 
-        internal Sprite gameTitle;
-        internal Sprite forestParalax1;
-        internal Sprite forestParalax2;
-        internal Sprite forestParalax3;
+        internal Sprite gameTitle,
 
-        internal Sprite ItemCollectionMenu;
+                        forestParalax1,
+                        forestParalax2,
+                        forestParalax3,
 
-        internal Item firstSword;
-        internal Item firstShield;
+                        caveExterior,
+                        IvyCaveWall,
+                        loomingCliff,
+                        bolders,
+                        largeLockedDoor,
 
-        internal Item earlyHealingPotion;
-        internal Item BluntSword;
-        internal Item BlurryMap;
+                        ItemCollectionMenu,
+                        InventoryMenu,
+                        
+                        BossStatistics,
+                        ProtagonistStatistics;
+
+        // ITEMS ///////////////////////////////////////////////////////////////
+
+        internal Item   firstSword,
+                        firstShield,
+                        healingHerb,
+                        BluntSword,
+                        treasureChest,
+                        openTreasureChest,
+                        emptyChest,
+                        rustyKey;
+                        
+
+        // STORY COMPONENTS ////////////////////////////////////////////////////
+
+        /* 
+         * Indendation shows progression 
+         */
+
+        internal StoryComponent openingMonologue                                    = new StoryComponent("Opening Monologue"),
+                                firstBranch                                         = new StoryComponent("Cave Entrance"),
+                                    secondBranch                                    = new StoryComponent("Cave Entrance"),
+                                        firstBoss                                   = new StoryComponent("First Boss"),
+                                        secondBoss                                  = new StoryComponent("Second Boss"),
+                                        overgrownPassage                            = new StoryComponent("Overgrown Passage"),
+                                            largeCavern                             = new StoryComponent("Large Cavern"),
+                                // "explore" * 10 for Treasure chest
+                                ThirdBranch                                         = new StoryComponent("Third Branch"),
+                                    thirdBoss                                       = new StoryComponent("Third Boss"),
+                                        CavernCliff                                 = new StoryComponent("Cavern Cliff"),
+                                            fourthBranch                            = new StoryComponent("Fourth Branch"),
+                                                fifthBoss                           = new StoryComponent("Fifth Boss"),
+                                                    sixthBoss                       = new StoryComponent("Sixth Boss"),
+                                                //-> get treasure chest after this boss
+                                                darkPassage                         = new StoryComponent("Dark Passage"),
+                                    // -> Links to Line 59
+                                    fourthBoss                                      = new StoryComponent("Forth Boss"),
+                                    fifthBranch                                     = new StoryComponent("Fivth Branch"),
+                                        deadEnd                                     = new StoryComponent("Dead End"),
+                                        blockedPath                                 = new StoryComponent("Blocked Path"),
+                                            lockedDoor                              = new StoryComponent("Locked Door"),
+                                                UndergroundHub                      = new StoryComponent("Underground Hub"),
+                                                    seventhBoss                     = new StoryComponent("Seventh Boss"),
+                                                    eighthBoss                      = new StoryComponent("Eighth Boss"),
+                                                    ninthBoss                       = new StoryComponent("Ninth Boss"),
+                                                    sixthBranch                     = new StoryComponent("Sixth Branch"),
+                                                        unguardedChest              = new StoryComponent("Unguarded Chest"),
+                                                        tenthBoss                   = new StoryComponent("Tenth Boss"),
+                                                        seventhBranch               = new StoryComponent("Seventh Branch"),
+                                                            secondUnguardedChest    = new StoryComponent("Second Unguarded Chest"),
+                                                                tenseBranch         = new StoryComponent("Tense Branch"),
+                                                                    // two chests for actions
+                                                                    FinalBoss       = new StoryComponent("Final Boss"),
+                                     /* Joins from 59 -> */ eleventhBoss            = new StoryComponent("Eleventh Boss"),
+                                                                caveExit            = new StoryComponent("Cave Exit");
 
         // MEMBERS /////////////////////////////////////////////////////////////
 
-        private Thread InputThread;
-        private Thread PhysicsThread;
+        private Thread  InputThread,
+                        PhysicsThread;
 
-        private bool isRunning  = false;
-        private int gameTick = 0;
+        private bool    isRunning   = false;
+        private int     gameTick    = 0;
 
         private Dictionary<string, bool> pressedKeys = new Dictionary<string, bool>();
 
         private ConsoleColor originalForgroundColor;
         private ConsoleColor originalBackgroundColor;
+        
+        // CONSTRUCTOR /////////////////////////////////////////////////////////
 
         public AdventureBookGame()
         {
@@ -54,18 +115,18 @@ namespace AdventureBook.Game
             PhysicsThread   = new Thread(GameLoop);
 
             // store the pressed keys
-            foreach (string key in new string[] { "select", "return", "up", "down", "left", "right" }) pressedKeys.Add(key, false);
+            foreach (string key in new string[] { "select", "escape", "return", "up", "down", "left", "right" }) pressedKeys.Add(key, false);
 
             // create the game assets
 
-            // sprites
+            // SPRITES /////////////////////////////////////////////////////////
 
             forestParalax1 = new Sprite("distantMountains", "Assets/scenes/distantMountain.txt");
             forestParalax2 = new Sprite("distantTrees", "Assets/scenes/DistantTrees.txt");
             forestParalax3 = new Sprite("distantTrees2", "Assets/scenes/closerTrees.txt");
 
 
-            // UI
+            // USER INTERFACE //////////////////////////////////////////////////
 
             gameTitle = new Sprite("title", "Assets/Sprites/GameTitle.txt");
 
@@ -73,7 +134,7 @@ namespace AdventureBook.Game
                                             "Assets/UserInterface/ItemCollection.txt"
                                             );
 
-            // items
+            // ITEMS ///////////////////////////////////////////////////////////
 
             BluntSword = new Item("Blunt Sword",
                                 "Assets/Sprites/bluntSword.txt",
@@ -81,28 +142,43 @@ namespace AdventureBook.Game
                                 "You weld the blunt sword - its use escapes reason"
                                 );
 
-            Protagonist.PickUpItem(BluntSword);
+            // STORY PROGRAMMING ///////////////////////////////////////////////
+
+            Action OpenInventory = () =>
+            {
+                do
+                {
+                    InventoryMenu.PrintSprite(0, 0, InventoryMenu.GetWidth(), InventoryMenu.GetHeight(), Screen.CenterSpriteX(InventoryMenu), Screen.CenterSpriteY(InventoryMenu));
+                } while (!IsEscapePressed());
+            };
+
+            Action ShowBattleStats = () =>
+            {
+                do
+                {
+                    ProtagonistStatistics.PrintSprite(0, 0, ProtagonistStatistics.GetWidth(), ProtagonistStatistics.GetHeight(), 1, Screen.GetHeight() - 1 - ProtagonistStatistics.GetHeight());
+                    BossStatistics.PrintSprite(0, 0, BossStatistics.GetWidth(), BossStatistics.GetHeight(), Screen.GetWidth() - 1 - BossStatistics.GetHeight(), Screen.GetHeight() - 1 - BossStatistics.GetHeight());
+                }
+                while (StoryComponent.isBattling);
+            };
+
+            openingMonologue.AddAction("Enter Cave", () =>
+            {
+                Screen.PrintText("The spirit of adventure wells within you and you step boldly into the unknown.", 5, 5, 20, 20);
+                Screen.PrintText("Somewhere in the depths of the cave, another is made aware of your presence...", 5, 10, 80, 100);
+            });
+
 
             // start the game
 
             Screen.SetToConsole(); // configure the Screen buffer
             Screen.Clear();
 
-            OpenBook();
-        }
-
-        // METHODS /////////////////////////////////////////////////////////////
-
-        /// <summary>
-        ///  called from outside the class to start the game
-        /// </summary>
-        public void OpenBook()
-        {
-            Console.CursorVisible = false;
+            Console.CursorVisible   = false;
 
             // grab the current console colors
             originalBackgroundColor = Console.BackgroundColor;
-            originalForgroundColor = Console.ForegroundColor;
+            originalForgroundColor  = Console.ForegroundColor;
 
             // update the colors
             Console.ForegroundColor = ConsoleColor.Green;
@@ -114,9 +190,10 @@ namespace AdventureBook.Game
             InputThread.Start();
             PhysicsThread.Start();
 
-            // start the game logic
             BeginGame();
         }
+
+        // METHODS /////////////////////////////////////////////////////////////
 
         /// <summary>
         ///  runs the game loop that is called every frame
@@ -168,6 +245,12 @@ namespace AdventureBook.Game
                     case ConsoleKey.D:
                     case ConsoleKey.RightArrow:
                         pressedKeys["right"] = true;
+                        break;
+
+                    case ConsoleKey.Escape:
+                    case ConsoleKey.E:
+                    case ConsoleKey.Backspace:
+                        pressedKeys["escape"] = true;
                         break;
 
                     case ConsoleKey.Spacebar:
@@ -262,6 +345,7 @@ namespace AdventureBook.Game
         // checks whether the specified keys are being pressed or not
 
         public bool IsSelectPressed()   => pressedKeys["select"];
+        public bool IsEscapePressed()   => pressedKeys["escape"];
         public bool IsUpPressed()       => pressedKeys["up"];
         public bool IsDownPressed()     => pressedKeys["down"];
         public bool IsRightPressed()    => pressedKeys["right"];
