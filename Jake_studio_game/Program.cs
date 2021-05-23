@@ -116,7 +116,7 @@ namespace Jake_studio_game
                     Console.ReadLine();
                     Console.WriteLine($" [Mary Thompson] < {name} thank you for coming so quickly, Let me introduce you to everyone");
                     Console.ReadLine();
-                    Console.WriteLine(" This is my youngest daughter, Caitlyn. My oldest daughter Molly and her Finace Hugo. And this is my oldest son Tom");
+                    Console.WriteLine(" This is my youngest daughter, Caitlyn. My oldest daughter Molly and her Husband Hugo. And this is my oldest son Tom");
                     Console.WriteLine(" And you've met Mr Penniworth on your way in and you may have seen Mills our gardner outside");
                     Console.ReadLine();
                     Console.WriteLine($" [{name}] < Thank you, Im sorry for your loss, I'll do my best to find out what happened.");
@@ -128,7 +128,7 @@ namespace Jake_studio_game
                     Console.Clear();
                     Console.WriteLine(" < Who would you like to speak to first?");
                     Console.WriteLine(" [1] Caitlyn [2] Hugo [3] Molly [4] Tom [5] Mr Penniworth [6] Mary");
-                    Console.ReadLine();
+                    
                     Console.Write(" > ");
                     selection = Console.ReadLine();
                     
