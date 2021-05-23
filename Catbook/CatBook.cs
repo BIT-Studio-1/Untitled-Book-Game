@@ -12,7 +12,7 @@ namespace CAT
         //boolean array 0=door, 1=bell, 2=scratchpost, 3=cheese, 4=vase, more later.
         private static bool[] state = {false, false, false, false, false };
         //also variable for room currently in
-        private static string currentRoom;
+        private static string currentRoom, choice;
 
 
         //HELP TEXT
@@ -25,6 +25,8 @@ namespace CAT
             Console.WriteLine("USE object - uses an object");
             Console.WriteLine("DESTROY object - destroys an object");
             Console.WriteLine("EAT object - hongry kitty");
+            choice = Console.ReadLine();
+            whatDo();
         }
 
         //LOUNGE
@@ -39,6 +41,7 @@ namespace CAT
             {
                 Console.WriteLine("Mouse hears you");
             }
+            choice = Console.ReadLine();
             whatDo();
         }
 
@@ -54,7 +57,16 @@ namespace CAT
             {
                 Console.WriteLine("There is stuff on the counter");
             }
-            whatDo();
+            choice = Console.ReadLine();
+            switch (choice)
+            {
+                case "GO COUNTER":
+                    counter();
+                    break;
+                default:
+                    whatDo();
+                    break;
+            }
         }
 
 
@@ -77,68 +89,9 @@ namespace CAT
             {
                 Console.WriteLine("There is nothing here, how sad");
             }
-            whatDo();
-        }
-
-
-        //BEDROOM
-        public static void bedroom()
-        {
-            //lounge will have two interacts
-            //scratching post and bed
-            currentRoom = "bedroom";
-            Console.WriteLine("This is bedroom");
-            whatDo();
-        }
-
-        
-        //HALLWAY
-        public static void hallway()
-        {
-            //hallway will have one interact
-            //closed door
-            currentRoom = "hallway";
-            Console.WriteLine("This is hallway");
-            whatDo();
-        }
-
-
-        //CATCH THE MOUSE
-        public static void mousey()
-        {
-            //minigame
-            //will check for items/buffs and adjust difficulty
-        }
-
-        //DO A CHOOSE
-        public static void whatDo()
-        {
-            string choice;
-
-            Console.WriteLine("Where go?");
             choice = Console.ReadLine();
-
             switch (choice)
             {
-                case "GO LOUNGE":
-                    //if door closed, show closed door message
-                    //else go lounge
-                    lounge();
-                    break;
-                case "GO KITCHEN":
-                    kitchen();
-                    break;
-                case "GO COUNTER":
-                    if(currentRoom == "kitchen")
-                    {
-                        counter();
-                    }
-                    else
-                    {
-                        Console.WriteLine("You aren't in kitchen!");
-                        whatDo();
-                    }
-                    break;
                 case "EAT CHEESE":
                     if (state[3] == false)
                     {
@@ -149,7 +102,7 @@ namespace CAT
                     {
                         Console.WriteLine("No cheese");
                     }
-                    whatDo();
+                    counter();
                     break;
                 case "DESTROY VASE":
                     if (state[4] == false)
@@ -163,6 +116,81 @@ namespace CAT
                         Console.WriteLine("You already killed the vase");
                     }
                     counter();
+                    break;
+                default:
+                    whatDo();
+                    break;
+            }
+        }
+
+
+        //BEDROOM
+        public static void bedroom()
+        {
+            //lounge will have two interacts
+            //scratching post and bed
+            currentRoom = "bedroom";
+            Console.WriteLine("This is bedroom");
+            choice = Console.ReadLine();
+            whatDo();
+        }
+
+        
+        //HALLWAY
+        public static void hallway()
+        {
+            //hallway will have one interact
+            //closed door
+            currentRoom = "hallway";
+            Console.WriteLine("This is hallway");
+            if (state[0] == false)
+            {
+                Console.WriteLine("Lounge door is closed");
+            }
+            choice = Console.ReadLine();
+            switch (choice)
+            {
+                case "OPEN DOOR":
+                    Console.WriteLine("Door open now. Strong kitty");
+                    state[0] = true;
+                    hallway();
+                    break;
+                default:
+                    whatDo();
+                    break;
+            }
+        }
+
+
+        //CATCH THE MOUSE
+        public static void mousey()
+        {
+            //minigame
+            //will check for items/buffs and adjust difficulty
+        }
+
+        //DO A CHOOSE
+        public static void whatDo()
+        {
+
+            switch (choice)
+            {
+                case "GO LOUNGE":
+                    //if door closed, show closed door message
+                    //else go lounge
+                    if (state[0] == false)
+                    {
+                        Console.WriteLine("Door is closed");
+                        choice = Console.ReadLine();
+                        whatDo();
+                    }
+                    else
+                    {
+                        lounge();
+                    }
+                    break;
+                case "GO KITCHEN":
+                    kitchen();
                     break;
                 case "GO BEDROOM":
                     bedroom();
@@ -185,6 +213,7 @@ namespace CAT
                 default:
                     Console.WriteLine("Those aren't cat-approved words");
                     Console.WriteLine("Please try better");
+                    choice = Console.ReadLine();
                     whatDo();
                     break;
             }
@@ -196,7 +225,7 @@ namespace CAT
             Console.WriteLine("Hello cat!");
             Console.WriteLine("House has lounge, kitchen, bedroom, hallway");
 
-            whatDo();
+            bedroom();
 
             Console.ReadLine();
 
