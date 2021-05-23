@@ -61,8 +61,16 @@ namespace Horror_Book
                 }
                 else
                 {
-                    Console.WriteLine("I Do Not Under Stand");
-                    Console.WriteLine("Make Sure That You Are Not Using Capitals");
+                var DidNotUnderStand = "I Do Not UnderStand."
+                + Environment.NewLine + "Make Sure That You Are Not Using Capitals.";
+                
+
+                foreach (var character in DidNotUnderStand)
+                {
+                    Console.Write(character);
+                    Thread.Sleep(30);
+                }
+                
                 }
 
             
@@ -85,25 +93,62 @@ namespace Horror_Book
             Console.ReadLine();
         }
 
+        //This is The Diffrent 'Rooms' With in the car
         public static void BootMethod()
         {
             Console.Clear();
-            Console.WriteLine("Your in the Boot");
+            Console.Clear();
+            var UnderSeat = "You Are in In The Boot." +
+                Environment.NewLine + "Tourch" +
+                Environment.NewLine + "Tire Iron" +
+                Environment.NewLine + "Rope" +
+                Environment.NewLine + "Axe With Blood on it?";
+
+
+            foreach (var character in UnderSeat)
+            {
+                Console.Write(character);
+                Thread.Sleep(30);
+            }
 
         }
 
         public static void GloveBoxMethod()
         {
             Console.Clear();
-            Console.WriteLine("Your in the Glove Box");
+            Console.Clear();
+            var UnderSeat = "You Are in In The GloveBox." +
+                Environment.NewLine + "First Aid Kit" +
+                Environment.NewLine + "Cars Manual" +
+                Environment.NewLine + "Random Key";
+
+
+            foreach (var character in UnderSeat)
+            {
+                Console.Write(character);
+                Thread.Sleep(30);
+            }
         }
 
         public static void UnderSeatMethod()
         {
             Console.Clear();
-            Console.WriteLine("Your under the seat");
+            var UnderSeat = "You Are Under The Seat." +
+                Environment.NewLine + "Lint";
+                
+
+            foreach (var character in UnderSeat)
+            {
+                Console.Write(character);
+                Thread.Sleep(30);
+            }
+            
         }
 
+        public static void Items()
+        {
+
+        }
        
     }
 }
