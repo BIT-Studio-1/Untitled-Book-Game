@@ -46,16 +46,18 @@ namespace Horror_Book
 
                 if (Boot.Contains(UserInPut))
                 {
-                    Console.Write("works");
-                                    Boot();
+                    
+                     BootMethod();
                 }
                 else if (GloveBox.Contains(UserInPut))
                 {
-                    Console.WriteLine("Works");
+                    
+                     GloveBoxMethod();
                 }
                 else if (UnderSeat.Contains(UserInPut))
                 {
-                    Console.WriteLine("Works");
+                    
+                     UnderSeatMethod();
                 }
                 else
                 {
@@ -83,9 +85,25 @@ namespace Horror_Book
             Console.ReadLine();
         }
 
-        public static void Boot()
+        public static void BootMethod()
         {
+            Console.Clear();
+            Console.WriteLine("Your in the Boot");
 
         }
+
+        public static void GloveBoxMethod()
+        {
+            Console.Clear();
+            Console.WriteLine("Your in the Glove Box");
+        }
+
+        public static void UnderSeatMethod()
+        {
+            Console.Clear();
+            Console.WriteLine("Your under the seat");
+        }
+
+       
     }
 }
