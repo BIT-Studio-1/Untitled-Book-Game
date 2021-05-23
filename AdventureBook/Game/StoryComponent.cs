@@ -13,6 +13,8 @@ namespace AdventureBook.Game
 
         // Global Story data
 
+        public static bool      isBattling              = false;                // is the protagonist currently in a battle
+
         public static bool[]    foundChests             = new bool[6];          // the chests the protagonist has found
         public static bool[]    defeatedBosses          = new bool[16];         // the bosses the protagonist has defeated
 
