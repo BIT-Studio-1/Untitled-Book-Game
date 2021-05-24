@@ -14,10 +14,10 @@ namespace AdventureBook.GameObjects
     {
         // MEMBERS /////////////////////////////////////////////////////////////
 
-        private int width, height, frames = 1, currentFrame = 0;
-        bool animate;
-        bool loop;
-        private char[][][] textures;
+        protected int width, height, frames = 1, currentFrame = 0;
+        protected bool animate,
+                       loop;
+        protected char[][][] textures;
 
         public string Name { get; set; }
 
@@ -87,7 +87,7 @@ namespace AdventureBook.GameObjects
         /// <param name="x">x location to start printing the sprite</param>
         /// <param name="y">y location to start printing the sprite</param>
         /// <param name="frame">the specific frame of the sprite to print</param>
-        public void PrintSprite(int srcX, int srcY, int width, int height, int desX, int desY, int frame = 0)
+        public virtual void PrintSprite(int srcX, int srcY, int width, int height, int desX, int desY, int frame = 0)
         {
             // dont allow frames to be specified for static textures
             if (frames == 1) frame = 0;
