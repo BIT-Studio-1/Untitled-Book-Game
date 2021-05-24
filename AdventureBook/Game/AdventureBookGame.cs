@@ -134,6 +134,11 @@ namespace AdventureBook.Game
                                             "Assets/UserInterface/ItemCollection.txt"
                                             );
 
+            ProtagonistStatistics   = new UserInterface("protagonistStatMenu", "Assets/UserInterface/protagonistStats.txt");
+            BossStatistics          = new UserInterface("bossStatMenu", "Assets/UserInterface/bossStats.txt");
+
+
+
             // ITEMS ///////////////////////////////////////////////////////////
 
             BluntSword = new Item("Blunt Sword",
