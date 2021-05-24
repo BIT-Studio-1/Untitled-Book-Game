@@ -36,44 +36,53 @@ namespace Horror_Book
                 UserInPut = Console.ReadLine();
 
 
-                //List<string> Car = new List<string>()
-                // {
-                //   "Open boot", "Open glove box", "Look under seat" 
-                //};
+            //List<string> Car = new List<string>()
+            // {
+            //   "Open boot", "Open glove box", "Look under seat" 
+            //};
+
+
+
+            
+                
 
                 string Boot = "open boot", GloveBox = "open glove box", UnderSeat = " look under seat";
 
 
                 if (Boot.Contains(UserInPut))
                 {
-                    
-                     BootMethod();
+
+                    BootMethod();
                 }
                 else if (GloveBox.Contains(UserInPut))
                 {
-                    
-                     GloveBoxMethod();
+
+                    GloveBoxMethod();
                 }
                 else if (UnderSeat.Contains(UserInPut))
                 {
-                    
-                     UnderSeatMethod();
+
+                    UnderSeatMethod();
                 }
                 else
                 {
-                var DidNotUnderStand = "I Do Not UnderStand."
-                + Environment.NewLine + "Make Sure That You Are Not Using Capitals.";
-                
+                    var DidNotUnderStand = "I Do Not UnderStand."
+                    + Environment.NewLine + "Make Sure That You Are Not Using Capitals.";
 
-                foreach (var character in DidNotUnderStand)
-                {
-                    Console.Write(character);
-                    Thread.Sleep(30);
-                }
-                
-                }
+                    
 
+                    foreach (var character in DidNotUnderStand)
+                    {
+                        Console.Write(character);
+                        Thread.Sleep(30);
+                    }
+
+                    Start();
+
+                }
             
+            
+
 
           //  if (Car.Contains(UserInPut, Car))
           //  {
@@ -148,6 +157,51 @@ namespace Horror_Book
         public static void Items()
         {
 
+        }
+
+        public static void Start()
+        {
+            Console.Clear();
+            Console.WriteLine("hi your in a method");
+            
+            string UserInPut;
+
+            UserInPut = Console.ReadLine();
+
+            string Boot = "open boot", GloveBox = "open glove box", UnderSeat = " look under seat";
+
+
+            if (Boot.Contains(UserInPut))
+            {
+
+                BootMethod();
+            }
+            else if (GloveBox.Contains(UserInPut))
+            {
+
+                GloveBoxMethod();
+            }
+            else if (UnderSeat.Contains(UserInPut))
+            {
+
+                UnderSeatMethod();
+            }
+            else
+            {
+                var DidNotUnderStand = "I Do Not UnderStand."
+                + Environment.NewLine + "Make Sure That You Are Not Using Capitals.";
+
+
+
+                foreach (var character in DidNotUnderStand)
+                {
+                    Console.Write(character);
+                    Thread.Sleep(30);
+                }
+
+                Start();
+
+            }
         }
        
     }
