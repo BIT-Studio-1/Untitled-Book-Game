@@ -18,6 +18,7 @@ namespace CAT
         //HELP TEXT
         public static void help()
         {
+            Console.Clear();
             Console.WriteLine("This is the helptext");
             Console.WriteLine("Cat words!");
             Console.WriteLine("GO or GO TO location - takes you to that location");
@@ -25,7 +26,19 @@ namespace CAT
             Console.WriteLine("USE object - uses an object");
             Console.WriteLine("DESTROY object - destroys an object");
             Console.WriteLine("EAT object - hongry kitty");
+            Console.WriteLine("Meow?");
             choice = Console.ReadLine();
+            choice = choice.ToUpper();
+            whatDo();
+        }
+
+
+        //MEOW
+        public static void meow()
+        {
+            Console.WriteLine("MEOW");
+            choice = Console.ReadLine();
+            choice = choice.ToUpper();
             whatDo();
         }
 
@@ -34,6 +47,7 @@ namespace CAT
         {
             //lounge will have one interact
             //mouse house
+            Console.Clear();
             currentRoom = "lounge";
             Console.WriteLine("This is lounge");
             Console.WriteLine("You hear mouse");
@@ -41,7 +55,9 @@ namespace CAT
             {
                 Console.WriteLine("Mouse hears you");
             }
+            Console.WriteLine("Meow?");
             choice = Console.ReadLine();
+            choice = choice.ToUpper();
             switch (choice)
             {
                 case "GO MOUSE HOUSE":
@@ -59,13 +75,16 @@ namespace CAT
         {
             //kitchen will have one interact
             //counter
+            Console.Clear();
             currentRoom = "kitchen";
             Console.WriteLine("This is kitchen");
             if (state[4] == false)
             {
                 Console.WriteLine("There is stuff on the counter");
             }
+            Console.WriteLine("Meow?");
             choice = Console.ReadLine();
+            choice = choice.ToUpper();
             switch (choice)
             {
                 case "GO COUNTER":
@@ -82,6 +101,7 @@ namespace CAT
         public static void counter()
         {
             //BREAK STUFF, STEAL CHEESE
+            Console.Clear();
             currentRoom = "counter";
             Console.WriteLine("Welcome to counter!");
             Console.WriteLine("You aren't supposed to be up here");
@@ -97,7 +117,9 @@ namespace CAT
             {
                 Console.WriteLine("There is nothing here, how sad");
             }
+            Console.WriteLine("Meow?");
             choice = Console.ReadLine();
+            choice = choice.ToUpper();
             switch (choice)
             {
                 case "EAT CHEESE":
@@ -137,10 +159,26 @@ namespace CAT
         {
             //lounge will have two interacts
             //scratching post and bed
+            Console.Clear();
             currentRoom = "bedroom";
             Console.WriteLine("This is bedroom");
+            Console.WriteLine("Meow?");
             choice = Console.ReadLine();
-            whatDo();
+            choice = choice.ToUpper();
+            switch (choice)
+            {
+                case "USE SCRATCHING POST":
+                    state[2] = true;
+                    Console.WriteLine("Sharp kitty");
+                    break;
+                case "SLEEP":
+                    Console.WriteLine("Sleepy kitty, good nap");
+                    break;
+                default:
+                    whatDo();
+                    break;
+
+            }
         }
 
         
@@ -149,13 +187,16 @@ namespace CAT
         {
             //hallway will have one interact
             //closed door
+            Console.Clear();
             currentRoom = "hallway";
             Console.WriteLine("This is hallway");
             if (state[0] == false)
             {
                 Console.WriteLine("Lounge door is closed");
             }
+            Console.WriteLine("Meow?");
             choice = Console.ReadLine();
+            choice = choice.ToUpper();
             switch (choice)
             {
                 case "OPEN DOOR":
@@ -241,6 +282,12 @@ namespace CAT
                     Console.WriteLine("You have killed the bell");
                     whatDo();
                     break;
+                case "MEOW":
+                case "MEOW!":
+                case "MEOW.":
+                case "MEOWMEOW":
+                    meow();
+                    break;
                 case "EXIT":
                     Console.WriteLine("Okaybye!");
                     Console.ReadLine();
@@ -262,10 +309,10 @@ namespace CAT
             Console.WriteLine("OH DANG! You're a cat!");
             Console.WriteLine("Hello cat!");
             Console.WriteLine("House has lounge, kitchen, bedroom, hallway");
+            Console.ReadLine();
 
             bedroom();
 
-            Console.ReadLine();
 
             
 
