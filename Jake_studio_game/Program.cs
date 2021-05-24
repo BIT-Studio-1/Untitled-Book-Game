@@ -123,8 +123,7 @@ namespace Jake_studio_game
                     Console.WriteLine(" < You have been introduced to everyone and know there has been a murder, You should talk to some people and gain evidence");
                     Console.ReadLine();
                     Console.Clear();
-                    Console.WriteLine(" < Who would you like to speak to first?");
-                    Console.WriteLine(" [1] Caitlyn [2] Hugo [3] Molly [4] Tom [5] Mr Penniworth [6] Mary");
+                    
                     
                     
                     do
@@ -143,6 +142,10 @@ namespace Jake_studio_game
                                 Console.WriteLine($" [{name}] Excuse me, Caitlyn?");
                                 Console.ReadLine();
                                 Console.WriteLine(" [Caitlyn Thompson] Uh, yes how can I help?");
+                            Console.ReadLine();
+                            Console.WriteLine($" [{name}] Would you mind I asked you a few questions to get a grip of what happened here?");
+                            Console.ReadLine();
+
 
                                 choicemade = true;
                                 break;
@@ -182,7 +185,8 @@ namespace Jake_studio_game
                             Console.WriteLine(" [Console] < Invalid input");
                             choicemade = false;
                             invalidOperator = false;
-                        Console.Clear();
+                            Console.ReadLine();
+                            Console.Clear();
                         }
                     } while (choicemade == false);
                     
