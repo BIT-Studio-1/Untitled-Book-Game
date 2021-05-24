@@ -42,7 +42,15 @@ namespace CAT
                 Console.WriteLine("Mouse hears you");
             }
             choice = Console.ReadLine();
-            whatDo();
+            switch (choice)
+            {
+                case "GO MOUSE HOUSE":
+                    mousey();
+                    break;
+                default:
+                    whatDo();
+                    break;
+            }
         }
 
 
@@ -165,8 +173,38 @@ namespace CAT
         //CATCH THE MOUSE
         public static void mousey()
         {
+            currentRoom = "mousey";
             //minigame
             //will check for items/buffs and adjust difficulty
+        }
+
+        public static void roomReset()
+        {
+            switch (currentRoom)
+            {
+                case "lounge":
+                    lounge();
+                    break;
+                case "kitchen":
+                    kitchen();
+                    break;
+                case "counter":
+                    counter();
+                    break;
+                case "bedroom":
+                    bedroom();
+                    break;
+                case "hallway":
+                    hallway();
+                    break;
+                case "mousey":
+                    mousey();
+                    break;
+                default:
+                    whatDo();
+                    break;
+
+            }
         }
 
         //DO A CHOOSE
@@ -214,7 +252,7 @@ namespace CAT
                     Console.WriteLine("Those aren't cat-approved words");
                     Console.WriteLine("Please try better");
                     choice = Console.ReadLine();
-                    whatDo();
+                    roomReset();
                     break;
             }
         }
