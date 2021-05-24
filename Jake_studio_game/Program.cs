@@ -7,7 +7,7 @@ namespace Jake_studio_game
         static void Main(string[] args)
         {
             string temp, play, name, selection;
-            bool playing = true;
+            bool playing = true, invalidOperator = false, choicemade = false;
   
             
             Console.BackgroundColor = ConsoleColor.Black;
@@ -58,10 +58,7 @@ namespace Jake_studio_game
             Console.Clear();
             if(play == "y" || play == "yes")
             {
-                playing = true;
-                do
-                {
-                    
+             
                     Console.WriteLine(" < Enter your name ");
                     Console.Write(" > ");
                     name = Console.ReadLine();
@@ -129,10 +126,67 @@ namespace Jake_studio_game
                     Console.WriteLine(" < Who would you like to speak to first?");
                     Console.WriteLine(" [1] Caitlyn [2] Hugo [3] Molly [4] Tom [5] Mr Penniworth [6] Mary");
                     
+                    
+                    do
+                    {
+                    Console.WriteLine(" < Who would you like to speak to first?");
+                    Console.WriteLine(" [1] Caitlyn [2] Hugo [3] Molly [4] Tom [5] Mr Penniworth [6] Mary");
                     Console.Write(" > ");
                     selection = Console.ReadLine();
+                    choicemade = false;
+                        switch (selection)
+                        {
+                            case "1":
+                            case "caitlyn":
+                            case "Caitlyn":
+                                Console.Clear();
+                                Console.WriteLine($" [{name}] Excuse me, Caitlyn?");
+                                Console.ReadLine();
+                                Console.WriteLine(" [Caitlyn Thompson] Uh, yes how can I help?");
+
+                                choicemade = true;
+                                break;
+                            case "2":
+                            case "Hugo":
+                            case "hugo":
+
+                                break;
+                            case "3":
+                            case "Molly":
+                            case "molly":
+
+                                break;
+                            case "4":
+                            case "Tom":
+                            case "tom":
+
+                                break;
+                            case "5":
+                            case "Mr Penniworth":
+                            case "mr penniworth":
+                            case "Mr penniworth":
+                            case "mr Penniworth":
+
+                                break;
+                            case "6":
+                            case "Mary":
+                            case "mary":
+
+                                break;
+                            default:
+                                invalidOperator = true;
+                                break;
+                        }
+                        if (invalidOperator == true)
+                        {
+                            Console.WriteLine(" [Console] < Invalid input");
+                            choicemade = false;
+                            invalidOperator = false;
+                        Console.Clear();
+                        }
+                    } while (choicemade == false);
                     
-                } while (playing == true);
+                
             }
             else
             {
