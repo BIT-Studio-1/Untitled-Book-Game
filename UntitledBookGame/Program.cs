@@ -15,7 +15,9 @@ namespace UntitledBookGame
             // Basic book selection loop
 
             Console.WriteLine("Please select a book: ");
-            Books[int.Parse(Console.ReadLine())]();
+            int input = int.Parse(Console.ReadLine());
+            Console.Clear();
+            Books[input]();
         }
     }
 }
