@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 
 namespace CAT
 {
@@ -15,6 +16,15 @@ namespace CAT
         private static string currentRoom, choice;
 
 
+        //INPUT MAKER
+        public static void input()
+        {
+            Console.WriteLine("Meow?");
+            choice = Console.ReadLine();
+            choice = choice.ToUpper();
+
+        }
+
         //HELP TEXT
         public static void help()
         {
@@ -22,13 +32,11 @@ namespace CAT
             Console.WriteLine("This is the helptext");
             Console.WriteLine("Cat words!");
             Console.WriteLine("GO or GO TO location - takes you to that location");
-            Console.WriteLine("LOOK or LOOK AT object - gives you more information on an object");
+            //Console.WriteLine("LOOK or LOOK AT object - gives you more information on an object");
             Console.WriteLine("USE object - uses an object");
             Console.WriteLine("DESTROY object - destroys an object");
             Console.WriteLine("EAT object - hongry kitty");
-            Console.WriteLine("Meow?");
-            choice = Console.ReadLine();
-            choice = choice.ToUpper();
+            input();
             whatDo();
         }
 
@@ -40,6 +48,17 @@ namespace CAT
             choice = Console.ReadLine();
             choice = choice.ToUpper();
             whatDo();
+        }
+
+        //BELL INDICATION
+        public static void bell()
+        {
+            if (state[1] == false)
+            {
+                Console.WriteLine("The bell around your neck jingles as you move.");
+                Console.WriteLine("Irritating");
+                Console.ReadLine();
+            }
         }
 
         //LOUNGE
@@ -55,12 +74,13 @@ namespace CAT
             {
                 Console.WriteLine("Mouse hears you");
             }
-            Console.WriteLine("Meow?");
-            choice = Console.ReadLine();
-            choice = choice.ToUpper();
+            input();
             switch (choice)
             {
                 case "GO MOUSE HOUSE":
+                case "GO MOUSE":
+                case "GO TO MOUSE":
+                case "GO TO MOUSE HOUSE":
                     mousey();
                     break;
                 default:
@@ -82,12 +102,11 @@ namespace CAT
             {
                 Console.WriteLine("There is stuff on the counter");
             }
-            Console.WriteLine("Meow?");
-            choice = Console.ReadLine();
-            choice = choice.ToUpper();
+            input();
             switch (choice)
             {
                 case "GO COUNTER":
+                case "GO TO COUNTER":
                     counter();
                     break;
                 default:
@@ -117,16 +136,16 @@ namespace CAT
             {
                 Console.WriteLine("There is nothing here, how sad");
             }
-            Console.WriteLine("Meow?");
-            choice = Console.ReadLine();
-            choice = choice.ToUpper();
+            input();
             switch (choice)
             {
                 case "EAT CHEESE":
                     if (state[3] == false)
                     {
                         Console.WriteLine("You ate some of the cheese");
+                        Console.WriteLine("You now smell like a cheese");
                         Console.WriteLine("You will regret this later");
+                        state[3] = true;
                     }
                     else
                     {
@@ -162,17 +181,22 @@ namespace CAT
             Console.Clear();
             currentRoom = "bedroom";
             Console.WriteLine("This is bedroom");
-            Console.WriteLine("Meow?");
-            choice = Console.ReadLine();
-            choice = choice.ToUpper();
+            Console.WriteLine("You see your scratching post and your bed");
+            input();
             switch (choice)
             {
                 case "USE SCRATCHING POST":
+                case "SCRATCH":
                     state[2] = true;
                     Console.WriteLine("Sharp kitty");
+                    Console.ReadLine();
+                    bedroom();
                     break;
                 case "SLEEP":
+                case "USE BED":
                     Console.WriteLine("Sleepy kitty, good nap");
+                    Console.ReadLine();
+                    bedroom();
                     break;
                 default:
                     whatDo();
@@ -194,13 +218,12 @@ namespace CAT
             {
                 Console.WriteLine("Lounge door is closed");
             }
-            Console.WriteLine("Meow?");
-            choice = Console.ReadLine();
-            choice = choice.ToUpper();
+            input();
             switch (choice)
             {
                 case "OPEN DOOR":
                     Console.WriteLine("Door open now. Strong kitty");
+                    Console.ReadLine();
                     state[0] = true;
                     hallway();
                     break;
@@ -214,11 +237,45 @@ namespace CAT
         //CATCH THE MOUSE
         public static void mousey()
         {
+            Console.Clear();
             currentRoom = "mousey";
-            //minigame
-            //will check for items/buffs and adjust difficulty
+            Console.WriteLine("It's the mouse");
+            Console.WriteLine("It must be destroyed");
+            input();
+            switch (choice)
+            {
+                case "DESTROY MOUSE":
+                case "ATTACK MOUSE":
+                    //check for buffs
+                    if (state[3] == false)
+                    {
+                        Console.WriteLine("Mousey smells you coming, he hides");
+                        Console.WriteLine("Coward");
+                        lounge();
+                    }
+                    else if (state[2] == false)
+                    {
+                        Console.WriteLine("You pounce on mouse");
+                        Console.WriteLine("You are not sharp enough, mousey escapes");
+                        Console.WriteLine("Lucky.");
+                        lounge();
+                    }
+                    else if (state[2] == true && state[3] == true)
+                    {
+                        Console.WriteLine("You catch the mouse");
+                        Console.WriteLine("Vae Victis");
+                        Console.WriteLine("END OF CAT GAME");
+                        Console.ReadLine();
+                    }
+                    break;
+                default:
+                    whatDo();
+                    break;
+            }
+
         }
 
+        //TELLS YOU WHAT ROOM IT IS
         public static void roomReset()
         {
             switch (currentRoom)
@@ -255,32 +312,40 @@ namespace CAT
             switch (choice)
             {
                 case "GO LOUNGE":
+                case "GO TO LOUNGE":
                     //if door closed, show closed door message
                     //else go lounge
                     if (state[0] == false)
                     {
                         Console.WriteLine("Door is closed");
                         choice = Console.ReadLine();
-                        whatDo();
+                        hallway();
                     }
                     else
                     {
+                        bell();
                         lounge();
                     }
                     break;
                 case "GO KITCHEN":
+                case "GO TO KITCHEN":
+                    bell();
                     kitchen();
                     break;
                 case "GO BEDROOM":
+                case "GO TO BEDROOM":
+                    bell();
                     bedroom();
                     break;
                 case "GO HALLWAY":
+                case "GO TO HALLWAY":
+                    bell();
                     hallway();
                     break;
                 case "DESTROY BELL":
                     state[1] = true;
                     Console.WriteLine("You have killed the bell");
-                    whatDo();
+                    roomReset();
                     break;
                 case "MEOW":
                 case "MEOW!":
@@ -298,7 +363,7 @@ namespace CAT
                 default:
                     Console.WriteLine("Those aren't cat-approved words");
                     Console.WriteLine("Please try better");
-                    choice = Console.ReadLine();
+                    Console.ReadLine();
                     roomReset();
                     break;
             }
