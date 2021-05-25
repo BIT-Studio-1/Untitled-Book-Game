@@ -67,6 +67,7 @@ namespace CAT
             switch (choice)
             {
                 case "GO MOUSE HOUSE":
+                case "GO MOUSE":
                     mousey();
                     break;
                 default:
@@ -128,7 +129,9 @@ namespace CAT
                     if (state[3] == false)
                     {
                         Console.WriteLine("You ate some of the cheese");
+                        Console.WriteLine("You now smell like a cheese");
                         Console.WriteLine("You will regret this later");
+                        state[3] = true;
                     }
                     else
                     {
@@ -213,11 +216,45 @@ namespace CAT
         //CATCH THE MOUSE
         public static void mousey()
         {
+            Console.Clear();
             currentRoom = "mousey";
-            //minigame
-            //will check for items/buffs and adjust difficulty
+            Console.WriteLine("It's the mouse");
+            Console.WriteLine("It must be destroyed");
+            input();
+            switch (choice)
+            {
+                case "DESTROY MOUSE":
+                case "ATTACK MOUSE":
+                    //check for buffs
+                    if (state[3] == false)
+                    {
+                        Console.WriteLine("Mousey smells you coming, he hides");
+                        Console.WriteLine("Coward");
+                        lounge();
+                    }
+                    else if (state[2] == false)
+                    {
+                        Console.WriteLine("You pounce on mouse");
+                        Console.WriteLine("You are not sharp enough, mousey escapes");
+                        Console.WriteLine("Lucky.");
+                        lounge();
+                    }
+                    else if (state[2] == true && state[3] == true)
+                    {
+                        Console.WriteLine("You catch the mouse");
+                        Console.WriteLine("Vae Victis");
+                        Console.WriteLine("END OF CAT GAME");
+                        Console.ReadLine();
+                    }
+                    break;
+                default:
+                    whatDo();
+                    break;
+            }
+
         }
 
+        //TELLS YOU WHAT ROOM IT IS
         public static void roomReset()
         {
             switch (currentRoom)
