@@ -7,7 +7,7 @@ namespace Jake_studio_game
         static void Main(string[] args)
         {
             string temp, play, name, selection;
-            bool playing = true, invalidOperator = false, leave = false, backtogame = false, leaveroom = false,  evidence_caitlyn = false, evidence_mills = false, evidence_hugo = false, evidence_molly = true, evidence_tom = false, evidence_penniworth = false, evidence_mary = false;
+            bool playing = true, invalidOperator = false, leave = false, backtogame = false, leaveroom = false,  evidence_caitlyn = false, evidence_caityln_2 = false, evidence_mills = false, evidence_hugo = false, evidence_molly = true, evidence_tom = false, evidence_penniworth = false, evidence_mary = false;
             bool gooutside = false, gotolivingroom = false, goupstairs = false, gotodiningroom = false;
 
             Console.BackgroundColor = ConsoleColor.Black;
@@ -406,7 +406,7 @@ namespace Jake_studio_game
                                 }
                      } while (leaveroom == false);
 
-                Console.WriteLine("");
+                Console.WriteLine("");  //pause menu//
                 Console.WriteLine("      __________________________________________________");
                 Console.WriteLine("     |                                                  |");
                 Console.WriteLine("     |                                                  |");
@@ -455,7 +455,7 @@ namespace Jake_studio_game
                         case "5":
                             
                            
-                            Console.WriteLine("");
+                            Console.WriteLine("");   //inventory//
                             Console.WriteLine("      __________________________________________________");
                             Console.WriteLine("     |                                                  |");
                             Console.WriteLine("     |                                                  |");
@@ -481,13 +481,17 @@ namespace Jake_studio_game
                                 switch (selection)
                                 {
                                     case "1":
-                                        if (evidence_caitlyn == true)
+                                        if (evidence_caityln_2 == true)
                                         {
-                                            caitlyn_evidence1();
+                                            caitlyn_evidence2(); //all evidence found//
+                                        }
+                                        else if (evidence_caitlyn == true)
+                                        {
+                                            caitlyn_evidence1(); //half of the evidence
                                         }
                                         else
                                         {
-                                            caitlyn_evidence0();
+                                            caitlyn_evidence0(); //no evidence yet//
                                         }
                                         break;
                                     case "2":
@@ -587,7 +591,7 @@ namespace Jake_studio_game
         {
             Console.WriteLine(" Caitlyn Thompson ");
             Console.WriteLine("------------------");
-            Console.WriteLine(" You have not found any evidence yet");
+            Console.WriteLine(" - You have not found any evidence yet");
         }
         public static void caitlyn_evidence1()
         {
@@ -604,6 +608,7 @@ namespace Jake_studio_game
             Console.WriteLine(" - Caitlyn is the youngest daughter and presumably the favourite child");
             Console.WriteLine(" - She was very fast to shift the blame to her sister, unusual response for family");
             Console.WriteLine(" - The Gardner mentioned he often saw Hugo entering Caitlyns room late at night, Possibily a affair");
+            Console.WriteLine(" - Mr Penniworth said growing up she always hated Molly");
         }
         public static void hugo_q_1(ref string name)
         {
