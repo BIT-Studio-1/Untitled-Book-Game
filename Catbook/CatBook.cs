@@ -32,7 +32,7 @@ namespace CAT
             Console.WriteLine("This is the helptext");
             Console.WriteLine("Cat words!");
             Console.WriteLine("GO or GO TO location - takes you to that location");
-            Console.WriteLine("LOOK or LOOK AT object - gives you more information on an object");
+            //Console.WriteLine("LOOK or LOOK AT object - gives you more information on an object");
             Console.WriteLine("USE object - uses an object");
             Console.WriteLine("DESTROY object - destroys an object");
             Console.WriteLine("EAT object - hongry kitty");
@@ -79,6 +79,8 @@ namespace CAT
             {
                 case "GO MOUSE HOUSE":
                 case "GO MOUSE":
+                case "GO TO MOUSE":
+                case "GO TO MOUSE HOUSE":
                     mousey();
                     break;
                 default:
@@ -104,6 +106,7 @@ namespace CAT
             switch (choice)
             {
                 case "GO COUNTER":
+                case "GO TO COUNTER":
                     counter();
                     break;
                 default:
@@ -183,6 +186,7 @@ namespace CAT
             switch (choice)
             {
                 case "USE SCRATCHING POST":
+                case "SCRATCH":
                     state[2] = true;
                     Console.WriteLine("Sharp kitty");
                     Console.ReadLine();
@@ -308,6 +312,7 @@ namespace CAT
             switch (choice)
             {
                 case "GO LOUNGE":
+                case "GO TO LOUNGE":
                     //if door closed, show closed door message
                     //else go lounge
                     if (state[0] == false)
@@ -323,14 +328,17 @@ namespace CAT
                     }
                     break;
                 case "GO KITCHEN":
+                case "GO TO KITCHEN":
                     bell();
                     kitchen();
                     break;
                 case "GO BEDROOM":
+                case "GO TO BEDROOM":
                     bell();
                     bedroom();
                     break;
                 case "GO HALLWAY":
+                case "GO TO HALLWAY":
                     bell();
                     hallway();
                     break;
