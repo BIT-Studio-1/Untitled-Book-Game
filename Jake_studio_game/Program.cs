@@ -7,8 +7,8 @@ namespace Jake_studio_game
         static void Main(string[] args)
         {
             string temp, play, name, selection;
-            bool playing = true, invalidOperator = false, leave = false, leaveroom = false,  evidence_caitlyn = false, evidence_mills = false, evidence_hugo = false, evidence_molly = true, evidence_tom = false, evidence_penniworth = false, evidence_mary = false;
-
+            bool playing = true, invalidOperator = false, leave = false, backtogame = false, leaveroom = false,  evidence_caitlyn = false, evidence_mills = false, evidence_hugo = false, evidence_molly = true, evidence_tom = false, evidence_penniworth = false, evidence_mary = false;
+            bool gooutside = false, gotolivingroom = false, goupstairs = false, gotodiningroom = false;
 
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -414,7 +414,7 @@ namespace Jake_studio_game
                 Console.WriteLine("     |                                                  |");
                 Console.WriteLine("     |                                                  |");
                 Console.WriteLine("     |    [1] Go Outside       [2] Go to Living room    |");
-                Console.WriteLine("     |    [3]Go Upstairs       [4] Go To Dining Room    |");
+                Console.WriteLine("     |    [3] Go Upstairs      [4] Go To Dining Room    |");
                 Console.WriteLine("     |    [5] Check evidence                            |");
                 Console.WriteLine("     |                                                  |");
                 Console.WriteLine("     |                       |\\                         |");
@@ -425,8 +425,61 @@ namespace Jake_studio_game
                 Console.WriteLine("     |                       ||                         |");
                 Console.WriteLine("     |__________________________________________________|");
 
-                Console.Write(" > ");
-                Console.ReadLine();
+                do
+                {
+                    Console.Write(" > ");
+                    Console.ReadLine();
+                    selection = Console.ReadLine();
+                    Console.Clear();
+                    switch (selection)
+                    {
+                        case "1":
+                            gooutside = true;
+                            backtogame = true;
+                            break;
+
+                        case "2":
+                            gotolivingroom = true;
+                            backtogame = true;
+                            break;
+
+                        case "3":
+                            goupstairs = true;
+                            backtogame = true;
+                            break;
+
+                        case "4":
+                            gotodiningroom = true;
+                            backtogame = true;
+                            break;
+
+                        case "5":
+                            Console.WriteLine("         Evidence Locker:");
+                            Console.WriteLine("-----------------------------------");
+                            Console.WriteLine(" < What would you like to look at:");
+                            Console.WriteLine("     [1] Caitlyn    [2] Hugo");
+                            Console.WriteLine("     [3] Molly      [4] Tom");
+                            Console.WriteLine("     [5] Mary       [6] Mr Penniworth");
+                            Console.WriteLine("     [7] Gardner    [8] Found Items");
+                            Console.Write(" > ");
+                            selection = Console.ReadLine();
+                            break;
+
+                        default:
+                            invalidOperator = true;
+                            break;
+                    }
+                    if (invalidOperator == true)
+                    {
+                        Console.WriteLine(" [Console] < Invalid input");
+
+                        invalidOperator = false;
+                        Console.ReadLine();
+                        Console.Clear();
+                    }
+                
+
+                } while (backtogame == false);
 
 
             }
