@@ -9,6 +9,7 @@ namespace UntitledBookGame
     {
         public static void RunHorrorGame()
         {
+            Console.CursorVisible = false;
             Car();
             // put your games entry code here
         }
