@@ -2,7 +2,7 @@
 
 ## Game Overview
 
-General overview of the game and how to play
+The game is a collection of 'books' that the user pickes at the beginning of the game.
 
 ## Books
 
@@ -18,7 +18,4 @@ Just a chill day in the life of a cat. Do cat things, solve cat puzzles. Have a 
 
 ### Untitled Book
 
-
 ### Untitled Book
-
-
