@@ -156,11 +156,13 @@ namespace UntitledBookGame
                             Console.WriteLine("You ate some of the cheese");
                             Console.WriteLine("You now smell like a cheese");
                             Console.WriteLine("You will regret this later");
+                            Console.ReadLine();
                             state[3] = true;
                         }
                         else
                         {
                             Console.WriteLine("No cheese");
+                            Console.ReadLine();
                         }
                         counter();
                         break;
@@ -169,11 +171,13 @@ namespace UntitledBookGame
                         {
                             Console.WriteLine("You push the vase off the counter. It shatters");
                             Console.WriteLine("Very satisfying");
+                            Console.ReadLine();
                             state[4] = true;
                         }
                         else
                         {
                             Console.WriteLine("You already killed the vase");
+                            Console.ReadLine();
                         }
                         counter();
                         break;
@@ -257,31 +261,34 @@ namespace UntitledBookGame
                 {
                     case "DESTROY MOUSE":
                     case "ATTACK MOUSE":
-                        //check for buffs
-                        if (state[3] == false)
-                        {
-                            Console.WriteLine("Mousey smells you coming, he hides");
-                            Console.WriteLine("Coward");
-                            lounge();
-                        }
-                        else if (state[2] == false)
-                        {
-                            Console.WriteLine("You pounce on mouse");
-                            Console.WriteLine("You are not sharp enough, mousey escapes");
-                            Console.WriteLine("Lucky.");
-                            lounge();
-                        }
-                        else if (state[2] == true && state[3] == true)
-                        {
-                            Console.WriteLine("You catch the mouse");
-                            Console.WriteLine("Vae Victis");
-                            Console.WriteLine("END OF CAT GAME");
-                            Console.ReadLine();
-                        }
+                    //check for buffs
+                    if (state[2] == true && state[3] == true)
+                    {
+                        Console.WriteLine("You catch the mouse");
+                        Console.WriteLine("Vae Victis");
+                        Console.WriteLine("END OF CAT GAME");
+                        Console.ReadLine();
+                    }
+                    else if (state[2] == false)
+                    {
+                        Console.WriteLine("You pounce on mouse");
+                        Console.WriteLine("You are not sharp enough, mousey escapes");
+                        Console.WriteLine("Lucky.");
+                        Console.ReadLine();
+                        lounge();
+                    }
+                    else if (state[3] == false)
+                    {
+                        Console.WriteLine("Mousey smells you coming, he hides");
+                        Console.WriteLine("Coward");
+                        Console.ReadLine();
+                        lounge();
+                    }
                         break;
                     default:
                         whatDo();
                         break;
+                        
                 }
 
             }
@@ -356,6 +363,7 @@ namespace UntitledBookGame
                     case "DESTROY BELL":
                         state[1] = true;
                         Console.WriteLine("You have killed the bell");
+                        Console.ReadLine();
                         roomReset();
                         break;
                     case "MEOW":
