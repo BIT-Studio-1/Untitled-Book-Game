@@ -12,18 +12,12 @@ namespace UntitledBookGame
                 RunCatGame, RunHorrorGame, RunMurderMysteryGame, RunPrisonEscapeGame, RunAdventureGame
             };
 
-            // book selection loop...
+            // Basic book selection loop
 
-            int selectedBook = 0;
-
-
-
-
-
-
-
-            // run the selected book
-            Books[selectedBook]();
+            Console.WriteLine("Please select a book: ");
+            int input = int.Parse(Console.ReadLine());
+            Console.Clear();
+            Books[input]();
         }
     }
 }
