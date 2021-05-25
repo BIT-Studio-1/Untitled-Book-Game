@@ -428,7 +428,6 @@ namespace Jake_studio_game
                 do
                 {
                     Console.Write(" > ");
-                    Console.ReadLine();
                     selection = Console.ReadLine();
                     Console.Clear();
                     switch (selection)
@@ -479,6 +478,40 @@ namespace Jake_studio_game
                             {
                                 Console.Write(" > ");
                                 selection = Console.ReadLine();
+                                switch (selection)
+                                {
+                                    case "1":
+                                        if (evidence_caitlyn == true)
+                                        {
+                                            caitlyn_evidence1();
+                                        }
+                                        else
+                                        {
+                                            caitlyn_evidence0();
+                                        }
+                                        break;
+                                    case "2":
+
+                                        break;
+                                    case "3":
+
+                                        break;
+                                    case "4":
+
+                                        break;
+                                    case "5":
+
+                                        break;
+                                    case "6":
+
+                                        break;
+                                    case "7":
+
+                                        break;
+                                    case "8":
+
+                                        break;
+                                }
                             } while (backtogame == false);
                             break;
 
@@ -549,6 +582,28 @@ namespace Jake_studio_game
             Console.WriteLine(" She was cut out of the will because Dad hated Hugo");
             Console.ReadLine();
 
+        }
+        public static void caitlyn_evidence0()
+        {
+            Console.WriteLine(" Caitlyn Thompson ");
+            Console.WriteLine("------------------");
+            Console.WriteLine(" You have not found any evidence yet");
+        }
+        public static void caitlyn_evidence1()
+        {
+            Console.WriteLine(" Caitlyn Thompson ");
+            Console.WriteLine("------------------");
+            Console.WriteLine(" - Caitlyn is the youngest daughter and presumably the favourite child");
+            Console.WriteLine(" - She was very fast to shift the blame to her sister, unusual response for family");
+            Console.ReadLine();
+        }
+        public static void caitlyn_evidence2()
+        {
+            Console.WriteLine(" Caitlyn Thompson ");
+            Console.WriteLine("------------------");
+            Console.WriteLine(" - Caitlyn is the youngest daughter and presumably the favourite child");
+            Console.WriteLine(" - She was very fast to shift the blame to her sister, unusual response for family");
+            Console.WriteLine(" - The Gardner mentioned he often saw Hugo entering Caitlyns room late at night, Possibily a affair");
         }
         public static void hugo_q_1(ref string name)
         {
