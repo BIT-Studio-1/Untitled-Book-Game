@@ -76,8 +76,9 @@ namespace Horror_Book
                         Console.Write(character);
                         Thread.Sleep(30);
                     }
+                Thread.Sleep(3000);
 
-                    Start();
+                Start();
 
                 }
             
@@ -162,7 +163,7 @@ namespace Horror_Book
         public static void Start()
         {
             Console.Clear();
-            Console.WriteLine("hi your in a method");
+            Console.WriteLine("You are still in the car.");
             
             string UserInPut;
 
@@ -188,9 +189,10 @@ namespace Horror_Book
             }
             else
             {
+                
                 var DidNotUnderStand = "I Do Not UnderStand."
                 + Environment.NewLine + "Make Sure That You Are Not Using Capitals.";
-
+                
 
 
                 foreach (var character in DidNotUnderStand)
@@ -198,6 +200,8 @@ namespace Horror_Book
                     Console.Write(character);
                     Thread.Sleep(30);
                 }
+
+                Thread.Sleep(3000);
 
                 Start();
 
