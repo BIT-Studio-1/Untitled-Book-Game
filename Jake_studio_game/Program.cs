@@ -454,15 +454,32 @@ namespace Jake_studio_game
                             break;
 
                         case "5":
-                            Console.WriteLine("         Evidence Locker:");
-                            Console.WriteLine("-----------------------------------");
-                            Console.WriteLine(" < What would you like to look at:");
-                            Console.WriteLine("     [1] Caitlyn    [2] Hugo");
-                            Console.WriteLine("     [3] Molly      [4] Tom");
-                            Console.WriteLine("     [5] Mary       [6] Mr Penniworth");
-                            Console.WriteLine("     [7] Gardner    [8] Found Items");
-                            Console.Write(" > ");
-                            selection = Console.ReadLine();
+                            
+                           
+                            Console.WriteLine("");
+                            Console.WriteLine("      __________________________________________________");
+                            Console.WriteLine("     |                                                  |");
+                            Console.WriteLine("     |                                                  |");
+                            Console.WriteLine("     |                 Evidence Locker:                 |");
+                            Console.WriteLine("     |                                                  |");
+                            Console.WriteLine("     |         < What would you like to look at:        |");
+                            Console.WriteLine("     |            [1] Caitlyn    [2] Hugo               |");
+                            Console.WriteLine("     |            [3] Molly      [4] Tom                |");
+                            Console.WriteLine("     |            [5] Mary       [6] Mr Penniworth      |");
+                            Console.WriteLine("     |            [7] Gardner    [8] Found Items        |");
+                            Console.WriteLine("     |                       |\\                         |");
+                            Console.WriteLine("     |                       | \\                        |");
+                            Console.WriteLine("     |                       | |                        |");
+                            Console.WriteLine("     |                       | |                        |");
+                            Console.WriteLine("     |                       ||                         |");
+                            Console.WriteLine("     |                       ||                         |");
+                            Console.WriteLine("     |__________________________________________________|");
+
+                            do
+                            {
+                                Console.Write(" > ");
+                                selection = Console.ReadLine();
+                            } while (backtogame == false);
                             break;
 
                         default:
