@@ -197,8 +197,64 @@ namespace Jake_studio_game
                                     case "3":
                                     case "Molly":
                                     case "molly":
+                            Console.Clear();
+                            Console.WriteLine($" [{name}] Excuse me, Molly?");
+                            Console.ReadLine();
+                            Console.WriteLine(" [Molly Tucker] Yes, What do you want?");
+                            Console.ReadLine();
+                            Console.WriteLine($" [{name}] Would you mind I asked you a few questions to get a grip of what happened here?");
+                            Console.ReadLine();
+                            Console.WriteLine(" [Molly Tucker] yeah sure whatever...");
+                            Console.ReadLine();
+                            Console.Clear();
 
+                            do
+                            {
+                                Console.WriteLine(" < What would you like to do?");
+                                Console.WriteLine(" [1] ask what do you know about what happened? [2] comfort her [3] ask if she killed him [4] ask who she thinks killed him [5] leave");
+                                Console.Write(" > ");
+                                selection = Console.ReadLine();
+                                Console.Clear();
+                                switch (selection)
+                                {
+                                    case "1":
+                                        molly_q_1(ref name);
+                                        Console.Clear();
                                         break;
+                                    case "2":
+                                        molly_q_2(ref name);
+                                        Console.Clear();
+                                        break;
+                                    case "3":
+                                        molly_q_3(ref name);
+                                        Console.Clear();
+                                        break;
+                                    case "4":
+                                        molly_q_4(ref name);
+                                        Console.Clear();
+                                        break;
+                                    case "5":
+                                        Console.WriteLine($" [{name}] Thank you, that should do");
+                                        Console.ReadLine();
+                                        Console.Clear();
+                                        leave = true;
+                                        break;
+                                    default:
+                                        invalidOperator = true;
+                                        break;
+                                }
+                                if (invalidOperator == true)
+                                {
+                                    Console.WriteLine(" [Console] < Invalid input");
+
+                                    invalidOperator = false;
+                                    Console.ReadLine();
+                                    Console.Clear();
+                                }
+
+                            } while (leave == false);
+
+                            break;
                                     case "4":
                                     case "Tom":
                                     case "tom":
@@ -317,6 +373,43 @@ namespace Jake_studio_game
             Console.ReadLine();
 
         }
+
+        public static void molly_q_1(ref string name)
+        {
+            Console.WriteLine($" [{name}] What do you know about what happened?");
+            Console.ReadLine();
+            Console.WriteLine(" [Molly Tucker] All I know is that hes dead... I don't keep in contact much with my family");           
+            Console.ReadLine();
+            Console.WriteLine($" [{name}] Were you apart of the will that was recently changed?");
+            Console.ReadLine();
+            Console.WriteLine(" [Molly Tucker] Well... of course. it was changed to keep me away from any of his belongings and money");
+            Console.ReadLine();
+        }
+        public static void molly_q_2(ref string name)
+        {
+            Console.WriteLine($" [{name}] Im sorry about your loss... I won't stop until I found out who did this. You have my word");
+            Console.ReadLine();
+            Console.WriteLine(" [Molly Tucker] Thank you, but those kind words would mean more to someone who actually cared for him");
+            Console.ReadLine();
+        }
+        public static void molly_q_3(ref string name)
+        {
+            Console.WriteLine($" [{name}] I'll get right to the chase... Did you kill your father?");
+            Console.ReadLine();
+            Console.WriteLine(" [Molly Tucker] I hated him but I would never actually hurt him");
+            Console.ReadLine();
+        }
+    
+    public static void molly_q_4(ref string name)
+    {
+            Console.WriteLine($" [{name}] Who do you think killed him?");
+            Console.ReadLine();
+            Console.WriteLine(" [Molly Tucker] Well he treated mum like shit for 30 years but I would have no clue");
+            Console.ReadLine();
+
+        }
+
+
 
 
         public static void introduction(ref string name)
