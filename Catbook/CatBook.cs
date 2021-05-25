@@ -50,6 +50,17 @@ namespace CAT
             whatDo();
         }
 
+        //BELL INDICATION
+        public static void bell()
+        {
+            if (state[1] == false)
+            {
+                Console.WriteLine("The bell around your neck jingles as you move.");
+                Console.WriteLine("Irritating");
+                Console.ReadLine();
+            }
+        }
+
         //LOUNGE
         public static void lounge()
         {
@@ -167,15 +178,21 @@ namespace CAT
             Console.Clear();
             currentRoom = "bedroom";
             Console.WriteLine("This is bedroom");
+            Console.WriteLine("You see your scratching post and your bed");
             input();
             switch (choice)
             {
                 case "USE SCRATCHING POST":
                     state[2] = true;
                     Console.WriteLine("Sharp kitty");
+                    Console.ReadLine();
+                    bedroom();
                     break;
                 case "SLEEP":
+                case "USE BED":
                     Console.WriteLine("Sleepy kitty, good nap");
+                    Console.ReadLine();
+                    bedroom();
                     break;
                 default:
                     whatDo();
@@ -301,22 +318,26 @@ namespace CAT
                     }
                     else
                     {
+                        bell();
                         lounge();
                     }
                     break;
                 case "GO KITCHEN":
+                    bell();
                     kitchen();
                     break;
                 case "GO BEDROOM":
+                    bell();
                     bedroom();
                     break;
                 case "GO HALLWAY":
+                    bell();
                     hallway();
                     break;
                 case "DESTROY BELL":
                     state[1] = true;
                     Console.WriteLine("You have killed the bell");
-                    whatDo();
+                    roomReset();
                     break;
                 case "MEOW":
                 case "MEOW!":
