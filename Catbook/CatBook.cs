@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 
 namespace CAT
 {
@@ -15,6 +16,15 @@ namespace CAT
         private static string currentRoom, choice;
 
 
+        //INPUT MAKER
+        public static void input()
+        {
+            Console.WriteLine("Meow?");
+            choice = Console.ReadLine();
+            choice = choice.ToUpper();
+
+        }
+
         //HELP TEXT
         public static void help()
         {
@@ -26,9 +36,7 @@ namespace CAT
             Console.WriteLine("USE object - uses an object");
             Console.WriteLine("DESTROY object - destroys an object");
             Console.WriteLine("EAT object - hongry kitty");
-            Console.WriteLine("Meow?");
-            choice = Console.ReadLine();
-            choice = choice.ToUpper();
+            input();
             whatDo();
         }
 
@@ -55,9 +63,7 @@ namespace CAT
             {
                 Console.WriteLine("Mouse hears you");
             }
-            Console.WriteLine("Meow?");
-            choice = Console.ReadLine();
-            choice = choice.ToUpper();
+            input();
             switch (choice)
             {
                 case "GO MOUSE HOUSE":
@@ -82,9 +88,7 @@ namespace CAT
             {
                 Console.WriteLine("There is stuff on the counter");
             }
-            Console.WriteLine("Meow?");
-            choice = Console.ReadLine();
-            choice = choice.ToUpper();
+            input();
             switch (choice)
             {
                 case "GO COUNTER":
@@ -117,9 +121,7 @@ namespace CAT
             {
                 Console.WriteLine("There is nothing here, how sad");
             }
-            Console.WriteLine("Meow?");
-            choice = Console.ReadLine();
-            choice = choice.ToUpper();
+            input();
             switch (choice)
             {
                 case "EAT CHEESE":
@@ -162,9 +164,7 @@ namespace CAT
             Console.Clear();
             currentRoom = "bedroom";
             Console.WriteLine("This is bedroom");
-            Console.WriteLine("Meow?");
-            choice = Console.ReadLine();
-            choice = choice.ToUpper();
+            input();
             switch (choice)
             {
                 case "USE SCRATCHING POST":
@@ -194,13 +194,12 @@ namespace CAT
             {
                 Console.WriteLine("Lounge door is closed");
             }
-            Console.WriteLine("Meow?");
-            choice = Console.ReadLine();
-            choice = choice.ToUpper();
+            input();
             switch (choice)
             {
                 case "OPEN DOOR":
                     Console.WriteLine("Door open now. Strong kitty");
+                    Console.ReadLine();
                     state[0] = true;
                     hallway();
                     break;
@@ -261,7 +260,7 @@ namespace CAT
                     {
                         Console.WriteLine("Door is closed");
                         choice = Console.ReadLine();
-                        whatDo();
+                        hallway();
                     }
                     else
                     {
@@ -298,7 +297,7 @@ namespace CAT
                 default:
                     Console.WriteLine("Those aren't cat-approved words");
                     Console.WriteLine("Please try better");
-                    choice = Console.ReadLine();
+                    Console.ReadLine();
                     roomReset();
                     break;
             }
