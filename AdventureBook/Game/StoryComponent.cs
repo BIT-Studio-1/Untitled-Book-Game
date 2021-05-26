@@ -28,7 +28,7 @@ namespace AdventureBook.Game
 
         public string Name { get; set; }
 
-        public StoryComponent[] parentComponant;
+        public StoryComponent[] parentComponant = new StoryComponent[1];
         public Dictionary<string, StoryComponent> StoryComponents = new Dictionary<string, StoryComponent>();
         public Dictionary<string, Action> Actions = new Dictionary<string, Action>();
 
@@ -61,9 +61,9 @@ namespace AdventureBook.Game
         /// <param name="component"></param>
         /// <param name="Index">the parent index</param>
         /// 
-        public void AddStoryComponent(ref StoryComponent component)
+        public void AddStoryComponent(ref StoryComponent component, int index = 0)
         {
-            component.parentComponant[component.parentComponant.Length] = this;
+            component.parentComponant[index] = this;
             StoryComponents.Add(component.Name, component);
         }
 
