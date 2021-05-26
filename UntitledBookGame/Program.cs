@@ -61,10 +61,5 @@ namespace UntitledBookGame
                 Console.WriteLine(line);
             }
         }
-
-        private static void ClearScreen()
-        {
-            int row = 0;
-        }
     }
 }
