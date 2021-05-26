@@ -87,7 +87,7 @@ namespace AdventureBook.GameObjects
         /// <param name="x">x location to start printing the sprite</param>
         /// <param name="y">y location to start printing the sprite</param>
         /// <param name="frame">the specific frame of the sprite to print</param>
-        public virtual void PrintSprite(int srcX, int srcY, int width, int height, int desX, int desY, int frame = 0)
+        public void PrintSprite(int srcX, int srcY, int width, int height, int desX, int desY, int frame = 0)
         {
             // dont allow frames to be specified for static textures
             if (frames == 1) frame = 0;
