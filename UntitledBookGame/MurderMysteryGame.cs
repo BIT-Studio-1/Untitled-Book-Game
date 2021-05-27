@@ -531,7 +531,9 @@ namespace UntitledBookGame
                                             case "8":
                                             Console.WriteLine("Back to menu");
                                             Console.ReadLine();
+                                            Console.Clear();
                                                 backtomenu = true;
+                                            backtoevidence = true;
                                                 break;
 
                                         }
