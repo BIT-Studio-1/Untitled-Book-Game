@@ -107,32 +107,32 @@ namespace UntitledBookGame
         // prints the book selector to the screen
         private static void PrintSelector(int index)
         {
-            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.ForegroundColor = ConsoleColor.Yellow;
 
             int bookshelfWidth  = File.ReadAllLines("assets/bookshelf.txt")[0].Length,
                 X               = (Console.WindowWidth / 2 - bookshelfWidth / 2) + 3,
-                Y               = Console.WindowHeight - 19;
+                Y               = Console.WindowHeight - 9;
 
             // draw top of selector
 
             Console.SetCursorPosition(X + BookSelectors[index, 0], Y);
-            Console.Write(new string('#', BookSelectors[index, 1]));
+            Console.Write(new string('*', BookSelectors[index, 1]));
 
             // draw sides
 
-            for (Y++; Y < 14; Y++)
+            for (Y++; Y < 30; Y++)
             {
                 Console.SetCursorPosition(X + BookSelectors[index, 0], Y);
-                Console.Write('#');
+                Console.Write('*');
 
                 Console.SetCursorPosition(X + BookSelectors[index, 0] + BookSelectors[index, 1] - 1, Y);
-                Console.Write('#');
+                Console.Write('*');
             }
 
             // draw bottom
 
             Console.SetCursorPosition(X + BookSelectors[index, 0], Y);
-            Console.Write(new string('#', BookSelectors[index, 1]));
+            Console.Write(new string('*', BookSelectors[index, 1]));
 
             // reset color
 
