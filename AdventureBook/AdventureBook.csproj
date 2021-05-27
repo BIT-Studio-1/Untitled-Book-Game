@@ -12,6 +12,9 @@
     <None Remove="Assets\scenes\DistantTrees.txt" />
     <None Remove="Assets\scenes\closerTrees.txt" />
     <None Remove="Assets\Sprites\GameTitle.txt" />
+    <None Remove="Assets\UserInterface\protagonistStats.txt" />
+    <None Remove="Assets\UserInterface\bossStats.txt" />
+    <None Remove="Assets\UserInterface\Decision.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,6 +36,15 @@
     <EmbeddedResource Include="Assets\Sprites\GameTitle.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Assets\UserInterface\protagonistStats.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\UserInterface\bossStats.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\UserInterface\Decision.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -51,6 +63,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Update="Assets\scenes\closerTrees.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\UserInterface\protagonistStats.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\UserInterface\bossStats.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\UserInterface\Decision.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

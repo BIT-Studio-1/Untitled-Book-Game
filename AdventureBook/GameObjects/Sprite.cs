@@ -14,10 +14,10 @@ namespace AdventureBook.GameObjects
     {
         // MEMBERS /////////////////////////////////////////////////////////////
 
-        private int width, height, frames = 1, currentFrame = 0;
-        bool animate;
-        bool loop;
-        private char[][][] textures;
+        protected int width, height, frames = 1, currentFrame = 0;
+        protected bool animate,
+                       loop;
+        protected char[][][] textures;
 
         public string Name { get; set; }
 

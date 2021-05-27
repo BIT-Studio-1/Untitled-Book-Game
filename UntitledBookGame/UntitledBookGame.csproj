@@ -6,13 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="assets\TextFile1.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="assets\TextFile1.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <Compile Remove="assets\**" />
+    <EmbeddedResource Remove="assets\**" />
+    <None Remove="assets\**" />
   </ItemGroup>
 
 </Project>

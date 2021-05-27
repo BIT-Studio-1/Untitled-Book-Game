@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading;
-using System.Windows.Input;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -49,7 +48,6 @@ namespace AdventureBook.Game
                         emptyChest,
                         rustyKey;
                         
-
         // STORY COMPONENTS ////////////////////////////////////////////////////
 
         /* 
@@ -134,6 +132,10 @@ namespace AdventureBook.Game
                                             "Assets/UserInterface/ItemCollection.txt"
                                             );
 
+            ProtagonistStatistics   = new UserInterface("protagonistStatMenu", "Assets/UserInterface/protagonistStats.txt");
+            BossStatistics          = new UserInterface("bossStatMenu", "Assets/UserInterface/bossStats.txt");
+
+
             // ITEMS ///////////////////////////////////////////////////////////
 
             BluntSword = new Item("Blunt Sword",
@@ -162,10 +164,78 @@ namespace AdventureBook.Game
                 while (StoryComponent.isBattling);
             };
 
+            // link story componants together
+
+            openingMonologue.AddStoryComponent(ref firstBranch);
+            //firstBranch.AddStoryComponent(ref secondBranch);
+            //firstBranch.AddStoryComponent(ref ThirdBranch);
+
+
+
+            // program the components actions
+
+            openingMonologue.SetStart(() =>
+            {
+                Screen.Clear();
+
+                Screen.PrintText("A love of adventure compelled you to lift the dusty book off the shelf", 5, 5, 20, 50);
+                Screen.PrintText("You open to the first page and begin to read... but Somehow, the story begins to flow by itself", 30, 5, 20, 50);
+                Screen.PrintText("Time slows, reality warps, reality becomes but a dream... the story takes the stage", 5, 15, 50, 50);
+
+                Screen.Clear();
+                Thread.Sleep(1000);
+
+                Screen.PrintText("you try to resist... but there is no longer any book to put down... you are slave to the untold story", 5, 5, 60, 100);
+
+                Await();
+
+                Screen.Clear();
+
+                //caveExterior.PrintSprite(0, 0, Screen.GetWidth(), Screen.GetHeight(), 0, 0);
+
+                Decision decision = new Decision("what do", new Dictionary<string, Action>
+                {
+                    { "Enter Cave",     () => openingMonologue.RunAction("Enter Cave")      },
+                    { "Leave Cave",     () => openingMonologue.RunAction("Leave Cave")      },
+                    { "Look In Trees",  () => openingMonologue.RunAction("Look in Trees")   },
+                });
+
+                do
+                {
+                    Thread.Sleep(1000);
+                    if (IsLeftPressed())
+                    {
+                        decision.Update();
+                        decision.PrintSprite(0, 0, decision.GetWidth(), decision.GetHeight(), 1, 1);
+                        decision.Selection++;
+                    }
+                    if (IsRightPressed())
+                    {
+                        decision.Update();
+                        decision.PrintSprite(0, 0, decision.GetWidth(), decision.GetHeight(), 1, 1);
+                        decision.Selection--;
+                    }
+                    Screen.Clear();
+                }
+                while (true);
+                Console.ForegroundColor = ConsoleColor.Red;
+            });
+
             openingMonologue.AddAction("Enter Cave", () =>
             {
                 Screen.PrintText("The spirit of adventure wells within you and you step boldly into the unknown.", 5, 5, 20, 20);
                 Screen.PrintText("Somewhere in the depths of the cave, another is made aware of your presence...", 5, 10, 80, 100);
+            });
+
+            openingMonologue.AddAction("Leave Cave", () =>
+            {
+                Screen.PrintText("Although the person you are resists the temptations that lie within... the role you have been given to play supperseeds your will...", 5, 5, 20, 20);
+                openingMonologue.RunAction("Enter Cave");
+            });
+
+            openingMonologue.AddAction("Look in Trees", () =>
+            {
+
             });
 
 
@@ -312,15 +382,7 @@ namespace AdventureBook.Game
                 if (IsSelectPressed()) break;
             }
 
-            Screen.Clear();
-
-            Screen.PrintText("A love of adventure compelled you to lift the dusty book off the shelf", 5, 5, 20, 50);
-            Screen.PrintText("You open to the first page and begin to read... but Somehow, the story begins to flow by itself", 30, 5, 20, 50);
-            Screen.PrintText("Time slows, reality warps, reality becomes but a dream... the story takes the stage", 5, 15, 50, 50);
-
-            Screen.Clear();
-
-            Screen.PrintText("you try to resist... but there is no longer any book to put down... you a slave to the untold story", 5, 5, 60, 100);
+            openingMonologue.RunAction("START");
         }
 
 
@@ -362,5 +424,7 @@ namespace AdventureBook.Game
             Thread.Sleep(TICKSPEED);
             return gameTick;
         }
+
+        private void Await() { do { } while (!IsSelectPressed()); }
     }
 }
