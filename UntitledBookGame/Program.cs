@@ -6,37 +6,53 @@ namespace UntitledBookGame
 {
     public partial class Program
     {
-        private static int  width = Console.WindowWidth;
-        private static int  height = Console.WindowHeight;
+        private static int  width       = Console.WindowWidth,
+                            height      = Console.WindowHeight;
 
-        private static bool selecting = false;
-        private static int  selection = 0;
+        private static bool selecting   = true;
+        private static int  selection   = 0;
 
-        int Selection
+        private static int[,] BookSelectors = new int[4,2]
+        {
+            { 0,8 }, { 8,6 }, { 14,8 }, { 22,7 }
+        };
+
+        private static Action[] Books   = new Action[4]
+        {
+            RunCatGame,
+            RunHorrorGame,
+            RunMurderMysteryGame,
+            RunPrisonEscapeGame
+        };
+
+        private static int Selection
         {
             get => selection;
             set
             {
-                if (value < 0)      selection = 4;
-                else if (value > 4) selection = 0;
-                else                selection = value;
+                if (value < 0)
+                {
+                    selection = Books.Length - 1;
+                }
+                else if (value > Books.Length - 1)
+                {
+                    selection = 0;
+                }
+                else
+                {
+                    selection = value;
+                }
             }
         }
 
         static void Main(string[] args)
         {
-            // store methods to load books in this array
-            Action[] Books = new Action[4]
-            {
-                RunCatGame, RunHorrorGame, RunMurderMysteryGame, RunPrisonEscapeGame
-            };
-
-
-            /* NEW BOOK SELECTION CODE
-
             do
             {
                 // if the window has changed size, clear the screen
+                // TODO ::  put this method in seperate thread
+                //          to run concurrantly with input
+                //          detection
                 if (Console.WindowWidth != width || Console.WindowHeight != height)
                 {
                     width = Console.WindowWidth;
@@ -46,9 +62,10 @@ namespace UntitledBookGame
 
                 // print the bookshelf
                 PrintBookShelf();
+                PrintSelector(Selection);
 
                 // check for input
-                switch (Console.ReadKey(false).KeyChar)
+                switch (Console.ReadKey(false).Key)
                 {
                     case ConsoleKey.Spacebar:
                     case ConsoleKey.Enter:
@@ -57,39 +74,69 @@ namespace UntitledBookGame
 
                     case ConsoleKey.A:
                     case ConsoleKey.LeftArrow:
-                        selection--;
+                        Selection--;
                         break;
 
                     case ConsoleKey.D:
                     case ConsoleKey.RightArrow:
-                        selection++;
+                        Selection++;
                         break;
                 }
+                Console.Clear();
             }
             while (selecting);
-            */
 
-            // Basic book selection loop
-            do
-            {
-                Console.Clear();
-                Console.WriteLine("Please select a book: ");
-                int input = int.Parse(Console.ReadLine());
-                Console.Clear();
-                Books[input]();
-            }
-            while (true);
+            // open the selected book
+            Console.Clear();
+            Books[Selection]();
         }
+
 
         // prints the bookshelf to the center bottom of the screen
         private static void PrintBookShelf()
         {
             int row = 0;
-            foreach (string line in File.ReadAllLines("assets/TextFile1.txt"))
+            foreach (string line in File.ReadAllLines("assets/bookshelf.txt"))
             {
                 Console.SetCursorPosition((Console.WindowWidth / 2 - line.Length / 2), Console.WindowHeight - 10 + row++);
                 Console.WriteLine(line);
             }
+        }
+
+
+        // prints the book selector to the screen
+        private static void PrintSelector(int index)
+        {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+
+            int bookshelfWidth  = File.ReadAllLines("assets/bookshelf.txt")[0].Length,
+                X               = (Console.WindowWidth / 2 - bookshelfWidth / 2) + 3,
+                Y               = Console.WindowHeight - 19;
+
+            // draw top of selector
+
+            Console.SetCursorPosition(X + BookSelectors[index, 0], Y);
+            Console.Write(new string('#', BookSelectors[index, 1]));
+
+            // draw sides
+
+            for (Y++; Y < 14; Y++)
+            {
+                Console.SetCursorPosition(X + BookSelectors[index, 0], Y);
+                Console.Write('#');
+
+                Console.SetCursorPosition(X + BookSelectors[index, 0] + BookSelectors[index, 1] - 1, Y);
+                Console.Write('#');
+            }
+
+            // draw bottom
+
+            Console.SetCursorPosition(X + BookSelectors[index, 0], Y);
+            Console.Write(new string('#', BookSelectors[index, 1]));
+
+            // reset color
+
+            Console.ResetColor();
         }
     }
 }

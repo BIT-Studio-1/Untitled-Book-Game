@@ -6,6 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="assets\TextFile1.txt" />
+    <None Update="assets\bookshelf.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
