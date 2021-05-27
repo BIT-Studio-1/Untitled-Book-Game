@@ -21,6 +21,7 @@ namespace UntitledBookGame
             /*
             bool selecting = false;
 
+            
             do
             {
                 PrintBookShelf();
@@ -33,14 +34,14 @@ namespace UntitledBookGame
                     Console.Clear();
                 }
 
-                var result = switch (Console.ReadKey(false).KeyChar)
+                switch (Console.ReadKey(false).KeyChar)
                 {
                     case ' ': break ;
                 }
             }
-
             while (selecting);
             */
+
             do
             {
                 Console.Clear();
