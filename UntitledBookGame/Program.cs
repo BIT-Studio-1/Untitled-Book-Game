@@ -6,8 +6,22 @@ namespace UntitledBookGame
 {
     public partial class Program
     {
-        public static int width = Console.WindowWidth;
-        public static int height = Console.WindowHeight;
+        private static int  width = Console.WindowWidth;
+        private static int  height = Console.WindowHeight;
+
+        private static bool selecting = false;
+        private static int  selection = 0;
+
+        int Selection
+        {
+            get => selection;
+            set
+            {
+                if (value < 0)      selection = 4;
+                else if (value > 4) selection = 0;
+                else                selection = value;
+            }
+        }
 
         static void Main(string[] args)
         {
@@ -17,15 +31,11 @@ namespace UntitledBookGame
                 RunCatGame, RunHorrorGame, RunMurderMysteryGame, RunPrisonEscapeGame
             };
 
-            // Basic book selection loop
-            /*
-            bool selecting = false;
 
+            /* NEW BOOK SELECTION CODE
             do
             {
-                PrintBookShelf();
-                Thread.Sleep(5);
-
+                // if the window has changed size, clear the screen
                 if (Console.WindowWidth != width || Console.WindowHeight != height)
                 {
                     width = Console.WindowWidth;
@@ -33,14 +43,32 @@ namespace UntitledBookGame
                     Console.Clear();
                 }
 
-                var result = switch (Console.ReadKey(false).KeyChar)
+                // print the bookshelf
+                PrintBookShelf();
+
+                // check for input, updating the selector
+                switch (Console.ReadKey(false).Key)
                 {
-                    case ' ': break ;
+                    case ConsoleKey.Spacebar:
+                    case ConsoleKey.Enter:
+                        selecting = false;
+                        break;
+
+                    case ConsoleKey.A:
+                    case ConsoleKey.LeftArrow:
+                        selection--;
+                        break;
+
+                    case ConsoleKey.D:
+                    case ConsoleKey.RightArrow:
+                        selection++;
+                        break;
                 }
             }
-
             while (selecting);
             */
+
+            // Basic book selection loop
             do
             {
                 Console.Clear();
@@ -52,6 +80,7 @@ namespace UntitledBookGame
             while (true);
         }
 
+        // prints the bookshelf to the center bottom of the screen
         private static void PrintBookShelf()
         {
             int row = 0;
