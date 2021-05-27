@@ -33,6 +33,7 @@ namespace UntitledBookGame
 
 
             /* NEW BOOK SELECTION CODE
+
             do
             {
                 // if the window has changed size, clear the screen
@@ -46,8 +47,8 @@ namespace UntitledBookGame
                 // print the bookshelf
                 PrintBookShelf();
 
-                // check for input, updating the selector
-                switch (Console.ReadKey(false).Key)
+                // check for input
+                switch (Console.ReadKey(false).KeyChar)
                 {
                     case ConsoleKey.Spacebar:
                     case ConsoleKey.Enter:
