@@ -5,8 +5,9 @@ namespace UntitledBookGame
     public partial class Program
     {
         static string temp, play, name, usr_selection;
-        static bool playing = true, invalidOperator = false, leave = false, backtogame = false, leaveroom = false, evidence_caitlyn = false, evidence_caityln_2 = false, evidence_mills = false, evidence_hugo = false, evidence_molly = true, evidence_tom = false, evidence_penniworth = false, evidence_mary = false;
-      static bool gooutside = false, gotolivingroom = false, goupstairs = false, gotodiningroom = false, backtoevidence = false, backtomenu = false;
+        static bool playing = true, invalidOperator = false, leave = false, backtogame = false, leaveroom = false, evidence_caitlyn = false, evidence_caityln_2 = false, evidence_gardner = false, evidence_hugo = false, evidence_molly = true, evidence_tom = false, evidence_penniworth = false, evidence_mary = false;
+      static bool backtoevidence = false, backtomenu = false;
+        static bool evidence_hugo_2 = false, evidence_molly_2 = false, evidence_tom_2 = false, evidence_mary_2 = false, evidence_gardner_2 = false, evidence_penniworth_2 = false;
         public static void RunMurderMysteryGame()
         {
             
@@ -103,23 +104,23 @@ namespace UntitledBookGame
                     switch (usr_selection)
                     {
                         case "1":
-                            gooutside = true;
+                            
                             backtogame = true;
                             break;
 
                         case "2":
-                            gotolivingroom = true;
+                           
                             backtogame = true;
                             living_room();
                             break;
 
                         case "3":
-                            goupstairs = true;
+                           
                             backtogame = true;
                             break;
 
                         case "4":
-                            gotodiningroom = true;
+                            
                             backtogame = true;
                             break;
 
@@ -134,12 +135,12 @@ namespace UntitledBookGame
                                 Console.WriteLine("     |                                                  |");
                                 Console.WriteLine("     |                                                  |");
                                 Console.WriteLine("     |                 Evidence Locker:                 |");
-                                Console.WriteLine("     |                                                  |");
                                 Console.WriteLine("     |         < What would you like to look at:        |");
-                                Console.WriteLine("     |            [1] Caitlyn    [2] Hugo               |");
-                                Console.WriteLine("     |            [3] Molly      [4] Tom                |");
-                                Console.WriteLine("     |            [5] Mary       [6] Mr Penniworth      |");
-                                Console.WriteLine("     |            [7] Found items[8] Go back            |");
+                                Console.WriteLine("     |           [1] Caitlyn     [2] Hugo               |");
+                                Console.WriteLine("     |           [3] Molly       [4] Tom                |");
+                                Console.WriteLine("     |           [5] Mary        [6] Mr Penniworth      |");
+                                Console.WriteLine("     |           [7] Found items [8] Gardner            |");
+                                Console.WriteLine("     |           [9] Go Back                            |");
                                 Console.WriteLine("     |                       |\\                         |");
                                 Console.WriteLine("     |                       | \\                        |");
                                 Console.WriteLine("     |                       | |                        |");
@@ -179,16 +180,96 @@ namespace UntitledBookGame
                                             }
                                             break;
                                         case "2":
-
+                                            if (evidence_hugo_2 == true)
+                                            {
+                                                hugo_evidence2(); //all evidence found//
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            else if (evidence_hugo == true)
+                                            {
+                                                hugo_evidence1(); //half of the evidence
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            else
+                                            {
+                                                hugo_evidence0(); //no evidence yet//
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
                                             break;
                                         case "3":
-
+                                            if (evidence_molly_2 == true)
+                                            {
+                                                molly_evidence2(); //all evidence found//
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            else if (evidence_molly == true)
+                                            {
+                                                molly_evidence1(); //half of the evidence
+                                                backtoevidence = true; 
+                                                Console.ReadLine();   
+                                                Console.Clear();
+                                            }
+                                            else
+                                            {
+                                                molly_evidence0(); //no evidence yet//
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
                                             break;
                                         case "4":
-
+                                            if (evidence_tom_2 == true)
+                                            {
+                                                tom_evidence2(); //all evidence found//
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            else if (evidence_tom == true)
+                                            {
+                                                tom_evidence1(); //half of the evidence
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            else
+                                            {
+                                                tom_evidence0(); //no evidence yet//
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
                                             break;
                                         case "5":
-
+                                            if (evidence_mary_2 == true)
+                                            {
+                                                mary_evidence2(); //all evidence found//
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            else if (evidence_mary == true)
+                                            {
+                                                mary_evidence1(); //half of the evidence
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            else
+                                            {
+                                                mary_evidence0(); //no evidence yet//
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
                                             break;
                                         case "6":
 
@@ -197,6 +278,9 @@ namespace UntitledBookGame
 
                                             break;
                                         case "8":
+                                            
+                                            break;
+                                        case "9":
                                             Console.WriteLine("Back to menu");
                                             Console.ReadLine();
                                             Console.Clear();
@@ -312,7 +396,7 @@ namespace UntitledBookGame
             Console.ReadLine();
             Console.WriteLine($" [{name}] Were you included in his will that was changed recently?");
             Console.ReadLine();
-            Console.WriteLine(" [Hugo Tucker] No, Trevor didn't approve of me at all. He even took Molly out of his will because of me");
+            Console.WriteLine(" [Hugo Tucker] No, Trevor didn't approve of me at all. He even took Molly out of his will because we got married");
             Console.ReadLine();
 
         }
@@ -641,6 +725,7 @@ namespace UntitledBookGame
                             case "1":
                                 hugo_q_1(ref name);
                                 Console.Clear();
+                                evidence_hugo = true;
                                 break;
                             case "2":
                                 hugo_q_2(ref name);
@@ -699,6 +784,7 @@ namespace UntitledBookGame
                             case "1":
                                 molly_q_1(ref name);
                                 Console.Clear();
+                                evidence_molly = true;
                                 break;
                             case "2":
                                 molly_q_2(ref name);
@@ -712,6 +798,7 @@ namespace UntitledBookGame
                             case "4":
                                 molly_q_4(ref name);
                                 Console.Clear();
+                                evidence_molly_2 = true;
                                 break;
                             case "5":
                                 Console.WriteLine($" [{name}] Thank you, that should do");
@@ -761,11 +848,12 @@ namespace UntitledBookGame
                             case "1":
                                 tom_q_1(ref name);
                                 Console.Clear();
-                                evidence_tom = true;
+                               
                                 break;
                             case "2":
                                 tom_q_2(ref name);
                                 Console.Clear();
+                                evidence_tom = true;
                                 break;
                             case "3":
                                 tom_q_3(ref name);
@@ -774,6 +862,7 @@ namespace UntitledBookGame
                             case "4":
                                 tom_q_4(ref name);
                                 Console.Clear();
+                                evidence_tom_2 = true;
                                 break;
                             case "5":
                                 Console.WriteLine($" [{name}] Thank you, that should do");
@@ -838,6 +927,7 @@ namespace UntitledBookGame
                             case "4":
                                 mary_q_4(ref name);
                                 Console.Clear();
+                                evidence_molly_2 = true;
                                 break;
                             case "5":
                                 Console.WriteLine($" [{name}] Thank you, that should do");
