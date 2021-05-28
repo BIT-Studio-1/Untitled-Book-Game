@@ -16,6 +16,8 @@ The Murder Mystery book follows the story of a detective called to a family gath
 
 Just a chill day in the life of a cat. Do cat things, solve cat puzzles. Have a great cat-based time.
 
-### Untitled Book
+### Prison Escape Book - Kanen Scheib
+
+Prison Escape gives players an insight into the life of a prison inmate with the main objective being of course escaping! Time to put the greatest escape plan into action. 
 
 ### Untitled Book
