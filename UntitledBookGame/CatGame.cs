@@ -7,6 +7,7 @@ namespace UntitledBookGame
         public static void RunCatGame()
         {
             //initial message
+            book();
                 Console.WriteLine("OH DANG! You're a cat!");
                 Console.WriteLine("Hello cat!");
                 Console.WriteLine("House has lounge, kitchen, bedroom, hallway");
@@ -27,7 +28,47 @@ namespace UntitledBookGame
             private static string currentRoom, choice;
 
 
-            //INPUT MAKER
+            //BOOK LOOK
+        public static void book()
+        {
+            Console.WriteLine(" ============================================================");
+            Console.WriteLine(" ============================================================");
+            Console.WriteLine(" ||                                                         ||");
+            Console.WriteLine(" ||             ..                       ..                 ||");
+            Console.WriteLine(" ||            //\\\\                     // \\\\               ||");
+            Console.WriteLine(" ||           //  \\\\                   //   \\\\              ||");
+            Console.WriteLine(" ||          //    \\\\                 //     \\\\             ||");
+            Console.WriteLine(" ||         //   www\\\\oooo'''''''oooo//www    \\\\            ||");
+            Console.WriteLine(" ||        oo                                  oo           ||");
+            Console.WriteLine(" ||       oo                                    oo          ||");
+            Console.WriteLine(" ||       oo           \\             /          oo          ||");
+            Console.WriteLine(" ||      oo                                      oo         ||");
+            Console.WriteLine(" ||      oo          !?               ?!         oo         ||");
+            Console.WriteLine(" ||       oo                ___                 oo          ||");
+            Console.WriteLine(" ||        oo               \\_/               oo            ||");
+            Console.WriteLine(" ||          oo              |                oo            ||");
+            Console.WriteLine(" ||            ooo        ._/ \\_.          ooo              ||");
+            Console.WriteLine(" ||               ooo                   ooo                 ||");
+            Console.WriteLine(" ||                  [][][][][][][][][]                     ||");
+            Console.WriteLine(" ||                       { >()< }                          ||");
+            Console.WriteLine(" ||                         //\\\\                            ||");
+            Console.WriteLine(" ||                                                         ||");
+            Console.WriteLine(" ||           oooo            ooo         oooooooooo        ||");
+            Console.WriteLine(" ||          OOOOOOOo        OOOOO       OOOOOOOOOOOO       ||");
+            Console.WriteLine(" ||         OO    OOoo      OO   OO           OO            ||");
+            Console.WriteLine(" ||        OO              OO     OO          OO            ||");
+            Console.WriteLine(" ||        OO             OO ooooo OO         OO            ||");
+            Console.WriteLine(" ||         OO    OOo    OO         OO        OO            ||");
+            Console.WriteLine(" ||          OOOOOOo    OO           OO       OO            ||");
+            Console.WriteLine(" ||                                                         ||");
+            Console.WriteLine(" ||                                                         ||");
+            Console.WriteLine(" ||                                                         ||");
+            Console.WriteLine(" =============================================================");
+            Console.WriteLine(" =============================================================");
+            Console.ReadLine();
+        }    
+        
+        //INPUT MAKER
             public static void input()
             {
                 Console.WriteLine("Meow?");
