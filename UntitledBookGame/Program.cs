@@ -17,7 +17,7 @@ namespace UntitledBookGame
             { 0,8 }, { 8,6 }, { 14,8 }, { 22,7 }
         };
 
-        private static Action[] Books   = new Action[4]
+        private static Action[] Books = new Action[4]
         {
             RunCatGame,
             RunHorrorGame,
@@ -47,23 +47,33 @@ namespace UntitledBookGame
 
         static void Main(string[] args)
         {
+            Console.CursorVisible = false;
+
+            // render the selector and bookshef in a seperate thread
+            new Thread(
+                () =>
+                {
+                    do
+                    {
+                        if (Console.WindowWidth != width || Console.WindowHeight != height)
+                        {
+                            width = Console.WindowWidth;
+                            height = Console.WindowHeight;
+                            Console.Clear();
+                        }
+
+                        // print the bookshelf
+                        PrintBookShelf();
+                        PrintSelector(Selection);
+
+                        Thread.Sleep(10);
+                    }
+                    while (selecting);
+                }
+            ).Start();
+
             do
             {
-                // if the window has changed size, clear the screen
-                // TODO ::  put this method in seperate thread
-                //          to run concurrantly with input
-                //          detection
-                if (Console.WindowWidth != width || Console.WindowHeight != height)
-                {
-                    width = Console.WindowWidth;
-                    height = Console.WindowHeight;
-                    Console.Clear();
-                }
-
-                // print the bookshelf
-                PrintBookShelf();
-                PrintSelector(Selection);
-
                 // check for input
                 switch (Console.ReadKey(false).Key)
                 {
@@ -110,29 +120,29 @@ namespace UntitledBookGame
             Console.ForegroundColor = ConsoleColor.Yellow;
 
             int bookshelfWidth  = File.ReadAllLines("assets/bookshelf.txt")[0].Length,
-                X               = (Console.WindowWidth / 2 - bookshelfWidth / 2) + 3,
+                X               = (Console.WindowWidth / 2 - bookshelfWidth / 2) + 2,
                 Y               = Console.WindowHeight - 9;
 
             // draw top of selector
 
             Console.SetCursorPosition(X + BookSelectors[index, 0], Y);
-            Console.Write(new string('*', BookSelectors[index, 1]));
+            Console.Write(new string('█', BookSelectors[index, 1] + 2));
 
             // draw sides
 
             for (Y++; Y < 30; Y++)
             {
                 Console.SetCursorPosition(X + BookSelectors[index, 0], Y);
-                Console.Write('*');
+                Console.Write("██");
 
-                Console.SetCursorPosition(X + BookSelectors[index, 0] + BookSelectors[index, 1] - 1, Y);
-                Console.Write('*');
+                Console.SetCursorPosition(X + BookSelectors[index, 0] + BookSelectors[index, 1], Y);
+                Console.Write("██");
             }
 
             // draw bottom
 
             Console.SetCursorPosition(X + BookSelectors[index, 0], Y);
-            Console.Write(new string('*', BookSelectors[index, 1]));
+            Console.Write(new string('█', BookSelectors[index, 1] + 2));
 
             // reset color
 
