@@ -5,9 +5,9 @@ namespace UntitledBookGame
     public partial class Program
     {
         static string temp, play, name, usr_selection;
-        static bool playing = true, invalidOperator = false, leave = false, backtogame = false, leaveroom = false, evidence_caitlyn = false, evidence_caityln_2 = false, evidence_gardner = false, evidence_hugo = false, evidence_molly = true, evidence_tom = false, evidence_penniworth = false, evidence_mary = false;
-      static bool backtoevidence = false, backtomenu = false;
-        static bool evidence_hugo_2 = false, evidence_molly_2 = false, evidence_tom_2 = false, evidence_mary_2 = false, evidence_gardner_2 = false, evidence_penniworth_2 = false;
+        static bool playing = true, invalidOperator = false, leave = false, backtogame = false, leaveroom = false, evidence_caitlyn = false, evidence_caityln_2 = false, evidence_gardner = false, evidence_hugo = false, evidence_molly = false, evidence_tom = false, evidence_penniworth = false, evidence_mary = false;
+      static bool backtoevidence = false, backtomenu = false, pillsfound = false, itemsfound = false, hairfound = false, goback = false;
+        static bool evidence_hugo_2 = false, evidence_molly_2 = false, evidence_tom_2 = false, evidence_mary_2 = false, evidence_gardner_2 = false, evidence_penniworth_2 = false, gobackinside = false;
         public static void RunMurderMysteryGame()
         {
             
@@ -104,8 +104,11 @@ namespace UntitledBookGame
                     switch (usr_selection)
                     {
                         case "1":
-                            
-                            backtogame = true;
+                            do
+                            {
+                                Outside();
+                            } while (backtomenu == false);
+                            Console.Clear();
                             break;
 
                         case "2":
@@ -275,7 +278,33 @@ namespace UntitledBookGame
 
                                             break;
                                         case "7":
-
+                                            if(hairfound == true && pillsfound == true)
+                                            {
+                                                Console.WriteLine(" Found items ");
+                                                Console.WriteLine(" - Blonde hair on Trevors desk next to pills. Tom, Molly, Hugo and The Gardner all have blonde hair. It could have been planted");
+                                                Console.WriteLine(" - Pills found in skip, similar to Trevors medicine");
+                                            }
+                                            else if(itemsfound == true)
+                                            {
+                                                if(pillsfound == true)
+                                                {
+                                                    Console.WriteLine(" Found items ");
+                                                    Console.WriteLine(" - Pills found in skip, similar to Trevors medicine");
+                                                }
+                                                else
+                                                {
+                                                    Console.WriteLine(" Found items ");
+                                                    Console.WriteLine(" - Blonde hair on Trevors desk next to pills. Tom, Molly, Hugo and The Gardner all have blonde hair. It could have been planted");
+                                                }
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine(" Found items");
+                                                Console.WriteLine(" - No evidence found yet");
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                                backtoevidence = true;
+                                            }
                                             break;
                                         case "8":
                                             
@@ -784,7 +813,7 @@ namespace UntitledBookGame
                             case "1":
                                 molly_q_1(ref name);
                                 Console.Clear();
-                                evidence_molly = true;
+                                
                                 break;
                             case "2":
                                 molly_q_2(ref name);
@@ -972,7 +1001,102 @@ namespace UntitledBookGame
             }
         } 
 
+        public static void Outside()
+        {
+            Console.WriteLine(" You are Outside");
+            Console.ReadLine();
+            Console.WriteLine(" < What would you like to do?");
+            Console.WriteLine(" [1] Talk to the gardner [2] Have a look around [3] Go back inside");
+            Console.Write(" > ");
+            usr_selection = Console.ReadLine();
+            switch (usr_selection)
+            { 
+                case "1":
+                    gardner();
+                    break;
+                case "2":
 
+                    do
+                    {
+                     outside_looking_around();
+                    } while (goback == false);
+                    break; 
+                case "3":
+                    backtomenu = true;
+                    Console.Clear();
+                    break;
+                default:
+                    invalidOperator = true;
+                    break;
+            }
+            if (invalidOperator == true)
+            {
+                Console.WriteLine(" [Console] < Invalid input");
+
+                invalidOperator = false;
+                Console.ReadLine();
+                Console.Clear();
+            }
+          
+        }
+
+        public static void gardner()
+        {
+            Console.Clear();
+            Console.WriteLine($" [{name}] Hello excuse me? Are you Mills Moffit?");
+            Console.ReadLine();
+            Console.WriteLine(" [Mills Moffit] Yep thats me, im the gardner around these parts. What can I do for you detective?");
+            Console.ReadLine();
+            Console.WriteLine($" [{name}] Do you know anything that can help me with my investigation");
+            Console.ReadLine();
+            Console.WriteLine(" [Mills Moffit] Well maybe, Hugo is having an affair with Caitlyn. I see him going into her room late at night through her window when Molly is out of town");
+            Console.ReadLine();
+            Console.WriteLine($" [{name}] Woah thank you, that changes alot of evidence. Thank you for your time");
+            Console.ReadLine();
+            Console.Clear();
+            evidence_hugo_2 = true;
+            evidence_caityln_2 = true;
+        }
+
+        public static void outside_looking_around()
+        {
+            
+            Console.Clear();
+            Console.WriteLine(" < You are outside where would you like to look?");
+            Console.WriteLine(" [1] In the bushes [2] By the windows [3] In the shed [4] In the rubbish skip [5] Go back");
+            Console.Write(" > ");
+            usr_selection = Console.ReadLine();
+            switch (usr_selection)
+            {
+                case "1":
+                    Console.WriteLine($" [{name}] Hmm nothing here....");
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
+                case "2":
+                    Console.WriteLine($" [{name}] Hmm nothing here....");
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
+                case "3":
+                    Console.WriteLine($" [{name}] Hmm nothing here....");
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
+                case "4":
+                    Console.WriteLine($" [{name}] Whats this?");
+                    Console.ReadLine();
+                    Console.WriteLine($" You have found a full bottle of pills, looks very similar to Trevors medication. Perhaps they were swapped out...");
+                    Console.ReadLine();
+                    Console.Clear();
+                    itemsfound = true;
+                    pillsfound = true;
+                    break;
+                case "5":
+                    goback = true;
+                    break;
+            }
+        }
 
 
         public static void introduction(ref string name)
