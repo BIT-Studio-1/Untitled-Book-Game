@@ -800,14 +800,17 @@ namespace UntitledBookGame
         {
             Console.WriteLine("   Tom Thompson  ");
             Console.WriteLine("------------------");
-            Console.WriteLine("")
+            Console.WriteLine(" - Did not like his father and he didn't like him either");
+            Console.WriteLine(" - Doesn't want to be here");
             Console.ReadLine();
         }
         public static void tom_evidence2()
         {
             Console.WriteLine("   Tom Thompson  ");
             Console.WriteLine("------------------");
-           
+            Console.WriteLine(" - Did not like his father and he didn't like him either");
+            Console.WriteLine(" - Doesn't want to be here");
+            Console.WriteLine(" - Doesn't have any clues who did it, likely because he doesn't care");
             Console.ReadLine();
         }
         public static void mary_q_1(ref string name)
@@ -846,6 +849,31 @@ namespace UntitledBookGame
             Console.ReadLine();
 
         }
+        public static void mary_evidence0()
+        {
+            Console.WriteLine("   Mary Thompson  ");
+            Console.WriteLine("------------------");
+            Console.WriteLine(" - No evidence has been found");
+            Console.ReadLine();
+        }
+        public static void mary_evidence1()
+        {
+            Console.WriteLine("   Mary Thompson  ");
+            Console.WriteLine("------------------");
+            Console.WriteLine(" - She was married to Trevor for years and not treated well");
+            Console.WriteLine(" - She was aware that he had multiple affairs");
+            Console.ReadLine();
+        }
+        public static void mary_evidence2()
+        {
+            Console.WriteLine("   Mary Thompson  ");
+            Console.WriteLine("------------------");
+            Console.WriteLine(" - She was married to Trevor for years and not treated well");
+            Console.WriteLine(" - She was aware that he had multiple affairs");
+            Console.WriteLine(" - She didn't want to blame anyone but admited if it was anyone it was Tom or Molly");
+            Console.ReadLine();
+        }
+    
 
 
 
