@@ -110,6 +110,7 @@ namespace UntitledBookGame
                         case "2":
                             gotolivingroom = true;
                             backtogame = true;
+                            living_room();
                             break;
 
                         case "3":
