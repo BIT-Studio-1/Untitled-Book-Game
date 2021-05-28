@@ -121,6 +121,7 @@ namespace UntitledBookGame
                 Console.Clear();
                 currentRoom = "lounge";
                 Console.WriteLine("This is lounge");
+                Console.WriteLine("The door leads to hallway");
                 Console.WriteLine("You hear mouse");
                 if (state[1] == false)
                 {
@@ -150,6 +151,7 @@ namespace UntitledBookGame
                 Console.Clear();
                 currentRoom = "kitchen";
                 Console.WriteLine("This is kitchen");
+                Console.WriteLine("The door leads to hallway");
                 if (state[4] == false)
                 {
                     Console.WriteLine("There is stuff on the counter");
@@ -237,6 +239,7 @@ namespace UntitledBookGame
                 Console.Clear();
                 currentRoom = "bedroom";
                 Console.WriteLine("This is bedroom");
+                Console.WriteLine("The door leads to hallway");
                 Console.WriteLine("You see your scratching post and your bed");
                 input();
                 switch (choice)
@@ -270,6 +273,8 @@ namespace UntitledBookGame
                 Console.Clear();
                 currentRoom = "hallway";
                 Console.WriteLine("This is hallway");
+                Console.WriteLine("There are three doors.");
+                Console.WriteLine("They lead to bedroom, kitchen and lounge");
                 if (state[0] == false)
                 {
                     Console.WriteLine("Lounge door is closed");
@@ -295,6 +300,8 @@ namespace UntitledBookGame
             {
                 Console.Clear();
                 currentRoom = "mousey";
+            if(state[1] == true)
+            {
                 Console.WriteLine("It's the mouse");
                 Console.WriteLine("It must be destroyed");
                 input();
@@ -302,36 +309,43 @@ namespace UntitledBookGame
                 {
                     case "DESTROY MOUSE":
                     case "ATTACK MOUSE":
-                    //check for buffs
-                    if (state[2] == true && state[3] == true)
-                    {
-                        Console.WriteLine("You catch the mouse");
-                        Console.WriteLine("Vae Victis");
-                        Console.WriteLine("END OF CAT GAME");
-                        Console.ReadLine();
-                    }
-                    else if (state[2] == false)
-                    {
-                        Console.WriteLine("You pounce on mouse");
-                        Console.WriteLine("You are not sharp enough, mousey escapes");
-                        Console.WriteLine("Lucky.");
-                        Console.ReadLine();
-                        lounge();
-                    }
-                    else if (state[3] == false)
-                    {
-                        Console.WriteLine("Mousey smells you coming, he hides");
-                        Console.WriteLine("Coward");
-                        Console.ReadLine();
-                        lounge();
-                    }
+                        //check for buffs
+                        if (state[2] == true && state[3] == true)
+                        {
+                            Console.WriteLine("You catch the mouse");
+                            Console.WriteLine("Vae Victis");
+                            Console.WriteLine("END OF CAT GAME");
+                            Console.ReadLine();
+                        }
+                        else if (state[2] == false)
+                        {
+                            Console.WriteLine("You pounce on mouse");
+                            Console.WriteLine("You are not sharp enough, mousey escapes");
+                            Console.WriteLine("Lucky.");
+                            Console.ReadLine();
+                            lounge();
+                        }
+                        else if (state[3] == false)
+                        {
+                            Console.WriteLine("Mousey smells you coming, he hides");
+                            Console.WriteLine("Coward");
+                            Console.ReadLine();
+                            lounge();
+                        }
                         break;
                     default:
                         whatDo();
                         break;
-                        
-                }
 
+                }
+            }
+            else
+            {
+                Console.WriteLine("You are not very sneaky");
+                Console.WriteLine("Mouse is hiding");
+                input();
+                whatDo();
+            }               
             }
 
             //TELLS YOU WHAT ROOM IT IS
