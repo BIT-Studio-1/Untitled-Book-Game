@@ -19,27 +19,27 @@ namespace UntitledBookGame
             Console.WriteLine("escaping!");
             Console.WriteLine("Press 'A' to begin...");
             Console.WriteLine("Or type 'I' for Instructions");
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
+            Console.WriteLine("------------------------------------");
+            Console.WriteLine("     ||      ||      ||      ||");
+            Console.WriteLine("     ||      ||, , , ||      ||");
+            Console.WriteLine(@"     ||     (||/|/( \||/     ||");
+            Console.WriteLine("     ||     ||| _ ' _|||     ||");
+            Console.WriteLine("     ||      || o  o ||      ||");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
             Console.WriteLine("'E' to exit");
             temp = Console.ReadLine();
 
@@ -51,13 +51,19 @@ namespace UntitledBookGame
             for (int load = 1; load <= 3; load++)
             {
                 Console.Clear();
-                Console.WriteLine("Loading.");
+                Console.WriteLine("Loading |");
                 Thread.Sleep(300);
                 Console.Clear();
-                Console.WriteLine("Loading..");
+                Console.WriteLine("Loading /");
                 Thread.Sleep(300);
                 Console.Clear();
-                Console.WriteLine("Loading...");
+                Console.WriteLine("Loading -");
+                Thread.Sleep(300);
+                Console.Clear();
+                Console.WriteLine(@"Loading \");
+                Thread.Sleep(300);
+                Console.Clear();
+                
             }
 
             do
@@ -186,13 +192,17 @@ namespace UntitledBookGame
                         Console.WriteLine("You stand on top of the bed, that vent looks to be in reach now");
                         Console.WriteLine("You need to pry it open with something");
                         Console.WriteLine("You can equip that screwdriver you found to pry it open");
-                        Console.WriteLine("Press 'o' to pry open with screwdriver");
+                        Console.WriteLine("Press 'o' to pry vent open with screwdriver");
                         pryOpen = Console.ReadLine();
                         if (pryOpen == "o")
                         {
                             Console.WriteLine("");
                             Console.WriteLine("open seasame!");
                             Console.WriteLine("new location unlocked! you can now access the ceiling vent");
+                        }
+                        else
+                        {
+                            CellItemsRemoved();
                         }
                         break;
 
@@ -208,6 +218,7 @@ namespace UntitledBookGame
                     default:
                         Console.Clear();
                         Console.WriteLine("Nowhere to go");
+                        CellItemsRemoved();
                         break;
 
                 }
@@ -253,7 +264,7 @@ namespace UntitledBookGame
                         }
                         else
                         {
-
+                            PrisonCell();
                         }
                         break;
 
@@ -286,9 +297,77 @@ namespace UntitledBookGame
 
                 }
             } while ((temp == "s") || (temp == "w") || (temp == "i") || (temp == "a"));
-            Console.ReadLine();
 
         }
+        public static void CellItemsRemoved()
+        {
+            string[] inventory = new string[3];
+            inventory[1] = "Screwdriver";
+            inventory[2] = "Sock";
+            string temp, pryOpen;
+
+            do
+            {
+                Console.WriteLine("");
+                Console.WriteLine("Where to next?");
+                temp = Console.ReadLine();
+
+
+                switch (temp)
+                {
+                    case "w":
+                        Console.Clear();
+                        Console.WriteLine("Desk top is empty");
+                        break;
+
+                    case "d":
+                        Console.Clear();
+                        Console.WriteLine("not much use being behind these prison bars...I gotta find a way out");
+                        break;
+
+                    case "a":
+                        Console.Clear();
+                        Console.WriteLine("Nothing to salavge from the toilet...gross");
+                        break;
+
+                    case "s":
+                        Console.Clear();
+                        Console.WriteLine("You stand on top of the bed, that vent looks to be in reach now");
+                        Console.WriteLine("You need to pry it open with something");
+                        Console.WriteLine("You can equip that screwdriver you found to pry it open");
+                        Console.WriteLine("Press 'o' to pry vent open with screwdriver");
+                        pryOpen = Console.ReadLine();
+                        if (pryOpen == "o")
+                        {
+                            Console.WriteLine("");
+                            Console.WriteLine("open seasame!");
+                            Console.WriteLine("new location unlocked! you can now access the ceiling vent");
+                        }
+                        else
+                        {
+                            CellItemsRemoved();
+                        }
+                        break;
+
+                    case "i":
+                        Console.Clear();
+                        Console.WriteLine("You currently have a" + inventory[1] + " and a " + inventory[2]);
+                        break;
+
+                    case "e":
+                        func();
+                        break;
+
+                    default:
+                        Console.Clear();
+                        Console.WriteLine("Nowhere to go");
+                        CellItemsRemoved();
+                        break;
+
+                }
+            } while ((temp == "s") || (temp == "w") || (temp == "i") || (temp == "a"));
+        }
+
         static void func()
         {
             Environment.Exit(0);

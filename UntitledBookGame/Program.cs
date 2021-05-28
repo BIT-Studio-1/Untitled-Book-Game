@@ -9,6 +9,8 @@ namespace UntitledBookGame
         private static int  width       = Console.WindowWidth,
                             height      = Console.WindowHeight;
 
+        private static Thread physicsThread;
+
         private static bool selecting   = true;
         private static int  selection   = 0;
 
@@ -50,7 +52,7 @@ namespace UntitledBookGame
             Console.CursorVisible = false;
 
             // render the selector and bookshef in a seperate thread
-            new Thread(
+            physicsThread = new Thread(
                 () =>
                 {
                     do
@@ -70,7 +72,9 @@ namespace UntitledBookGame
                     }
                     while (selecting);
                 }
-            ).Start();
+            );
+
+            physicsThread.Start();
 
             do
             {
@@ -92,13 +96,16 @@ namespace UntitledBookGame
                         Selection++;
                         break;
                 }
-                Console.Clear();
             }
             while (selecting);
 
+            do { } while (physicsThread.IsAlive);
+
             // open the selected book
             Console.Clear();
+
             Books[Selection]();
+
         }
 
 

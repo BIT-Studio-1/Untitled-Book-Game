@@ -5,6 +5,10 @@ using System.Collections.Generic;
 
 namespace UntitledBookGame
 {
+    public class Global
+    {
+        public static List<string> inventory = new List<string>();
+    }
     public partial class Program
     {
         public static void RunHorrorGame()
@@ -14,16 +18,18 @@ namespace UntitledBookGame
             // put your games entry code here
         }
 
-
+        public static string UserInPut;
         public static void Car()
         {
-            string UserInPut;
+            
             //------------------------------
             //This just writes out the text one letter at a time \\
             var myString = "11:26 PM."
                 + Environment.NewLine + "7c and raining."
                 + Environment.NewLine + "Your car has broken down in the country side of New York."
-                + Environment.NewLine + "What do you want to do?";
+                + Environment.NewLine + "What do you want to do?"
+                + Environment.NewLine;
+                
 
             foreach (var character in myString)
             {
@@ -34,13 +40,6 @@ namespace UntitledBookGame
 
             Console.WriteLine();
             UserInPut = Console.ReadLine();
-
-
-            //List<string> Car = new List<string>()
-            // {
-            //   "Open boot", "Open glove box", "Look under seat" 
-            //};
-
 
 
 
@@ -85,19 +84,6 @@ namespace UntitledBookGame
 
 
 
-            //  if (Car.Contains(UserInPut, Car))
-            //  {
-            //    Console.WriteLine("Works");
-            // }
-            //  else
-            //  {
-            //   Console.WriteLine("I dont Know What that is");
-            //}
-
-
-
-
-
 
 
             Console.ReadLine();
@@ -109,10 +95,12 @@ namespace UntitledBookGame
             Console.Clear();
             Console.Clear();
             var UnderSeat = "You Are in In The Boot." +
+                Environment.NewLine + "There are items in the boot."+
                 Environment.NewLine + "Tourch" +
                 Environment.NewLine + "Tire Iron" +
                 Environment.NewLine + "Rope" +
-                Environment.NewLine + "Axe With Blood on it?";
+                Environment.NewLine + "Axe With Blood on it?"
+                + Environment.NewLine;
 
 
             foreach (var character in UnderSeat)
@@ -128,9 +116,11 @@ namespace UntitledBookGame
             Console.Clear();
             Console.Clear();
             var UnderSeat = "You Are in In The GloveBox." +
+                Environment.NewLine + "There are items in the Glovebox" +
                 Environment.NewLine + "First Aid Kit" +
                 Environment.NewLine + "Cars Manual" +
-                Environment.NewLine + "Random Key";
+                Environment.NewLine + "Random Key"
+                + Environment.NewLine;
 
 
             foreach (var character in UnderSeat)
@@ -143,7 +133,8 @@ namespace UntitledBookGame
         public static void UnderSeatMethod()
         {
             Console.Clear();
-            var UnderSeat = "You Are Under The Seat." +
+            var UnderSeat = "You Are Under The Seat."+
+                Environment.NewLine + "There are items under the seat"+
                 Environment.NewLine + "Lint";
 
 
@@ -205,6 +196,22 @@ namespace UntitledBookGame
 
                 Start();
 
+
+
+            }
+
+            
+        }
+
+        public static void ItemsInInvin()
+        {
+            
+        }
+        public static void items()
+        {
+            if (UserInPut.Contains("First aid kit"))
+            {
+                Global.inventory.Add("First aid kit");
             }
         }
 
