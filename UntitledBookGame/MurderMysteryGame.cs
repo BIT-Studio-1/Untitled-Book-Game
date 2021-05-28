@@ -303,7 +303,7 @@ namespace UntitledBookGame
                                                 Console.WriteLine(" - No evidence found yet");
                                                 Console.ReadLine();
                                                 Console.Clear();
-                                                backtoevidence = true;
+                                                
                                             }
                                             break;
                                         case "8":
