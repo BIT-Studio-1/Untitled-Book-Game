@@ -665,6 +665,33 @@ namespace UntitledBookGame
 
         }
 
+        public static void hugo_evidence0()
+        {
+            Console.WriteLine("    Hugo Tucker  ");
+            Console.WriteLine("-------------------");
+            Console.WriteLine(" - No evidence has been found");
+            Console.ReadLine();
+        }
+        public static void hugo_evidence1()
+        {
+            Console.WriteLine("    Hugo Tucker  ");
+            Console.WriteLine("-------------------");
+            Console.WriteLine(" - He is married to Molly Thompson");
+            Console.WriteLine(" - Trevor did not approve of him. Removed Molly out of his Will because of his disapproval");
+            Console.WriteLine(" - He believes it was Tom who killed Trevor");
+            Console.ReadLine();
+        }
+        public static void hugo_evidence2()
+        {
+            Console.WriteLine("    Hugo Tucker  ");
+            Console.WriteLine("-------------------");
+            Console.WriteLine(" - He is married to Molly Thompson");
+            Console.WriteLine(" - Trevor did not approve of him. Removed Molly out of his Will because of his disapproval");
+            Console.WriteLine(" - He believes it was Tom who killed Trevor");
+            Console.WriteLine(" - He is having an affair with Caitlyn");
+            Console.WriteLine("");
+        }
+
         public static void molly_q_1(ref string name)
         {
             Console.WriteLine($" [{name}] What do you know about what happened?");
@@ -689,6 +716,26 @@ namespace UntitledBookGame
             Console.ReadLine();
             Console.WriteLine(" [Molly Tucker] I hated him but I would never actually hurt him");
             Console.ReadLine();
+        }
+        public static void molly_evidence0()
+        {
+            Console.WriteLine("   Molly Tucker  ");
+            Console.WriteLine("------------------");
+            Console.WriteLine(" - No evidence has been found");
+            Console.ReadLine();
+        }
+        public static void molly_evidence1()
+        {
+            Console.WriteLine("   Molly Tucker  ");
+            Console.WriteLine("------------------");
+            Console.WriteLine(" - She is married to Hugo, Her dad hated her for it");
+            Console.ReadLine();
+        }
+        public static void molly_evidence2()
+        {
+            Console.WriteLine("   Molly Tucker  ");
+            Console.WriteLine("------------------");
+            
         }
 
         public static void molly_q_4(ref string name)
