@@ -729,13 +729,20 @@ namespace UntitledBookGame
             Console.WriteLine("   Molly Tucker  ");
             Console.WriteLine("------------------");
             Console.WriteLine(" - She is married to Hugo, Her dad hated her for it");
+            Console.WriteLine(" - She didn't get on with her father");
             Console.ReadLine();
+           
         }
         public static void molly_evidence2()
         {
             Console.WriteLine("   Molly Tucker  ");
             Console.WriteLine("------------------");
-            
+            Console.WriteLine(" - She is married to Hugo, Her dad hated her for it");
+            Console.WriteLine(" - She didn't get on with her father");
+            Console.WriteLine(" - She doesn't know about Caitlyn and Hugo");
+            Console.WriteLine(" - She thinks her mother could have killed Trevor");
+            Console.ReadLine();
+
         }
 
         public static void molly_q_4(ref string name)
@@ -781,6 +788,27 @@ namespace UntitledBookGame
             Console.WriteLine(" [Tom Thompson] No idea. your the detective aren't you?");
             Console.ReadLine();
 
+        }
+        public static void tom_evidence0()
+        {
+            Console.WriteLine("   Tom Thompson  ");
+            Console.WriteLine("------------------");
+            Console.WriteLine(" - No evidence has been found");
+            Console.ReadLine();
+        }
+        public static void tom_evidence1()
+        {
+            Console.WriteLine("   Tom Thompson  ");
+            Console.WriteLine("------------------");
+            Console.WriteLine("")
+            Console.ReadLine();
+        }
+        public static void tom_evidence2()
+        {
+            Console.WriteLine("   Tom Thompson  ");
+            Console.WriteLine("------------------");
+           
+            Console.ReadLine();
         }
         public static void mary_q_1(ref string name)
         {
