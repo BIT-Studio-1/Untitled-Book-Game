@@ -17,45 +17,18 @@ namespace UntitledBookGame
             Console.WriteLine("Created by Kanen Scheib");
             Console.WriteLine("About: Prison Escape gives players an insight into the life of a prison inmate with the main objective being of course");
             Console.WriteLine("escaping!");
-            Console.WriteLine("Press 'A' to begin...");
+            Console.WriteLine("Press 'a' to begin...");
             Console.WriteLine("Or type 'I' for Instructions");
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("'E' to exit");
             temp = Console.ReadLine();
 
-            if (temp == "e")
-            {
-                func();
-            }
-
-            for (int load = 1; load <= 3; load++)
+            for (int load = 1; load >= 5; load++)
             {
                 Console.Clear();
                 Console.WriteLine("Loading.");
-                Thread.Sleep(300);
+                Thread.Sleep(500);
                 Console.Clear();
                 Console.WriteLine("Loading..");
-                Thread.Sleep(300);
+                Thread.Sleep(500);
                 Console.Clear();
                 Console.WriteLine("Loading...");
             }
@@ -87,10 +60,6 @@ namespace UntitledBookGame
                         Console.WriteLine("to the left is a close-coupled porcelain toilet");
                         Console.WriteLine("To the right is a rectangle stanless detention desk with swivel stool");
                         Console.WriteLine("above you is a vent that looks just big enough to fit through");
-                        break;
-
-                    case "e":
-                        func();
                         break;
                 }
 
@@ -146,10 +115,6 @@ namespace UntitledBookGame
                         Console.WriteLine("Nothing in inventory");
                         break;
 
-                    case "e":
-                        func();
-                        break;
-
                     default:
                         Console.Clear();
                         Console.WriteLine("Nowhere to go");
@@ -194,15 +159,12 @@ namespace UntitledBookGame
                             Console.WriteLine("open seasame!");
                             Console.WriteLine("new location unlocked! you can now access the ceiling vent");
                         }
+
                         break;
 
                     case "i":
                         Console.Clear();
                         Console.WriteLine("You currently have a" + inventory[1] + " and a " + inventory[2]);
-                        break;
-
-                    case "e":
-                        func();
                         break;
 
                     default:
@@ -216,7 +178,10 @@ namespace UntitledBookGame
             Console.ReadLine();
         }
 
-        public static void PrisonCell()
+
+
+
+        static void PrisonCell()
         {
 
             string[] inventory = new string[3];
@@ -275,10 +240,6 @@ namespace UntitledBookGame
                         Console.WriteLine("Nothing in inventory");
                         break;
 
-                    case "e":
-                        func();
-                        break;
-
                     default:
                         Console.Clear();
                         Console.WriteLine("Nowhere to go");
@@ -286,18 +247,9 @@ namespace UntitledBookGame
 
                 }
             } while ((temp == "s") || (temp == "w") || (temp == "i") || (temp == "a"));
-            Console.ReadLine();
-
         }
-        static void func()
-        {
-            Environment.Exit(0);
-        }
-
     }
 }
-
-
 
 
 

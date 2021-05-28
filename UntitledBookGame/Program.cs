@@ -9,7 +9,8 @@ namespace UntitledBookGame
         private static int  width       = Console.WindowWidth,
                             height      = Console.WindowHeight;
 
-        private static Thread physicsThread;
+        private static Thread   physicsThread,
+                                CheckExitCode;
 
         private static bool selecting   = true;
         private static int  selection   = 0;
@@ -51,61 +52,64 @@ namespace UntitledBookGame
         {
             Console.CursorVisible = false;
 
-            // render the selector and bookshef in a seperate thread
-            physicsThread = new Thread(
-                () =>
-                {
-                    do
-                    {
-                        if (Console.WindowWidth != width || Console.WindowHeight != height)
-                        {
-                            width = Console.WindowWidth;
-                            height = Console.WindowHeight;
-                            Console.Clear();
-                        }
-
-                        // print the bookshelf
-                        PrintBookShelf();
-                        PrintSelector(Selection);
-
-                        Thread.Sleep(10);
-                    }
-                    while (selecting);
-                }
-            );
-
-            physicsThread.Start();
-
             do
             {
-                // check for input
-                switch (Console.ReadKey(false).Key)
+                // render the selector and bookshef in a seperate thread
+                physicsThread = new Thread(
+                    () =>
+                    {
+                        do
+                        {
+                            if (Console.WindowWidth != width || Console.WindowHeight != height)
+                            {
+                                width = Console.WindowWidth;
+                                height = Console.WindowHeight;
+                                Console.Clear();
+                            }
+
+                            // print the bookshelf
+                            PrintBookShelf();
+                            PrintSelector(Selection);
+
+                            Thread.Sleep(10);
+                        }
+                        while (selecting);
+                    }
+                );
+
+                physicsThread.Start();
+
+                do
                 {
-                    case ConsoleKey.Spacebar:
-                    case ConsoleKey.Enter:
-                        selecting = false;
-                        break;
+                    // check for input
+                    switch (Console.ReadKey(false).Key)
+                    {
+                        case ConsoleKey.Spacebar:
+                        case ConsoleKey.Enter:
+                            selecting = false;
+                            break;
 
-                    case ConsoleKey.A:
-                    case ConsoleKey.LeftArrow:
-                        Selection--;
-                        break;
+                        case ConsoleKey.A:
+                        case ConsoleKey.LeftArrow:
+                            Selection--;
+                            break;
 
-                    case ConsoleKey.D:
-                    case ConsoleKey.RightArrow:
-                        Selection++;
-                        break;
+                        case ConsoleKey.D:
+                        case ConsoleKey.RightArrow:
+                            Selection++;
+                            break;
+                    }
                 }
+                while (selecting);
+
+                do { } while (physicsThread.IsAlive);
+
+                // open the selected book
+                Console.Clear();
+
+                Books[Selection]();
             }
-            while (selecting);
-
-            do { } while (physicsThread.IsAlive);
-
-            // open the selected book
-            Console.Clear();
-
-            Books[Selection]();
-
+            while (true);
         }
 
 
