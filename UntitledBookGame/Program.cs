@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace UntitledBookGame
 {
@@ -9,8 +11,7 @@ namespace UntitledBookGame
         private static int  width       = Console.WindowWidth,
                             height      = Console.WindowHeight;
 
-        private static Thread   physicsThread,
-                                CheckExitCode;
+        private static Thread physicsThread;
 
         private static bool selecting   = true;
         private static int  selection   = 0;
@@ -26,6 +27,14 @@ namespace UntitledBookGame
             RunHorrorGame,
             RunMurderMysteryGame,
             RunPrisonEscapeGame
+        };
+
+        private static Dictionary<string, string> BookDescriptions = new Dictionary<string, string>
+        {
+            { "Cat Game",               "description..." },
+            { "Horror Game",            "description..." },
+            { "Murder Mystery Game",    "description..." },
+            { "Prison Escape Game",     "description..." }
         };
 
         private static int Selection
@@ -68,6 +77,7 @@ namespace UntitledBookGame
                             }
 
                             // print the bookshelf
+                            
                             PrintBookShelf();
                             PrintSelector(Selection);
 
@@ -102,9 +112,11 @@ namespace UntitledBookGame
                 }
                 while (selecting);
 
+                PrintBookName(Selection);
+
                 do { } while (physicsThread.IsAlive);
 
-                // open the selected book
+                // open the selected book, clearing the bookshelf graphic away
                 Console.Clear();
 
                 Books[Selection]();
@@ -122,6 +134,15 @@ namespace UntitledBookGame
                 Console.SetCursorPosition((Console.WindowWidth / 2 - line.Length / 2), Console.WindowHeight - 10 + row++);
                 Console.WriteLine(line);
             }
+        }
+
+
+        private static void PrintBookName(int index)
+        {
+            Console.SetCursorPosition(1, 1);
+            Console.Write(BookDescriptions.ElementAt(index).Key);
+            Console.SetCursorPosition(1, 2);
+            Console.Write(BookDescriptions.ElementAt(index).Value);
         }
 
 
