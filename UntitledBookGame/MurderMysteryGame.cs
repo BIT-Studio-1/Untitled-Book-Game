@@ -5,9 +5,9 @@ namespace UntitledBookGame
     public partial class Program
     {
         static string temp, play, name, usr_selection;
-        static bool playing = true, invalidOperator = false, leave = false, backtogame = false, leaveroom = false, evidence_caitlyn = false, evidence_caityln_2 = false, evidence_gardner = false, evidence_hugo = false, evidence_molly = false, evidence_tom = false, evidence_penniworth = false, evidence_mary = false;
+        static bool playing = true, invalidOperator = false, leave = false, backtogame = false, leaveroom = false, evidence_caitlyn = false, evidence_caityln_2 = false, evidence_gardner_0 = false, evidence_hugo = false, evidence_molly = false, evidence_tom = false, evidence_penniworth = false, evidence_mary = false;
       static bool backtoevidence = false, backtomenu = false, pillsfound = false, itemsfound = false, hairfound = false, goback = false;
-        static bool evidence_hugo_2 = false, evidence_molly_2 = false, evidence_tom_2 = false, evidence_mary_2 = false, evidence_gardner_2 = false, evidence_penniworth_2 = false, gobackinside = false;
+        static bool evidence_hugo_2 = false, evidence_molly_2 = false, evidence_tom_2 = false, evidence_mary_2 = false, evidence_gardner_1 = false, evidence_penniworth_1 = false, gobackinside = false;
         public static void RunMurderMysteryGame()
         {
             
@@ -275,7 +275,20 @@ namespace UntitledBookGame
                                             }
                                             break;
                                         case "6":
-
+                                            if(evidence_penniworth_1 == true)
+                                            {
+                                                penniworth_evidence_1();
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            else
+                                            {
+                                                penniworth_evidence_0();
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
                                             break;
                                         case "7":
                                             if(hairfound == true && pillsfound == true)
@@ -307,7 +320,20 @@ namespace UntitledBookGame
                                             }
                                             break;
                                         case "8":
-                                            
+                                            if (evidence_gardner_1 == true)
+                                            {
+                                                gardner_evidence_1();
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            else
+                                            {
+                                                gardner_evidence_0();
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
                                             break;
                                         case "9":
                                             Console.WriteLine("Back to menu");
@@ -356,7 +382,30 @@ namespace UntitledBookGame
 
         // other game code, methods, etc.
 
-
+        public static void gardner_evidence_0()
+        {
+            Console.WriteLine("   The Gardner ");
+            Console.WriteLine("------------------");
+            Console.WriteLine(" - You have not found any evidence yet");
+        }
+        public static void gardner_evidence_1()
+        {
+            Console.WriteLine("   The Gardner ");
+            Console.WriteLine("------------------");
+            Console.WriteLine(" - Found Hugo is having an Affair by seeing him sneak in Caitlyns window");
+        }
+        public static void penniworth_evidence_0()
+        {
+            Console.WriteLine("  Will Penniworth ");
+            Console.WriteLine("-------------------");
+            Console.WriteLine(" - You have not found any evidence yet");
+        }
+        public static void penniworth_evidence_1()
+        {
+            Console.WriteLine("  Will Penniworth ");
+            Console.WriteLine("-------------------");
+            Console.WriteLine(" - Saw all the family grow up, Can't believe any of the family would hurt anyone");
+        }
         public static void caitlyn_q_1(ref string name)
         {
             Console.WriteLine($" [{name}] What do you know about what happened?");
@@ -1040,6 +1089,11 @@ namespace UntitledBookGame
           
         }
 
+        public static void Upstairs()
+        {
+
+        }
+
         public static void gardner()
         {
             Console.Clear();
@@ -1054,6 +1108,7 @@ namespace UntitledBookGame
             Console.WriteLine($" [{name}] Woah thank you, that changes alot of evidence. Thank you for your time");
             Console.ReadLine();
             Console.Clear();
+            evidence_gardner_1 = true;
             evidence_hugo_2 = true;
             evidence_caityln_2 = true;
         }
