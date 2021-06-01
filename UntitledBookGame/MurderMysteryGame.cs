@@ -1112,7 +1112,8 @@ namespace UntitledBookGame
                         switch (usr_selection)
                         {
                             case "1":
-
+                                Console.WriteLine(" You look around Caitlyns room for evidence");
+                                Console.WriteLine(" The room is spotless")
                                 break;
                             case "2":
 
