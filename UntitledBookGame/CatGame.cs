@@ -7,6 +7,7 @@ namespace UntitledBookGame
         public static void RunCatGame()
         {
             //initial message
+            book();
                 Console.WriteLine("OH DANG! You're a cat!");
                 Console.WriteLine("Hello cat!");
                 Console.WriteLine("House has lounge, kitchen, bedroom, hallway");
@@ -27,7 +28,47 @@ namespace UntitledBookGame
             private static string currentRoom, choice;
 
 
-            //INPUT MAKER
+            //BOOK LOOK
+        public static void book()
+        {
+            Console.WriteLine(" ============================================================");
+            Console.WriteLine(" ============================================================");
+            Console.WriteLine(" ||                                                         ||");
+            Console.WriteLine(" ||             ..                       ..                 ||");
+            Console.WriteLine(" ||            //\\\\                     // \\\\               ||");
+            Console.WriteLine(" ||           //  \\\\                   //   \\\\              ||");
+            Console.WriteLine(" ||          //    \\\\                 //     \\\\             ||");
+            Console.WriteLine(" ||         //   www\\\\oooo'''''''oooo//www    \\\\            ||");
+            Console.WriteLine(" ||        oo                                  oo           ||");
+            Console.WriteLine(" ||       oo                                    oo          ||");
+            Console.WriteLine(" ||       oo           \\             /          oo          ||");
+            Console.WriteLine(" ||      oo                                      oo         ||");
+            Console.WriteLine(" ||      oo          !?               ?!         oo         ||");
+            Console.WriteLine(" ||       oo                ___                 oo          ||");
+            Console.WriteLine(" ||        oo               \\_/               oo            ||");
+            Console.WriteLine(" ||          oo              |                oo            ||");
+            Console.WriteLine(" ||            ooo        ._/ \\_.          ooo              ||");
+            Console.WriteLine(" ||               ooo                   ooo                 ||");
+            Console.WriteLine(" ||                  [][][][][][][][][]                     ||");
+            Console.WriteLine(" ||                       { >()< }                          ||");
+            Console.WriteLine(" ||                         //\\\\                            ||");
+            Console.WriteLine(" ||                                                         ||");
+            Console.WriteLine(" ||           oooo            ooo         oooooooooo        ||");
+            Console.WriteLine(" ||          OOOOOOOo        OOOOO       OOOOOOOOOOOO       ||");
+            Console.WriteLine(" ||         OO    OOoo      OO   OO           OO            ||");
+            Console.WriteLine(" ||        OO              OO     OO          OO            ||");
+            Console.WriteLine(" ||        OO             OO ooooo OO         OO            ||");
+            Console.WriteLine(" ||         OO    OOo    OO         OO        OO            ||");
+            Console.WriteLine(" ||          OOOOOOo    OO           OO       OO            ||");
+            Console.WriteLine(" ||                                                         ||");
+            Console.WriteLine(" ||                                                         ||");
+            Console.WriteLine(" ||                                                         ||");
+            Console.WriteLine(" =============================================================");
+            Console.WriteLine(" =============================================================");
+            Console.ReadLine();
+        }    
+        
+        //INPUT MAKER
             public static void input()
             {
                 Console.WriteLine("Meow?");
@@ -80,6 +121,7 @@ namespace UntitledBookGame
                 Console.Clear();
                 currentRoom = "lounge";
                 Console.WriteLine("This is lounge");
+                Console.WriteLine("The door leads to hallway");
                 Console.WriteLine("You hear mouse");
                 if (state[1] == false)
                 {
@@ -109,6 +151,7 @@ namespace UntitledBookGame
                 Console.Clear();
                 currentRoom = "kitchen";
                 Console.WriteLine("This is kitchen");
+                Console.WriteLine("The door leads to hallway");
                 if (state[4] == false)
                 {
                     Console.WriteLine("There is stuff on the counter");
@@ -196,6 +239,7 @@ namespace UntitledBookGame
                 Console.Clear();
                 currentRoom = "bedroom";
                 Console.WriteLine("This is bedroom");
+                Console.WriteLine("The door leads to hallway");
                 Console.WriteLine("You see your scratching post and your bed");
                 input();
                 switch (choice)
@@ -229,6 +273,8 @@ namespace UntitledBookGame
                 Console.Clear();
                 currentRoom = "hallway";
                 Console.WriteLine("This is hallway");
+                Console.WriteLine("There are three doors.");
+                Console.WriteLine("They lead to bedroom, kitchen and lounge");
                 if (state[0] == false)
                 {
                     Console.WriteLine("Lounge door is closed");
@@ -254,6 +300,8 @@ namespace UntitledBookGame
             {
                 Console.Clear();
                 currentRoom = "mousey";
+            if(state[1] == true)
+            {
                 Console.WriteLine("It's the mouse");
                 Console.WriteLine("It must be destroyed");
                 input();
@@ -261,36 +309,43 @@ namespace UntitledBookGame
                 {
                     case "DESTROY MOUSE":
                     case "ATTACK MOUSE":
-                    //check for buffs
-                    if (state[2] == true && state[3] == true)
-                    {
-                        Console.WriteLine("You catch the mouse");
-                        Console.WriteLine("Vae Victis");
-                        Console.WriteLine("END OF CAT GAME");
-                        Console.ReadLine();
-                    }
-                    else if (state[2] == false)
-                    {
-                        Console.WriteLine("You pounce on mouse");
-                        Console.WriteLine("You are not sharp enough, mousey escapes");
-                        Console.WriteLine("Lucky.");
-                        Console.ReadLine();
-                        lounge();
-                    }
-                    else if (state[3] == false)
-                    {
-                        Console.WriteLine("Mousey smells you coming, he hides");
-                        Console.WriteLine("Coward");
-                        Console.ReadLine();
-                        lounge();
-                    }
+                        //check for buffs
+                        if (state[2] == true && state[3] == true)
+                        {
+                            Console.WriteLine("You catch the mouse");
+                            Console.WriteLine("Vae Victis");
+                            Console.WriteLine("END OF CAT GAME");
+                            Console.ReadLine();
+                        }
+                        else if (state[2] == false)
+                        {
+                            Console.WriteLine("You pounce on mouse");
+                            Console.WriteLine("You are not sharp enough, mousey escapes");
+                            Console.WriteLine("Lucky.");
+                            Console.ReadLine();
+                            lounge();
+                        }
+                        else if (state[3] == false)
+                        {
+                            Console.WriteLine("Mousey smells you coming, he hides");
+                            Console.WriteLine("Coward");
+                            Console.ReadLine();
+                            lounge();
+                        }
                         break;
                     default:
                         whatDo();
                         break;
-                        
-                }
 
+                }
+            }
+            else
+            {
+                Console.WriteLine("You are not very sneaky");
+                Console.WriteLine("Mouse is hiding");
+                input();
+                whatDo();
+            }               
             }
 
             //TELLS YOU WHAT ROOM IT IS

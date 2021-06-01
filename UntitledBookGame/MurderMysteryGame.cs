@@ -4,12 +4,14 @@ namespace UntitledBookGame
 {
     public partial class Program
     {
+        static string temp, play, name, usr_selection;
+        static bool playing = true, invalidOperator = false, leave = false, backtogame = false, leaveroom = false, evidence_caitlyn = false, evidence_caityln_2 = false, evidence_gardner_0 = false, evidence_hugo = false, evidence_molly = false, evidence_tom = false, evidence_penniworth = false, evidence_mary = false;
+      static bool backtoevidence = false, backtomenu = false, pillsfound = false, itemsfound = false, hairfound = false, goback = false;
+        static bool evidence_hugo_2 = false, evidence_molly_2 = false, evidence_tom_2 = false, evidence_mary_2 = false, evidence_gardner_1 = false, evidence_penniworth_1 = false, gobackinside = false;
         public static void RunMurderMysteryGame()
         {
+            
             // put your games entry code here
-            string temp, play, name, selection;
-            bool playing = true, invalidOperator = false, leave = false, backtogame = false, leaveroom = false, evidence_caitlyn = false, evidence_caityln_2 = false, evidence_mills = false, evidence_hugo = false, evidence_molly = true, evidence_tom = false, evidence_penniworth = false, evidence_mary = false;
-            bool gooutside = false, gotolivingroom = false, goupstairs = false, gotodiningroom = false, backtoevidence = false, backtomenu = false;
 
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -70,341 +72,7 @@ namespace UntitledBookGame
 
                 do
                 {
-                    Console.WriteLine(" < Who would you like to speak to?");
-                    Console.WriteLine(" [1] Caitlyn [2] Hugo [3] Molly [4] Tom [5] Mary [6] Leave room");
-                    Console.Write(" > ");
-                    selection = Console.ReadLine();
-                    leave = false;
-                    leaveroom = false;
-                    switch (selection)
-                    {
-                        case "1":
-                        case "caitlyn":
-                        case "Caitlyn":
-                            Console.Clear();
-                            Console.WriteLine($" [{name}] Excuse me, Caitlyn?");
-                            Console.ReadLine();
-                            Console.WriteLine(" [Caitlyn Thompson] Uh, yes how can I help?");
-                            Console.ReadLine();
-                            Console.WriteLine($" [{name}] Would you mind I asked you a few questions to get a grip of what happened here?");
-                            Console.ReadLine();
-                            Console.WriteLine(" [Caitlyn Thompson] yeah sure, what did you want to know?");
-                            Console.ReadLine();
-                            Console.Clear();
-
-                            do
-                            {
-                                Console.WriteLine(" < What would you like to do?");
-                                Console.WriteLine(" [1] ask what do you know about what happened? [2] comfort her [3] ask if she killed him [4] ask who she thinks killed him [5] leave");
-                                Console.Write(" > ");
-                                selection = Console.ReadLine();
-                                Console.Clear();
-                                switch (selection)
-                                {
-                                    case "1":
-                                        caitlyn_q_1(ref name);
-                                        Console.Clear();
-                                        break;
-                                    case "2":
-                                        caitlyn_q_2(ref name);
-                                        Console.Clear();
-                                        break;
-                                    case "3":
-                                        caitlyn_q_3(ref name);
-                                        evidence_caitlyn = true;
-                                        Console.Clear();
-                                        break;
-                                    case "4":
-                                        caitlyn_q_4(ref name);
-                                        Console.Clear();
-                                        break;
-                                    case "5":
-                                        Console.WriteLine($" [{name}] Thank you, that should do");
-                                        Console.ReadLine();
-                                        Console.Clear();
-                                        leave = true;
-                                        break;
-                                    default:
-                                        invalidOperator = true;
-                                        break;
-                                }
-                                if (invalidOperator == true)
-                                {
-                                    Console.WriteLine(" [Console] < Invalid input");
-
-                                    invalidOperator = false;
-                                    Console.ReadLine();
-                                    Console.Clear();
-                                }
-
-                            } while (leave == false);
-
-                            break;
-                        case "2":
-                        case "Hugo":
-                        case "hugo":
-                            Console.Clear();
-                            Console.WriteLine($" [{name}] Excuse me, Hugo?");
-                            Console.ReadLine();
-                            Console.WriteLine(" [Hugo Tucker] yep how can I help?");
-                            Console.ReadLine();
-                            Console.WriteLine($" [{name}] Would you mind I asked you a few questions to get a grip of what happened here?");
-                            Console.ReadLine();
-                            Console.WriteLine(" [Hugo Tucker] yeah sure, what did you want to know?");
-                            Console.ReadLine();
-                            Console.Clear();
-
-                            do
-                            {
-                                Console.WriteLine(" < What would you like to do?");
-                                Console.WriteLine(" [1] ask what do you know about what happened? [2] ask if he killed him [3] ask who he thinks killed him [4] leave");
-                                Console.Write(" > ");
-                                selection = Console.ReadLine();
-                                Console.Clear();
-                                switch (selection)
-                                {
-                                    case "1":
-                                        hugo_q_1(ref name);
-                                        Console.Clear();
-                                        break;
-                                    case "2":
-                                        hugo_q_2(ref name);
-                                        Console.Clear();
-                                        break;
-                                    case "3":
-                                        hugo_q_3(ref name);
-                                        evidence_hugo = true;
-                                        Console.Clear();
-                                        break;
-                                    case "4":
-                                        Console.WriteLine($" [{name}] Thank you, that should do");
-                                        Console.ReadLine();
-                                        Console.Clear();
-                                        leave = true;
-                                        break;
-                                    default:
-                                        invalidOperator = true;
-                                        break;
-                                }
-                                if (invalidOperator == true)
-                                {
-                                    Console.WriteLine(" [Console] < Invalid input");
-
-                                    invalidOperator = false;
-                                    Console.ReadLine();
-                                    Console.Clear();
-                                }
-
-                            } while (leave == false);
-
-                            break;
-                        case "3":
-                        case "Molly":
-                        case "molly":
-                            Console.Clear();
-                            Console.WriteLine($" [{name}] Excuse me, Molly?");
-                            Console.ReadLine();
-                            Console.WriteLine(" [Molly Tucker] Yes, What do you want?");
-                            Console.ReadLine();
-                            Console.WriteLine($" [{name}] Would you mind I asked you a few questions to get a grip of what happened here?");
-                            Console.ReadLine();
-                            Console.WriteLine(" [Molly Tucker] yeah sure whatever...");
-                            Console.ReadLine();
-                            Console.Clear();
-
-                            do
-                            {
-                                Console.WriteLine(" < What would you like to do?");
-                                Console.WriteLine(" [1] ask what do you know about what happened? [2] comfort her [3] ask if she killed him [4] ask who she thinks killed him [5] leave");
-                                Console.Write(" > ");
-                                selection = Console.ReadLine();
-                                Console.Clear();
-                                switch (selection)
-                                {
-                                    case "1":
-                                        molly_q_1(ref name);
-                                        Console.Clear();
-                                        break;
-                                    case "2":
-                                        molly_q_2(ref name);
-                                        Console.Clear();
-                                        evidence_molly = true;
-                                        break;
-                                    case "3":
-                                        molly_q_3(ref name);
-                                        Console.Clear();
-                                        break;
-                                    case "4":
-                                        molly_q_4(ref name);
-                                        Console.Clear();
-                                        break;
-                                    case "5":
-                                        Console.WriteLine($" [{name}] Thank you, that should do");
-                                        Console.ReadLine();
-                                        Console.Clear();
-                                        leave = true;
-                                        break;
-                                    default:
-                                        invalidOperator = true;
-                                        break;
-                                }
-                                if (invalidOperator == true)
-                                {
-                                    Console.WriteLine(" [Console] < Invalid input");
-
-                                    invalidOperator = false;
-                                    Console.ReadLine();
-                                    Console.Clear();
-                                }
-
-                            } while (leave == false);
-
-                            break;
-                        case "4":
-                        case "Tom":
-                        case "tom":
-                            Console.Clear();
-                            Console.WriteLine($" [{name}] Excuse me, Tom?");
-                            Console.ReadLine();
-                            Console.WriteLine(" [Tom Thompson] Yes, What do you want?");
-                            Console.ReadLine();
-                            Console.WriteLine($" [{name}] Would you mind I asked you a few questions to get a grip of what happened here?");
-                            Console.ReadLine();
-                            Console.WriteLine(" [Tom Thompson] if you must");
-                            Console.ReadLine();
-                            Console.Clear();
-
-                            do
-                            {
-                                Console.WriteLine(" < What would you like to do?");
-                                Console.WriteLine(" [1] ask what do you know about what happened? [2] comfort him [3] ask if he killed him [4] ask who he thinks killed him [5] leave");
-                                Console.Write(" > ");
-                                selection = Console.ReadLine();
-                                Console.Clear();
-                                switch (selection)
-                                {
-                                    case "1":
-                                        tom_q_1(ref name);
-                                        Console.Clear();
-                                        evidence_tom = true;
-                                        break;
-                                    case "2":
-                                        tom_q_2(ref name);
-                                        Console.Clear();
-                                        break;
-                                    case "3":
-                                        tom_q_3(ref name);
-                                        Console.Clear();
-                                        break;
-                                    case "4":
-                                        tom_q_4(ref name);
-                                        Console.Clear();
-                                        break;
-                                    case "5":
-                                        Console.WriteLine($" [{name}] Thank you, that should do");
-                                        Console.ReadLine();
-                                        Console.Clear();
-                                        leave = true;
-                                        break;
-                                    default:
-                                        invalidOperator = true;
-                                        break;
-                                }
-                                if (invalidOperator == true)
-                                {
-                                    Console.WriteLine(" [Console] < Invalid input");
-
-                                    invalidOperator = false;
-                                    Console.ReadLine();
-                                    Console.Clear();
-                                }
-
-                            } while (leave == false);
-                            break;
-
-
-
-                        case "5":
-                        case "Mary":
-                        case "mary":
-                            Console.Clear();
-                            Console.WriteLine($" [{name}] Excuse me, Mary?");
-                            Console.ReadLine();
-                            Console.WriteLine(" [Mary Thompson] Yes, How can i help?");
-                            Console.ReadLine();
-                            Console.WriteLine($" [{name}] Would you mind I asked you a few questions to get a grip of what happened here?");
-                            Console.ReadLine();
-                            Console.WriteLine(" [Mary Thompson] Of course");
-                            Console.ReadLine();
-                            Console.Clear();
-
-                            do
-                            {
-                                Console.WriteLine(" < What would you like to do?");
-                                Console.WriteLine(" [1] ask what do you know about what happened? [2] comfort her [3] ask if she killed him [4] ask who she thinks killed him [5] leave");
-                                Console.Write(" > ");
-                                selection = Console.ReadLine();
-                                Console.Clear();
-                                switch (selection)
-                                {
-                                    case "1":
-                                        mary_q_1(ref name);
-                                        Console.Clear();
-                                        evidence_mary = true;
-                                        break;
-                                    case "2":
-                                        mary_q_2(ref name);
-                                        Console.Clear();
-                                        break;
-                                    case "3":
-                                        mary_q_3(ref name);
-                                        Console.Clear();
-                                        break;
-                                    case "4":
-                                        mary_q_4(ref name);
-                                        Console.Clear();
-                                        break;
-                                    case "5":
-                                        Console.WriteLine($" [{name}] Thank you, that should do");
-                                        Console.ReadLine();
-                                        Console.Clear();
-                                        leave = true;
-                                        break;
-                                    default:
-                                        invalidOperator = true;
-                                        break;
-                                }
-                                if (invalidOperator == true)
-                                {
-                                    Console.WriteLine(" [Console] < Invalid input");
-
-                                    invalidOperator = false;
-                                    Console.ReadLine();
-                                    Console.Clear();
-                                }
-
-                            } while (leave == false);
-
-                            break;
-                        case "6":
-                            Console.WriteLine(" You have left the room");
-                            Console.ReadLine();
-                            leaveroom = true;
-                            Console.Clear();
-                            break;
-
-                        default:
-                            invalidOperator = true;
-                            break;
-                    }
-                    if (invalidOperator == true)
-                    {
-                        Console.WriteLine(" [Console] < Invalid input");
-
-                        invalidOperator = false;
-                        Console.ReadLine();
-                        Console.Clear();
-                    }
+                    living_room();   
                 } while (leaveroom == false);
                 do
                 {
@@ -429,133 +97,273 @@ namespace UntitledBookGame
                     Console.WriteLine("     |                       ||                         |");
                     Console.WriteLine("     |__________________________________________________|");
 
-                    
-                        Console.Write(" > ");
-                        selection = Console.ReadLine();
-                        Console.Clear();
-                        switch (selection)
-                        {
-                            case "1":
-                                gooutside = true;
-                                backtogame = true;
-                                break;
 
-                            case "2":
-                                gotolivingroom = true;
-                                backtogame = true;
-                                break;
+                    Console.Write(" > ");
+                    usr_selection = Console.ReadLine();
+                    Console.Clear();
+                    switch (usr_selection)
+                    {
+                        case "1":
+                            do
+                            {
+                                Outside();
+                            } while (backtomenu == false);
+                            Console.Clear();
+                            break;
 
-                            case "3":
-                                goupstairs = true;
-                                backtogame = true;
-                                break;
+                        case "2":
+                           
+                            backtogame = true;
+                            living_room();
+                            break;
 
-                            case "4":
-                                gotodiningroom = true;
-                                backtogame = true;
-                                break;
+                        case "3":
+                           
+                            backtogame = true;
+                            break;
 
-                            case "5":
+                        case "4":
+                            
+                            backtogame = true;
+                            break;
+
+                        case "5":
+
+                            do
+                            {
+                                backtomenu = false;
+                                Console.Clear();
+                                Console.WriteLine("");   //inventory//
+                                Console.WriteLine("      __________________________________________________");
+                                Console.WriteLine("     |                                                  |");
+                                Console.WriteLine("     |                                                  |");
+                                Console.WriteLine("     |                 Evidence Locker:                 |");
+                                Console.WriteLine("     |         < What would you like to look at:        |");
+                                Console.WriteLine("     |           [1] Caitlyn     [2] Hugo               |");
+                                Console.WriteLine("     |           [3] Molly       [4] Tom                |");
+                                Console.WriteLine("     |           [5] Mary        [6] Mr Penniworth      |");
+                                Console.WriteLine("     |           [7] Found items [8] Gardner            |");
+                                Console.WriteLine("     |           [9] Go Back                            |");
+                                Console.WriteLine("     |                       |\\                         |");
+                                Console.WriteLine("     |                       | \\                        |");
+                                Console.WriteLine("     |                       | |                        |");
+                                Console.WriteLine("     |                       | |                        |");
+                                Console.WriteLine("     |                       ||                         |");
+                                Console.WriteLine("     |                       ||                         |");
+                                Console.WriteLine("     |__________________________________________________|");
 
                                 do
                                 {
-                                    backtomenu = false;
-                                    Console.Clear();
-                                    Console.WriteLine("");   //inventory//
-                                    Console.WriteLine("      __________________________________________________");
-                                    Console.WriteLine("     |                                                  |");
-                                    Console.WriteLine("     |                                                  |");
-                                    Console.WriteLine("     |                 Evidence Locker:                 |");
-                                    Console.WriteLine("     |                                                  |");
-                                    Console.WriteLine("     |         < What would you like to look at:        |");
-                                    Console.WriteLine("     |            [1] Caitlyn    [2] Hugo               |");
-                                    Console.WriteLine("     |            [3] Molly      [4] Tom                |");
-                                    Console.WriteLine("     |            [5] Mary       [6] Mr Penniworth      |");
-                                    Console.WriteLine("     |            [7] Found items[8] Go back            |");
-                                    Console.WriteLine("     |                       |\\                         |");
-                                    Console.WriteLine("     |                       | \\                        |");
-                                    Console.WriteLine("     |                       | |                        |");
-                                    Console.WriteLine("     |                       | |                        |");
-                                    Console.WriteLine("     |                       ||                         |");
-                                    Console.WriteLine("     |                       ||                         |");
-                                    Console.WriteLine("     |__________________________________________________|");
-
-                                    do
+                                    backtoevidence = false;
+                                    Console.Write(" > ");
+                                    usr_selection = Console.ReadLine();
+                                    switch (usr_selection)
                                     {
-                                        backtoevidence = false;
-                                        Console.Write(" > ");
-                                        selection = Console.ReadLine();
-                                        switch (selection)
-                                        {
-                                            case "1":
-                                                if (evidence_caityln_2 == true)
+                                        case "1":
+                                            if (evidence_caityln_2 == true)
+                                            {
+                                                caitlyn_evidence2(); //all evidence found//
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            else if (evidence_caitlyn == true)
+                                            {
+                                                caitlyn_evidence1(); //half of the evidence
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            else
+                                            {
+                                                caitlyn_evidence0(); //no evidence yet//
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            break;
+                                        case "2":
+                                            if (evidence_hugo_2 == true)
+                                            {
+                                                hugo_evidence2(); //all evidence found//
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            else if (evidence_hugo == true)
+                                            {
+                                                hugo_evidence1(); //half of the evidence
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            else
+                                            {
+                                                hugo_evidence0(); //no evidence yet//
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            break;
+                                        case "3":
+                                            if (evidence_molly_2 == true)
+                                            {
+                                                molly_evidence2(); //all evidence found//
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            else if (evidence_molly == true)
+                                            {
+                                                molly_evidence1(); //half of the evidence
+                                                backtoevidence = true; 
+                                                Console.ReadLine();   
+                                                Console.Clear();
+                                            }
+                                            else
+                                            {
+                                                molly_evidence0(); //no evidence yet//
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            break;
+                                        case "4":
+                                            if (evidence_tom_2 == true)
+                                            {
+                                                tom_evidence2(); //all evidence found//
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            else if (evidence_tom == true)
+                                            {
+                                                tom_evidence1(); //half of the evidence
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            else
+                                            {
+                                                tom_evidence0(); //no evidence yet//
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            break;
+                                        case "5":
+                                            if (evidence_mary_2 == true)
+                                            {
+                                                mary_evidence2(); //all evidence found//
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            else if (evidence_mary == true)
+                                            {
+                                                mary_evidence1(); //half of the evidence
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            else
+                                            {
+                                                mary_evidence0(); //no evidence yet//
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            break;
+                                        case "6":
+                                            if(evidence_penniworth_1 == true)
+                                            {
+                                                penniworth_evidence_1();
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            else
+                                            {
+                                                penniworth_evidence_0();
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            break;
+                                        case "7":
+                                            if(hairfound == true && pillsfound == true)
+                                            {
+                                                Console.WriteLine(" Found items ");
+                                                Console.WriteLine(" - Blonde hair on Trevors desk next to pills. Tom, Molly, Hugo and The Gardner all have blonde hair. It could have been planted");
+                                                Console.WriteLine(" - Pills found in skip, similar to Trevors medicine");
+                                            }
+                                            else if(itemsfound == true)
+                                            {
+                                                if(pillsfound == true)
                                                 {
-                                                    caitlyn_evidence2(); //all evidence found//
-                                                    backtoevidence = true;
-                                                    Console.ReadLine();
-                                                    Console.Clear();
-                                                }
-                                                else if (evidence_caitlyn == true)
-                                                {
-                                                    caitlyn_evidence1(); //half of the evidence
-                                                    backtoevidence = true;
-                                                    Console.ReadLine();
-                                                    Console.Clear();
+                                                    Console.WriteLine(" Found items ");
+                                                    Console.WriteLine(" - Pills found in skip, similar to Trevors medicine");
                                                 }
                                                 else
                                                 {
-                                                    caitlyn_evidence0(); //no evidence yet//
-                                                    backtoevidence = true;
-                                                    Console.ReadLine();
-                                                    Console.Clear();
+                                                    Console.WriteLine(" Found items ");
+                                                    Console.WriteLine(" - Blonde hair on Trevors desk next to pills. Tom, Molly, Hugo and The Gardner all have blonde hair. It could have been planted");
                                                 }
-                                                break;
-                                            case "2":
-
-                                                break;
-                                            case "3":
-
-                                                break;
-                                            case "4":
-
-                                                break;
-                                            case "5":
-
-                                                break;
-                                            case "6":
-
-                                                break;
-                                            case "7":
-
-                                                break;
-                                            case "8":
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine(" Found items");
+                                                Console.WriteLine(" - No evidence found yet");
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                                
+                                            }
+                                            backtoevidence = true;
+                                            break;
+                                        case "8":
+                                            if (evidence_gardner_1 == true)
+                                            {
+                                                gardner_evidence_1();
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            else
+                                            {
+                                                gardner_evidence_0();
+                                                backtoevidence = true;
+                                                Console.ReadLine();
+                                                Console.Clear();
+                                            }
+                                            break;
+                                        case "9":
                                             Console.WriteLine("Back to menu");
                                             Console.ReadLine();
                                             Console.Clear();
-                                                backtomenu = true;
+                                            backtomenu = true;
                                             backtoevidence = true;
-                                                break;
+                                            break;
 
-                                        }
-                                    } while (backtoevidence == false);
-                                } while (backtomenu == false);
-                                break;
+                                    }
+                                } while (backtoevidence == false);
+                            } while (backtomenu == false);
+                            break;
 
-                            default:
-                                invalidOperator = true;
-                                break;
-                        }
-                        if (invalidOperator == true)
-                        {
-                            Console.WriteLine(" [Console] < Invalid input");
+                        default:
+                            invalidOperator = true;
+                            break;
+                    }
+                    if (invalidOperator == true)
+                    {
+                        Console.WriteLine(" [Console] < Invalid input");
 
-                            invalidOperator = false;
-                            Console.ReadLine();
-                            Console.Clear();
-                        }
+                        invalidOperator = false;
+                        Console.ReadLine();
+                        Console.Clear();
+                    }
 
 
-                    
+
                 } while (backtogame == false);
 
 
@@ -575,7 +383,30 @@ namespace UntitledBookGame
 
         // other game code, methods, etc.
 
-
+        public static void gardner_evidence_0()
+        {
+            Console.WriteLine("   The Gardner ");
+            Console.WriteLine("------------------");
+            Console.WriteLine(" - You have not found any evidence yet");
+        }
+        public static void gardner_evidence_1()
+        {
+            Console.WriteLine("   The Gardner ");
+            Console.WriteLine("------------------");
+            Console.WriteLine(" - Found Hugo is having an Affair by seeing him sneak in Caitlyns window");
+        }
+        public static void penniworth_evidence_0()
+        {
+            Console.WriteLine("  Will Penniworth ");
+            Console.WriteLine("-------------------");
+            Console.WriteLine(" - You have not found any evidence yet");
+        }
+        public static void penniworth_evidence_1()
+        {
+            Console.WriteLine("  Will Penniworth ");
+            Console.WriteLine("-------------------");
+            Console.WriteLine(" - Saw all the family grow up, Can't believe any of the family would hurt anyone");
+        }
         public static void caitlyn_q_1(ref string name)
         {
             Console.WriteLine($" [{name}] What do you know about what happened?");
@@ -644,7 +475,7 @@ namespace UntitledBookGame
             Console.ReadLine();
             Console.WriteLine($" [{name}] Were you included in his will that was changed recently?");
             Console.ReadLine();
-            Console.WriteLine(" [Hugo Tucker] No, Trevor didn't approve of me at all. He even took Molly out of his will because of me");
+            Console.WriteLine(" [Hugo Tucker] No, Trevor didn't approve of me at all. He even took Molly out of his will because we got married");
             Console.ReadLine();
 
         }
@@ -663,6 +494,33 @@ namespace UntitledBookGame
             Console.WriteLine(" [Hugo Tucker] Well if it was anyone it would have to be Tom, He hated him the most");
             Console.ReadLine();
 
+        }
+
+        public static void hugo_evidence0()
+        {
+            Console.WriteLine("    Hugo Tucker  ");
+            Console.WriteLine("-------------------");
+            Console.WriteLine(" - No evidence has been found");
+            Console.ReadLine();
+        }
+        public static void hugo_evidence1()
+        {
+            Console.WriteLine("    Hugo Tucker  ");
+            Console.WriteLine("-------------------");
+            Console.WriteLine(" - He is married to Molly Thompson");
+            Console.WriteLine(" - Trevor did not approve of him. Removed Molly out of his Will because of his disapproval");
+            Console.WriteLine(" - He believes it was Tom who killed Trevor");
+            Console.ReadLine();
+        }
+        public static void hugo_evidence2()
+        {
+            Console.WriteLine("    Hugo Tucker  ");
+            Console.WriteLine("-------------------");
+            Console.WriteLine(" - He is married to Molly Thompson");
+            Console.WriteLine(" - Trevor did not approve of him. Removed Molly out of his Will because of his disapproval");
+            Console.WriteLine(" - He believes it was Tom who killed Trevor");
+            Console.WriteLine(" - He is having an affair with Caitlyn");
+            Console.WriteLine("");
         }
 
         public static void molly_q_1(ref string name)
@@ -689,6 +547,33 @@ namespace UntitledBookGame
             Console.ReadLine();
             Console.WriteLine(" [Molly Tucker] I hated him but I would never actually hurt him");
             Console.ReadLine();
+        }
+        public static void molly_evidence0()
+        {
+            Console.WriteLine("   Molly Tucker  ");
+            Console.WriteLine("------------------");
+            Console.WriteLine(" - No evidence has been found");
+            Console.ReadLine();
+        }
+        public static void molly_evidence1()
+        {
+            Console.WriteLine("   Molly Tucker  ");
+            Console.WriteLine("------------------");
+            Console.WriteLine(" - She is married to Hugo, Her dad hated her for it");
+            Console.WriteLine(" - She didn't get on with her father");
+            Console.ReadLine();
+
+        }
+        public static void molly_evidence2()
+        {
+            Console.WriteLine("   Molly Tucker  ");
+            Console.WriteLine("------------------");
+            Console.WriteLine(" - She is married to Hugo, Her dad hated her for it");
+            Console.WriteLine(" - She didn't get on with her father");
+            Console.WriteLine(" - She doesn't know about Caitlyn and Hugo");
+            Console.WriteLine(" - She thinks her mother could have killed Trevor");
+            Console.ReadLine();
+
         }
 
         public static void molly_q_4(ref string name)
@@ -735,6 +620,30 @@ namespace UntitledBookGame
             Console.ReadLine();
 
         }
+        public static void tom_evidence0()
+        {
+            Console.WriteLine("   Tom Thompson  ");
+            Console.WriteLine("------------------");
+            Console.WriteLine(" - No evidence has been found");
+            Console.ReadLine();
+        }
+        public static void tom_evidence1()
+        {
+            Console.WriteLine("   Tom Thompson  ");
+            Console.WriteLine("------------------");
+            Console.WriteLine(" - Did not like his father and he didn't like him either");
+            Console.WriteLine(" - Doesn't want to be here");
+            Console.ReadLine();
+        }
+        public static void tom_evidence2()
+        {
+            Console.WriteLine("   Tom Thompson  ");
+            Console.WriteLine("------------------");
+            Console.WriteLine(" - Did not like his father and he didn't like him either");
+            Console.WriteLine(" - Doesn't want to be here");
+            Console.WriteLine(" - Doesn't have any clues who did it, likely because he doesn't care");
+            Console.ReadLine();
+        }
         public static void mary_q_1(ref string name)
         {
             Console.WriteLine($" [{name}] What do you know about what happened?");
@@ -771,9 +680,580 @@ namespace UntitledBookGame
             Console.ReadLine();
 
         }
+        public static void mary_evidence0()
+        {
+            Console.WriteLine("   Mary Thompson  ");
+            Console.WriteLine("------------------");
+            Console.WriteLine(" - No evidence has been found");
+            Console.ReadLine();
+        }
+        public static void mary_evidence1()
+        {
+            Console.WriteLine("   Mary Thompson  ");
+            Console.WriteLine("------------------");
+            Console.WriteLine(" - She was married to Trevor for years and not treated well");
+            Console.WriteLine(" - She was aware that he had multiple affairs");
+            Console.ReadLine();
+        }
+        public static void mary_evidence2()
+        {
+            Console.WriteLine("   Mary Thompson  ");
+            Console.WriteLine("------------------");
+            Console.WriteLine(" - She was married to Trevor for years and not treated well");
+            Console.WriteLine(" - She was aware that he had multiple affairs");
+            Console.WriteLine(" - She didn't want to blame anyone but admited if it was anyone it was Tom or Molly");
+            Console.ReadLine();
+        }
+
+        public static void living_room()
+        {
+
+            Console.WriteLine(" < Who would you like to speak to?");
+            Console.WriteLine(" [1] Caitlyn [2] Hugo [3] Molly [4] Tom [5] Mary [6] Leave room");
+            Console.Write(" > ");
+            usr_selection = Console.ReadLine();
+            leave = false;
+            leaveroom = false;
+            switch (usr_selection)
+            {
+                case "1":
+                case "caitlyn":
+                case "Caitlyn":
+                    Console.Clear();
+                    Console.WriteLine($" [{name}] Excuse me, Caitlyn?");
+                    Console.ReadLine();
+                    Console.WriteLine(" [Caitlyn Thompson] Uh, yes how can I help?");
+                    Console.ReadLine();
+                    Console.WriteLine($" [{name}] Would you mind I asked you a few questions to get a grip of what happened here?");
+                    Console.ReadLine();
+                    Console.WriteLine(" [Caitlyn Thompson] yeah sure, what did you want to know?");
+                    Console.ReadLine();
+                    Console.Clear();
+
+                    do
+                    {
+                        Console.WriteLine(" < What would you like to do?");
+                        Console.WriteLine(" [1] ask what do you know about what happened? [2] comfort her [3] ask if she killed him [4] ask who she thinks killed him [5] leave");
+                        Console.Write(" > ");
+                        usr_selection = Console.ReadLine();
+                        Console.Clear();
+                        switch (usr_selection)
+                        {
+                            case "1":
+                                caitlyn_q_1(ref name);
+                                Console.Clear();
+                                break;
+                            case "2":
+                                caitlyn_q_2(ref name);
+                                Console.Clear();
+                                break;
+                            case "3":
+                                caitlyn_q_3(ref name);
+                                evidence_caitlyn = true;
+                                Console.Clear();
+                                break;
+                            case "4":
+                                caitlyn_q_4(ref name);
+                                Console.Clear();
+                                break;
+                            case "5":
+                                Console.WriteLine($" [{name}] Thank you, that should do");
+                                Console.ReadLine();
+                                Console.Clear();
+                                leave = true;
+                                break;
+                            default:
+                                invalidOperator = true;
+                                break;
+                        }
+                        if (invalidOperator == true)
+                        {
+                            Console.WriteLine(" [Console] < Invalid input");
+
+                            invalidOperator = false;
+                            Console.ReadLine();
+                            Console.Clear();
+                        }
+
+                    } while (leave == false);
+
+                    break;
+                case "2":
+                case "Hugo":
+                case "hugo":
+                    Console.Clear();
+                    Console.WriteLine($" [{name}] Excuse me, Hugo?");
+                    Console.ReadLine();
+                    Console.WriteLine(" [Hugo Tucker] yep how can I help?");
+                    Console.ReadLine();
+                    Console.WriteLine($" [{name}] Would you mind I asked you a few questions to get a grip of what happened here?");
+                    Console.ReadLine();
+                    Console.WriteLine(" [Hugo Tucker] yeah sure, what did you want to know?");
+                    Console.ReadLine();
+                    Console.Clear();
+
+                    do
+                    {
+                        Console.WriteLine(" < What would you like to do?");
+                        Console.WriteLine(" [1] ask what do you know about what happened? [2] ask if he killed him [3] ask who he thinks killed him [4] leave");
+                        Console.Write(" > ");
+                        usr_selection = Console.ReadLine();
+                        Console.Clear();
+                        switch (usr_selection)
+                        {
+                            case "1":
+                                hugo_q_1(ref name);
+                                Console.Clear();
+                                evidence_hugo = true;
+                                break;
+                            case "2":
+                                hugo_q_2(ref name);
+                                Console.Clear();
+                                break;
+                            case "3":
+                                hugo_q_3(ref name);
+                                evidence_hugo = true;
+                                Console.Clear();
+                                break;
+                            case "4":
+                                Console.WriteLine($" [{name}] Thank you, that should do");
+                                Console.ReadLine();
+                                Console.Clear();
+                                leave = true;
+                                break;
+                            default:
+                                invalidOperator = true;
+                                break;
+                        }
+                        if (invalidOperator == true)
+                        {
+                            Console.WriteLine(" [Console] < Invalid input");
+
+                            invalidOperator = false;
+                            Console.ReadLine();
+                            Console.Clear();
+                        }
+
+                    } while (leave == false);
+
+                    break;
+                case "3":
+                case "Molly":
+                case "molly":
+                    Console.Clear();
+                    Console.WriteLine($" [{name}] Excuse me, Molly?");
+                    Console.ReadLine();
+                    Console.WriteLine(" [Molly Tucker] Yes, What do you want?");
+                    Console.ReadLine();
+                    Console.WriteLine($" [{name}] Would you mind I asked you a few questions to get a grip of what happened here?");
+                    Console.ReadLine();
+                    Console.WriteLine(" [Molly Tucker] yeah sure whatever...");
+                    Console.ReadLine();
+                    Console.Clear();
+
+                    do
+                    {
+                        Console.WriteLine(" < What would you like to do?");
+                        Console.WriteLine(" [1] ask what do you know about what happened? [2] comfort her [3] ask if she killed him [4] ask who she thinks killed him [5] leave");
+                        Console.Write(" > ");
+                        usr_selection = Console.ReadLine();
+                        Console.Clear();
+                        switch (usr_selection)
+                        {
+                            case "1":
+                                molly_q_1(ref name);
+                                Console.Clear();
+                                
+                                break;
+                            case "2":
+                                molly_q_2(ref name);
+                                Console.Clear();
+                                evidence_molly = true;
+                                break;
+                            case "3":
+                                molly_q_3(ref name);
+                                Console.Clear();
+                                break;
+                            case "4":
+                                molly_q_4(ref name);
+                                Console.Clear();
+                                evidence_molly_2 = true;
+                                break;
+                            case "5":
+                                Console.WriteLine($" [{name}] Thank you, that should do");
+                                Console.ReadLine();
+                                Console.Clear();
+                                leave = true;
+                                break;
+                            default:
+                                invalidOperator = true;
+                                break;
+                        }
+                        if (invalidOperator == true)
+                        {
+                            Console.WriteLine(" [Console] < Invalid input");
+
+                            invalidOperator = false;
+                            Console.ReadLine();
+                            Console.Clear();
+                        }
+
+                    } while (leave == false);
+
+                    break;
+                case "4":
+                case "Tom":
+                case "tom":
+                    Console.Clear();
+                    Console.WriteLine($" [{name}] Excuse me, Tom?");
+                    Console.ReadLine();
+                    Console.WriteLine(" [Tom Thompson] Yes, What do you want?");
+                    Console.ReadLine();
+                    Console.WriteLine($" [{name}] Would you mind I asked you a few questions to get a grip of what happened here?");
+                    Console.ReadLine();
+                    Console.WriteLine(" [Tom Thompson] if you must");
+                    Console.ReadLine();
+                    Console.Clear();
+
+                    do
+                    {
+                        Console.WriteLine(" < What would you like to do?");
+                        Console.WriteLine(" [1] ask what do you know about what happened? [2] comfort him [3] ask if he killed him [4] ask who he thinks killed him [5] leave");
+                        Console.Write(" > ");
+                        usr_selection = Console.ReadLine();
+                        Console.Clear();
+                        switch (usr_selection)
+                        {
+                            case "1":
+                                tom_q_1(ref name);
+                                Console.Clear();
+                               
+                                break;
+                            case "2":
+                                tom_q_2(ref name);
+                                Console.Clear();
+                                evidence_tom = true;
+                                break;
+                            case "3":
+                                tom_q_3(ref name);
+                                Console.Clear();
+                                break;
+                            case "4":
+                                tom_q_4(ref name);
+                                Console.Clear();
+                                evidence_tom_2 = true;
+                                break;
+                            case "5":
+                                Console.WriteLine($" [{name}] Thank you, that should do");
+                                Console.ReadLine();
+                                Console.Clear();
+                                leave = true;
+                                break;
+                            default:
+                                invalidOperator = true;
+                                break;
+                        }
+                        if (invalidOperator == true)
+                        {
+                            Console.WriteLine(" [Console] < Invalid input");
+
+                            invalidOperator = false;
+                            Console.ReadLine();
+                            Console.Clear();
+                        }
+
+                    } while (leave == false);
+                    break;
 
 
 
+                case "5":
+                case "Mary":
+                case "mary":
+                    Console.Clear();
+                    Console.WriteLine($" [{name}] Excuse me, Mary?");
+                    Console.ReadLine();
+                    Console.WriteLine(" [Mary Thompson] Yes, How can i help?");
+                    Console.ReadLine();
+                    Console.WriteLine($" [{name}] Would you mind I asked you a few questions to get a grip of what happened here?");
+                    Console.ReadLine();
+                    Console.WriteLine(" [Mary Thompson] Of course");
+                    Console.ReadLine();
+                    Console.Clear();
+
+                    do
+                    {
+                        Console.WriteLine(" < What would you like to do?");
+                        Console.WriteLine(" [1] ask what do you know about what happened? [2] comfort her [3] ask if she killed him [4] ask who she thinks killed him [5] leave");
+                        Console.Write(" > ");
+                        usr_selection = Console.ReadLine();
+                        Console.Clear();
+                        switch (usr_selection)
+                        {
+                            case "1":
+                                mary_q_1(ref name);
+                                Console.Clear();
+                                evidence_mary = true;
+                                break;
+                            case "2":
+                                mary_q_2(ref name);
+                                Console.Clear();
+                                break;
+                            case "3":
+                                mary_q_3(ref name);
+                                Console.Clear();
+                                break;
+                            case "4":
+                                mary_q_4(ref name);
+                                Console.Clear();
+                                evidence_molly_2 = true;
+                                break;
+                            case "5":
+                                Console.WriteLine($" [{name}] Thank you, that should do");
+                                Console.ReadLine();
+                                Console.Clear();
+                                leave = true;
+                                break;
+                            default:
+                                invalidOperator = true;
+                                break;
+                        }
+                        if (invalidOperator == true)
+                        {
+                            Console.WriteLine(" [Console] < Invalid input");
+
+                            invalidOperator = false;
+                            Console.ReadLine();
+                            Console.Clear();
+                        }
+
+                    } while (leave == false);
+
+                    break;
+                case "6":
+                    Console.WriteLine(" You have left the room");
+                    Console.ReadLine();
+                    leaveroom = true;
+                    Console.Clear();
+                    break;
+
+                default:
+                    invalidOperator = true;
+                    break;
+            }
+            if (invalidOperator == true)
+            {
+                Console.WriteLine(" [Console] < Invalid input");
+
+                invalidOperator = false;
+                Console.ReadLine();
+                Console.Clear();
+            }
+        } 
+
+        public static void Outside()
+        {
+            Console.WriteLine(" You are Outside");
+            Console.ReadLine();
+            Console.WriteLine(" < What would you like to do?");
+            Console.WriteLine(" [1] Talk to the gardner [2] Have a look around [3] Go back inside");
+            Console.Write(" > ");
+            usr_selection = Console.ReadLine();
+            switch (usr_selection)
+            { 
+                case "1":
+                    gardner();
+                    break;
+                case "2":
+
+                    do
+                    {
+                     outside_looking_around();
+                    } while (goback == false);
+                    break; 
+                case "3":
+                    backtomenu = true;
+                    Console.Clear();
+                    break;
+                default:
+                    invalidOperator = true;
+                    break;
+            }
+            if (invalidOperator == true)
+            {
+                Console.WriteLine(" [Console] < Invalid input");
+
+                invalidOperator = false;
+                Console.ReadLine();
+                Console.Clear();
+            }
+          
+        }
+
+        public static void Upstairs()
+        {
+            Console.WriteLine(" You are Upstairs");
+            Console.ReadLine();
+            Console.WriteLine(" < What would you like to do?");
+            Console.WriteLine(" [1] Look in Caitlyns Room [2] Look in Trevors Study [3] Look in the Master Bedroom [4] Go back");
+            Console.Write(" > ");
+            usr_selection = Console.ReadLine();
+            switch (usr_selection)
+            {
+                case "1":
+                    do
+                    {
+                        Console.WriteLine(" You are in Caitlyns Room");
+                        Console.ReadLine();
+                        Console.WriteLine(" < What would you like to do?");
+                        Console.WriteLine(" [1] Look around [2] Look by the window [3] Go back");
+                        Console.Write(" > ");
+                        usr_selection = Console.ReadLine();
+                        switch (usr_selection)
+                        {
+                            case "1":
+
+                                break;
+                            case "2":
+
+                                break;
+                            case "3":
+
+                                break;
+                        }
+                    } while (goback == false);
+                    break;
+                case "2":
+
+                    do
+                    {
+                        
+                    } while (goback == false);
+                    break;
+                case "3":
+                    do
+                    {
+                        
+                    } while (goback == false);
+                    break;
+                case "4":
+                    backtomenu = true;
+                    Console.Clear();
+                    break;
+                default:
+                    invalidOperator = true;
+                    break;
+            }
+            if (invalidOperator == true)
+            {
+                Console.WriteLine(" [Console] < Invalid input");
+
+                invalidOperator = false;
+                Console.ReadLine();
+                Console.Clear();
+            }
+
+        }
+        public static void dining_room()
+        {
+            Console.WriteLine(" You are in the Dining Room");
+            Console.ReadLine();
+            Console.WriteLine(" < What would you like to do?");
+            Console.WriteLine(" [1] Look around [2] Talk to Mr Penniworth [3] Go back");
+            Console.Write(" > ");
+            usr_selection = Console.ReadLine();
+            switch (usr_selection)
+            {
+                case "1":
+                    do
+                    {
+
+                    } while (goback == false);
+                    break;
+                case "2":
+
+                    do
+                    {
+
+                    } while (goback == false);
+                    break;
+               
+                case "3":
+                    backtomenu = true;
+                    Console.Clear();
+                    break;
+                default:
+                    invalidOperator = true;
+                    break;
+            }
+            if (invalidOperator == true)
+            {
+                Console.WriteLine(" [Console] < Invalid input");
+
+                invalidOperator = false;
+                Console.ReadLine();
+                Console.Clear();
+            }
+        }
+
+        public static void gardner()
+        {
+            Console.Clear();
+            Console.WriteLine($" [{name}] Hello excuse me? Are you Mills Moffit?");
+            Console.ReadLine();
+            Console.WriteLine(" [Mills Moffit] Yep thats me, im the gardner around these parts. What can I do for you detective?");
+            Console.ReadLine();
+            Console.WriteLine($" [{name}] Do you know anything that can help me with my investigation");
+            Console.ReadLine();
+            Console.WriteLine(" [Mills Moffit] Well maybe, Hugo is having an affair with Caitlyn. I see him going into her room late at night through her window when Molly is out of town");
+            Console.ReadLine();
+            Console.WriteLine($" [{name}] Woah thank you, that changes alot of evidence. Thank you for your time");
+            Console.ReadLine();
+            Console.Clear();
+            evidence_gardner_1 = true;
+            evidence_hugo_2 = true;
+            evidence_caityln_2 = true;
+        }
+
+        public static void outside_looking_around()
+        {
+            
+            Console.Clear();
+            Console.WriteLine(" < You are outside where would you like to look?");
+            Console.WriteLine(" [1] In the bushes [2] By the windows [3] In the shed [4] In the rubbish skip [5] Go back");
+            Console.Write(" > ");
+            usr_selection = Console.ReadLine();
+            switch (usr_selection)
+            {
+                case "1":
+                    Console.WriteLine($" [{name}] Hmm nothing here....");
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
+                case "2":
+                    Console.WriteLine($" [{name}] Hmm nothing here....");
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
+                case "3":
+                    Console.WriteLine($" [{name}] Hmm nothing here....");
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
+                case "4":
+                    Console.WriteLine($" [{name}] Whats this?");
+                    Console.ReadLine();
+                    Console.WriteLine($" You have found a full bottle of pills, looks very similar to Trevors medication. Perhaps they were swapped out...");
+                    Console.ReadLine();
+                    Console.Clear();
+                    itemsfound = true;
+                    pillsfound = true;
+                    break;
+                case "5":
+                    goback = true;
+                    break;
+            }
+        }
 
 
         public static void introduction(ref string name)
