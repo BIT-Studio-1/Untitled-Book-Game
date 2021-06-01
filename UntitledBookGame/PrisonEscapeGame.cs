@@ -17,14 +17,21 @@ namespace UntitledBookGame
             Console.WriteLine("Created by Kanen Scheib");
             Console.WriteLine("About: Prison Escape gives players an insight into the life of a prison inmate with the main objective being of course");
             Console.WriteLine("escaping!");
-            Console.WriteLine("Press 'A' to begin...");
+            Console.WriteLine("type 'A' to begin...");
             Console.WriteLine("Or type 'I' for Instructions");
-            Console.WriteLine("------------------------------------");
+            Console.WriteLine("__________________________________");
             Console.WriteLine("     ||      ||      ||      ||");
             Console.WriteLine("     ||      ||, , , ||      ||");
             Console.WriteLine(@"     ||     (||/|/( \||/     ||");
             Console.WriteLine("     ||     ||| _ ' _|||     ||");
             Console.WriteLine("     ||      || o  o ||      ||");
+            Console.WriteLine("     ||     (||   - `||)     ||");
+            Console.WriteLine("     ||      ||   =  ||      ||");
+            Console.WriteLine(@"     ||      ||\____/||      ||");
+            Console.WriteLine("     ||______||)  , (||______||");
+            Console.WriteLine(@"    /||------|| -\_/-||------||\");
+            Console.WriteLine(@"   / ||----__||______||__----||  \");
+            Console.WriteLine("  (_(||)----|  S123-45   |--(||)___)");
             Console.WriteLine("");
             Console.WriteLine("");
             Console.WriteLine("");
@@ -33,14 +40,7 @@ namespace UntitledBookGame
             Console.WriteLine("");
             Console.WriteLine("");
             Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("'E' to exit");
+            Console.WriteLine("'type E' to exit");
             temp = Console.ReadLine();
 
             if (temp == "e")
@@ -72,7 +72,7 @@ namespace UntitledBookGame
                 {
                     case "i":
                         Console.Clear();
-                        Console.WriteLine("Use keys 'W' to move forward, 'D' to move right, 'A' to move left, 'S' to move back");
+                        Console.WriteLine("type keys 'W' to move forward, 'D' to move right, 'A' to move left, 'S' to move back");
                         Console.WriteLine("'I' is used to acces your inventory, this tell you what you are currently holding");
                         Console.WriteLine("A description of your surroundings is given when you enter a new room");
                         Console.WriteLine("");
