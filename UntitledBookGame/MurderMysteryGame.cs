@@ -318,6 +318,7 @@ namespace UntitledBookGame
                                                 Console.Clear();
                                                 
                                             }
+                                            backtoevidence = true;
                                             break;
                                         case "8":
                                             if (evidence_gardner_1 == true)
@@ -1091,7 +1092,108 @@ namespace UntitledBookGame
 
         public static void Upstairs()
         {
+            Console.WriteLine(" You are Upstairs");
+            Console.ReadLine();
+            Console.WriteLine(" < What would you like to do?");
+            Console.WriteLine(" [1] Look in Caitlyns Room [2] Look in Trevors Study [3] Look in the Master Bedroom [4] Go back");
+            Console.Write(" > ");
+            usr_selection = Console.ReadLine();
+            switch (usr_selection)
+            {
+                case "1":
+                    do
+                    {
+                        Console.WriteLine(" You are in Caitlyns Room");
+                        Console.ReadLine();
+                        Console.WriteLine(" < What would you like to do?");
+                        Console.WriteLine(" [1] Look around [2] Look by the window [3] Go back");
+                        Console.Write(" > ");
+                        usr_selection = Console.ReadLine();
+                        switch (usr_selection)
+                        {
+                            case "1":
 
+                                break;
+                            case "2":
+
+                                break;
+                            case "3":
+
+                                break;
+                        }
+                    } while (goback == false);
+                    break;
+                case "2":
+
+                    do
+                    {
+                        
+                    } while (goback == false);
+                    break;
+                case "3":
+                    do
+                    {
+                        
+                    } while (goback == false);
+                    break;
+                case "4":
+                    backtomenu = true;
+                    Console.Clear();
+                    break;
+                default:
+                    invalidOperator = true;
+                    break;
+            }
+            if (invalidOperator == true)
+            {
+                Console.WriteLine(" [Console] < Invalid input");
+
+                invalidOperator = false;
+                Console.ReadLine();
+                Console.Clear();
+            }
+
+        }
+        public static void dining_room()
+        {
+            Console.WriteLine(" You are in the Dining Room");
+            Console.ReadLine();
+            Console.WriteLine(" < What would you like to do?");
+            Console.WriteLine(" [1] Look around [2] Talk to Mr Penniworth [3] Go back");
+            Console.Write(" > ");
+            usr_selection = Console.ReadLine();
+            switch (usr_selection)
+            {
+                case "1":
+                    do
+                    {
+
+                    } while (goback == false);
+                    break;
+                case "2":
+
+                    do
+                    {
+
+                    } while (goback == false);
+                    break;
+               
+                case "3":
+                    backtomenu = true;
+                    Console.Clear();
+                    break;
+                default:
+                    invalidOperator = true;
+                    break;
+            }
+            if (invalidOperator == true)
+            {
+                Console.WriteLine(" [Console] < Invalid input");
+
+                invalidOperator = false;
+                Console.ReadLine();
+                Console.Clear();
+            }
         }
 
         public static void gardner()
