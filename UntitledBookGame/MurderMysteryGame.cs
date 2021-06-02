@@ -356,7 +356,7 @@ namespace UntitledBookGame
                             break;
 
                         case "6":
-
+                            Acuse();
                             break;
 
                         default:
@@ -1467,6 +1467,7 @@ namespace UntitledBookGame
                 Console.Clear();
                 Console.WriteLine(" < Are you sure you're ready to acuse the murderer?");
                 Console.WriteLine("   this can only be done once and if you're wrong you will lose....");
+                Console.WriteLine(" ");
                 Console.WriteLine(" [Y] Yes or [N] No");
                 Console.Write(" > ");
                 usr_selection = Console.ReadLine();
@@ -1477,7 +1478,66 @@ namespace UntitledBookGame
                     case "Yes":
                     case "YES":
                     case "yes":
+                        backtomenu = false;
+                        do
+                        {
+                            Console.Clear();
+                            Console.WriteLine("");   //acuse the murderer//
+                            Console.WriteLine("      __________________________________________________");
+                            Console.WriteLine("     |                                                  |");
+                            Console.WriteLine("     |                                                  |");
+                            Console.WriteLine("     |                                                  |");
+                            Console.WriteLine("     |           < Who would you like to acuse?         |");
+                            Console.WriteLine("     |           [1] Caitlyn     [2] Hugo               |");
+                            Console.WriteLine("     |           [3] Molly       [4] Tom                |");
+                            Console.WriteLine("     |           [5] Mary        [6] Mr Penniworth      |");
+                            Console.WriteLine("     |           [7] Gardner     [8] Go Back            |");
+                            Console.WriteLine("     |                                                  |");
+                            Console.WriteLine("     |                       |\\                         |");
+                            Console.WriteLine("     |                       | \\                        |");
+                            Console.WriteLine("     |                       | |                        |");
+                            Console.WriteLine("     |                       | |                        |");
+                            Console.WriteLine("     |                       ||                         |");
+                            Console.WriteLine("     |                       ||                         |");
+                            Console.WriteLine("     |__________________________________________________|");
+                            Console.Write(" > ");
+                            usr_selection = Console.ReadLine();
+                            switch (usr_selection)
+                            {
+                                case "1":
 
+                                    Win();
+                                    break;
+                                case "2":
+
+                                    Lose();
+                                    break;
+                                case "3":
+
+                                    Lose();
+                                    break;
+                                case "4":
+
+                                    Lose();
+                                    break;
+                                case "5":
+
+                                    Lose();
+                                    break;
+                                case "6":
+
+                                    Lose();
+                                    break;
+                                case "7":
+
+                                    Lose();
+                                    break;
+                                case "8":
+                                    backtomenu = true;
+                                    Console.Clear();
+                                    break;
+                            }
+                        } while (backtomenu == false);
                         break;
                     case "n":
                     case "N":
@@ -1502,5 +1562,49 @@ namespace UntitledBookGame
             } while (backtomenu == false);
         }
 
+        public static void Win()
+        {
+            Console.Clear();
+            Console.WriteLine("");   //acuse the murderer//
+            Console.WriteLine("      __________________________________________________");
+            Console.WriteLine("     |                                                  |");
+            Console.WriteLine("     |                                                  |");
+            Console.WriteLine("     |                                                  |");
+            Console.WriteLine("     |                   YOU HAVE WON                   |");
+            Console.WriteLine("     |                                                  |");
+            Console.WriteLine("     |                                                  |");
+            Console.WriteLine("     |       You have selected the correct person       |");
+            Console.WriteLine("     |   You have solved the crime, your welcome back   |");
+            Console.WriteLine("     |               any time detective....             |");
+            Console.WriteLine("     |                       |\\                         |");
+            Console.WriteLine("     |                       | \\                        |");
+            Console.WriteLine("     |                       | |                        |");
+            Console.WriteLine("     |                       | |                        |");
+            Console.WriteLine("     |                       ||                         |");
+            Console.WriteLine("     |                       ||                         |");
+            Console.WriteLine("     |__________________________________________________|");
+        }
+        public static void Lose()
+        {
+            Console.Clear();
+            Console.WriteLine("");   //acuse the murderer//
+            Console.WriteLine("      __________________________________________________");
+            Console.WriteLine("     |                                                  |");
+            Console.WriteLine("     |                                                  |");
+            Console.WriteLine("     |                                                  |");
+            Console.WriteLine("     |                   YOU HAVE LOST                  |");
+            Console.WriteLine("     |                                                  |");
+            Console.WriteLine("     |                                                  |");
+            Console.WriteLine("     |    You have selected the wrong person and the    |");
+            Console.WriteLine("     | real murderer still walks... try again next time |");
+            Console.WriteLine("     |                                                  |");
+            Console.WriteLine("     |                       |\\                         |");
+            Console.WriteLine("     |                       | \\                        |");
+            Console.WriteLine("     |                       | |                        |");
+            Console.WriteLine("     |                       | |                        |");
+            Console.WriteLine("     |                       ||                         |");
+            Console.WriteLine("     |                       ||                         |");
+            Console.WriteLine("     |__________________________________________________|");
+        }
     }
 }
