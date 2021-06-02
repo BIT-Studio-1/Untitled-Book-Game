@@ -87,7 +87,7 @@ namespace UntitledBookGame
                     Console.WriteLine("     |                                                  |");
                     Console.WriteLine("     |    [1] Go Outside       [2] Go to Living room    |");
                     Console.WriteLine("     |    [3] Go Upstairs      [4] Go To Dining Room    |");
-                    Console.WriteLine("     |    [5] Check evidence                            |");
+                    Console.WriteLine("     |    [5] Check evidence   [6] Acuse the Murderer   |");
                     Console.WriteLine("     |                                                  |");
                     Console.WriteLine("     |                       |\\                         |");
                     Console.WriteLine("     |                       | \\                        |");
@@ -353,6 +353,10 @@ namespace UntitledBookGame
                                     }
                                 } while (backtoevidence == false);
                             } while (backtomenu == false);
+                            break;
+
+                        case "6":
+
                             break;
 
                         default:
@@ -1375,8 +1379,20 @@ namespace UntitledBookGame
                 case "5":
                     goback = true;
                     break;
+                default:
+                    invalidOperator = true;
+                    break;
+            }
+            if (invalidOperator == true)
+            {
+                Console.WriteLine(" [Console] < Invalid input");
+
+                invalidOperator = false;
+                Console.ReadLine();
+                Console.Clear();
             }
         }
+        
 
 
         public static void introduction(ref string name)
@@ -1444,7 +1460,47 @@ namespace UntitledBookGame
             Console.Clear();
         }
 
+        public static void Acuse()
+        {
+            do
+            {
+                Console.Clear();
+                Console.WriteLine(" < Are you sure you're ready to acuse the murderer?");
+                Console.WriteLine("   this can only be done once and if you're wrong you will lose....");
+                Console.WriteLine(" [Y] Yes or [N] No");
+                Console.Write(" > ");
+                usr_selection = Console.ReadLine();
+                switch (usr_selection)
+                {
+                    case "y":
+                    case "Y":
+                    case "Yes":
+                    case "YES":
+                    case "yes":
 
+                        break;
+                    case "n":
+                    case "N":
+                    case "NO":
+                    case "no":
+                    case "No":
+                        backtomenu = true;
+                        break;
+                    default:
+                        invalidOperator = true;
+                        break;
+                }
+                if (invalidOperator == true)
+                {
+                    Console.WriteLine(" [Console] < Invalid input");
+
+                    invalidOperator = false;
+                    Console.ReadLine();
+                    Console.Clear();
+                }
+            
+            } while (backtomenu == false);
+        }
 
     }
 }
