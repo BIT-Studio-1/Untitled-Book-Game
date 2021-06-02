@@ -1101,11 +1101,14 @@ namespace UntitledBookGame
             Console.WriteLine(" [1] Look in Caitlyns Room [2] Look in Trevors Study [3] Look in the Master Bedroom [4] Go back");
             Console.Write(" > ");
             usr_selection = Console.ReadLine();
+            Console.Clear();
+            
             switch (usr_selection)
             {
                 case "1":
                     do
                     {
+                        goback1 = false;
                         Console.WriteLine(" You are in Caitlyns Room");
                         Console.ReadLine();
                         Console.WriteLine(" < What would you like to do?");
@@ -1121,7 +1124,7 @@ namespace UntitledBookGame
                                 Console.WriteLine(" You should check somewhere else...");
                                 Console.ReadLine();
                                 Console.Clear();
-                                goback1 = true;
+                               
                                 break;
                             case "2":
                                 Console.WriteLine(" You walk over to the window");
@@ -1129,26 +1132,122 @@ namespace UntitledBookGame
                                 Console.WriteLine(" You find muddy fronts on the window sill, facing inwards from outside, someone has come in through here");
                                 Console.ReadLine();
                                 Console.Clear();
-                                goback1 = true;
+                                
                                 break;
                             case "3":
                                 goback1 = true;
                                 break;
+                            default:
+                                invalidOperator = true;
+                                break;
                         }
+                        if (invalidOperator == true)
+                        {
+                            Console.WriteLine(" [Console] < Invalid input");
+
+                            invalidOperator = false;
+                            Console.ReadLine();
+                            Console.Clear();
+                        }
+                    
                     } while (goback1 == false);
                     break;
                 case "2":
 
                     do
                     {
-                        
-                    } while (goback == false);
+                        goback1 = false;
+                        Console.WriteLine(" You are in Trevors study");
+                        Console.ReadLine();
+                        Console.WriteLine(" < What would you like to do?");
+                        Console.WriteLine(" [1] Look around [2] Look by the desk [3] Go back");
+                        Console.Write(" > ");
+                        usr_selection = Console.ReadLine();
+                        Console.Clear();
+                        switch (usr_selection)
+                        {
+                            case "1":
+                                Console.WriteLine(" You look around Trevors Study for evidence");
+                                Console.ReadLine();
+                                Console.WriteLine(" The room is messy, papers and files everywhere");
+                                Console.WriteLine(" You can't find anything of use maybe you should check somewhere else...");
+                                Console.ReadLine();
+                                Console.Clear();
+                                
+                                break;
+                            case "2":
+                                Console.WriteLine(" You walk over to the desk");
+                                Console.ReadLine();
+                                Console.WriteLine(" You find a container of pills spilt on the desk, just regular painkillers");
+                                Console.ReadLine();
+                                Console.Clear();
+                                
+                                break;
+                            case "3":
+                                goback1 = true;
+                                break;
+                            default:
+                                invalidOperator = true;
+                                break;
+                        }
+                        if (invalidOperator == true)
+                        {
+                            Console.WriteLine(" [Console] < Invalid input");
+
+                            invalidOperator = false;
+                            Console.ReadLine();
+                            Console.Clear();
+                        }
+
+                    } while (goback1 == false);
+            
                     break;
                 case "3":
                     do
                     {
-                        
-                    } while (goback == false);
+                        goback1 = false;
+                        Console.WriteLine(" You are in the Master Bedroom");
+                        Console.ReadLine();
+                        Console.WriteLine(" < What would you like to do?");
+                        Console.WriteLine(" [1] Look around [2] Look by the bed [3] Go back");
+                        Console.Write(" > ");
+                        usr_selection = Console.ReadLine();
+                        switch (usr_selection)
+                        {
+                            case "1":
+                                Console.WriteLine(" You look around the room for evidence");
+                                Console.ReadLine();
+                                Console.WriteLine(" The room is spotless, no one must be in here often");
+                                Console.WriteLine(" You should check somewhere else...");
+                                Console.ReadLine();
+                                Console.Clear();
+                                
+                                break;
+                            case "2":
+                                Console.WriteLine(" You walk over to the bed");
+                                Console.ReadLine();
+                                Console.WriteLine(" You find one side of the bed has been used recently, the other hasn't. Mary and Trevor must have had issues recently");
+                                Console.ReadLine();
+                                Console.Clear();
+                                                      
+                                break;
+                            case "3":
+                                goback1 = true;
+                                break;
+                            default:
+                                invalidOperator = true;
+                                break;
+                        }
+                        if (invalidOperator == true)
+                        {
+                            Console.WriteLine(" [Console] < Invalid input");
+
+                            invalidOperator = false;
+                            Console.ReadLine();
+                            Console.Clear();
+                        }
+
+                    } while (goback1 == false);
                     break;
                 case "4":
                     backtomenu = true;
