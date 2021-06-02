@@ -126,7 +126,10 @@ namespace UntitledBookGame
                             break;
 
                         case "4":
-                            
+                            do
+                            {
+                                dining_room();
+                            } while (backtomenu == false);
                             
                             break;
 
@@ -409,6 +412,7 @@ namespace UntitledBookGame
             Console.WriteLine("  Will Penniworth ");
             Console.WriteLine("-------------------");
             Console.WriteLine(" - Saw all the family grow up, Can't believe any of the family would hurt anyone");
+            Console.WriteLine(" - Mentioned Caitlyn was in charge of Trevors medication");
         }
         public static void caitlyn_q_1(ref string name)
         {
@@ -1278,17 +1282,23 @@ namespace UntitledBookGame
             switch (usr_selection)
             {
                 case "1":
-                    do
-                    {
-
-                    } while (goback == false);
+                    Console.WriteLine(" You look around the Dining room, theres nothing of interest here...");
+                    Console.ReadLine();
+                    Console.Clear();
                     break;
                 case "2":
-
-                    do
-                    {
-
-                    } while (goback == false);
+                    Console.WriteLine($" [{name}] Mr Penniworth? A word if you don't mind?");
+                    Console.ReadLine();
+                    Console.WriteLine($" [Mr Penniworth] Of course master {name} what can I help with?");
+                    Console.ReadLine();
+                    Console.WriteLine($" [{name}] You would have seen the most of them growing up, Do you believe any of the children would be responsible for this murder?");
+                    Console.ReadLine();
+                    Console.WriteLine(" [Mr Penniworth] No of course not, these kids would never. Caitlyn especially she cared for her father the most, she was in charge of his medication");
+                    Console.ReadLine();
+                    Console.WriteLine($" [{name}] Thank you for your time");
+                    evidence_penniworth_1 = true;
+                    Console.Clear();
+                   
                     break;
                
                 case "3":
