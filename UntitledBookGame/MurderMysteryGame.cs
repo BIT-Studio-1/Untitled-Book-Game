@@ -6,388 +6,391 @@ namespace UntitledBookGame
     {
         static string temp, play, name, usr_selection;
         static bool playing = true, invalidOperator = false, leave = false, backtogame = false, leaveroom = false, evidence_caitlyn = false, evidence_caityln_2 = false, evidence_gardner_0 = false, evidence_hugo = false, evidence_molly = false, evidence_tom = false, evidence_penniworth = false, evidence_mary = false;
-      static bool backtoevidence = false, backtomenu = false, pillsfound = false, itemsfound = false, hairfound = false, goback = false, goback1 = false;
+      static bool backtoevidence = false, backtomenu = false, pillsfound = false, itemsfound = false, hairfound = false, goback = false, goback1 = false, wongame = false;
         static bool evidence_hugo_2 = false, evidence_molly_2 = false, evidence_tom_2 = false, evidence_mary_2 = false, evidence_gardner_1 = false, evidence_penniworth_1 = false, gobackinside = false;
         public static void RunMurderMysteryGame()
         {
-            
+
             // put your games entry code here
-
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine("");
-            Console.WriteLine("      __________________________________________________");
-            Console.WriteLine("     |                       __   _   __   __           |");
-            Console.WriteLine("     |          |\\  /| |  | |__| | \\ |__  |__|          |");
-            Console.WriteLine("     |          | \\/ | |__| |  \\ |_/ |__  |  \\          |");
-            Console.WriteLine("     |                                                  |");
-            Console.WriteLine("     |                     Book II                      |");
-            Console.WriteLine("     |               Press enter to begin               |");
-            Console.WriteLine("     |            please play in full screen            |");
-            Console.WriteLine("     |                                                  |");
-            Console.WriteLine("     |                                                  |");
-            Console.WriteLine("     |                       |\\                         |");
-            Console.WriteLine("     |                       | \\                        |");
-            Console.WriteLine("     |                       | |                        |");
-            Console.WriteLine("     |                       | |                        |");
-            Console.WriteLine("     |                       ||                         |");
-            Console.WriteLine("     |                       ||                         |");
-            Console.WriteLine("     |__________________________________________________|");
-            Console.WriteLine(" ");
-            Console.ReadLine();
-            Console.Clear();
-
-            Console.WriteLine("");
-            Console.WriteLine("      __________________________________________________");
-            Console.WriteLine("     |                       __   _   __   __           |");
-            Console.WriteLine("     |          |\\  /| |  | |__| | \\ |__  |__|          |");
-            Console.WriteLine("     |          | \\/ | |__| |  \\ |_/ |__  |  \\          |");
-            Console.WriteLine("     |                                                  |");
-            Console.WriteLine("     |                                                  |");
-            Console.WriteLine("     |             Would you like to play?              |");
-            Console.WriteLine("     |                                                  |");
-            Console.WriteLine("     |                 Y     or      N                  |");
-            Console.WriteLine("     |                                                  |");
-            Console.WriteLine("     |                       |\\                         |");
-            Console.WriteLine("     |                       | \\                        |");
-            Console.WriteLine("     |                       | |                        |");
-            Console.WriteLine("     |                       | |                        |");
-            Console.WriteLine("     |                       ||                         |");
-            Console.WriteLine("     |                       ||                         |");
-            Console.WriteLine("     |__________________________________________________|");
-
-            Console.Write(" > ");
-            play = Console.ReadLine();
-            Console.Clear();
-            if (play == "y" || play == "yes" || play == "Y")
+            do
             {
-                Console.WriteLine(" < Enter your name ");
-                Console.Write(" > ");
-                name = Console.ReadLine();
-                Console.Clear();
-                introduction(ref name);
 
-                Console.WriteLine(" You are in the living room");
+
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("");
+                Console.WriteLine("      __________________________________________________");
+                Console.WriteLine("     |                       __   _   __   __           |");
+                Console.WriteLine("     |          |\\  /| |  | |__| | \\ |__  |__|          |");
+                Console.WriteLine("     |          | \\/ | |__| |  \\ |_/ |__  |  \\          |");
+                Console.WriteLine("     |                                                  |");
+                Console.WriteLine("     |                     Book II                      |");
+                Console.WriteLine("     |               Press enter to begin               |");
+                Console.WriteLine("     |            please play in full screen            |");
+                Console.WriteLine("     |                                                  |");
+                Console.WriteLine("     |                                                  |");
+                Console.WriteLine("     |                       |\\                         |");
+                Console.WriteLine("     |                       | \\                        |");
+                Console.WriteLine("     |                       | |                        |");
+                Console.WriteLine("     |                       | |                        |");
+                Console.WriteLine("     |                       ||                         |");
+                Console.WriteLine("     |                       ||                         |");
+                Console.WriteLine("     |__________________________________________________|");
+                Console.WriteLine(" ");
                 Console.ReadLine();
+                Console.Clear();
 
-                do
+                Console.WriteLine("");
+                Console.WriteLine("      __________________________________________________");
+                Console.WriteLine("     |                       __   _   __   __           |");
+                Console.WriteLine("     |          |\\  /| |  | |__| | \\ |__  |__|          |");
+                Console.WriteLine("     |          | \\/ | |__| |  \\ |_/ |__  |  \\          |");
+                Console.WriteLine("     |                                                  |");
+                Console.WriteLine("     |                                                  |");
+                Console.WriteLine("     |             Would you like to play?              |");
+                Console.WriteLine("     |                                                  |");
+                Console.WriteLine("     |                 Y     or      N                  |");
+                Console.WriteLine("     |                                                  |");
+                Console.WriteLine("     |                       |\\                         |");
+                Console.WriteLine("     |                       | \\                        |");
+                Console.WriteLine("     |                       | |                        |");
+                Console.WriteLine("     |                       | |                        |");
+                Console.WriteLine("     |                       ||                         |");
+                Console.WriteLine("     |                       ||                         |");
+                Console.WriteLine("     |__________________________________________________|");
+
+                Console.Write(" > ");
+                play = Console.ReadLine();
+                Console.Clear();
+                if (play == "y" || play == "yes" || play == "Y")
                 {
-                    living_room();   
-                } while (leaveroom == false);
-                do
-                {
-
-                    backtogame = false;
-                    Console.WriteLine("");  //pause menu//
-                    Console.WriteLine("      __________________________________________________");
-                    Console.WriteLine("     |                                                  |");
-                    Console.WriteLine("     |                                                  |");
-                    Console.WriteLine("     |            What would you like to do?            |");
-                    Console.WriteLine("     |                                                  |");
-                    Console.WriteLine("     |                                                  |");
-                    Console.WriteLine("     |    [1] Go Outside       [2] Go to Living room    |");
-                    Console.WriteLine("     |    [3] Go Upstairs      [4] Go To Dining Room    |");
-                    Console.WriteLine("     |    [5] Check evidence   [6] Acuse the Murderer   |");
-                    Console.WriteLine("     |                                                  |");
-                    Console.WriteLine("     |                       |\\                         |");
-                    Console.WriteLine("     |                       | \\                        |");
-                    Console.WriteLine("     |                       | |                        |");
-                    Console.WriteLine("     |                       | |                        |");
-                    Console.WriteLine("     |                       ||                         |");
-                    Console.WriteLine("     |                       ||                         |");
-                    Console.WriteLine("     |__________________________________________________|");
-
-
+                    Console.WriteLine(" < Enter your name ");
                     Console.Write(" > ");
-                    usr_selection = Console.ReadLine();
+                    name = Console.ReadLine();
                     Console.Clear();
-                    switch (usr_selection)
+                    introduction(ref name);
+
+                    Console.WriteLine(" You are in the living room");
+                    Console.ReadLine();
+
+                    do
                     {
-                        case "1":
-                            do
-                            {
-                                Outside();
-                            } while (backtomenu == false);
-                            Console.Clear();
-                            break;
+                        living_room();
+                    } while (leaveroom == false);
+                    do
+                    {
 
-                        case "2":
-                           
-                           
-                            living_room();
-                            break;
+                        backtogame = false;
+                        Console.WriteLine("");  //pause menu//
+                        Console.WriteLine("      __________________________________________________");
+                        Console.WriteLine("     |                                                  |");
+                        Console.WriteLine("     |                                                  |");
+                        Console.WriteLine("     |            What would you like to do?            |");
+                        Console.WriteLine("     |                                                  |");
+                        Console.WriteLine("     |                                                  |");
+                        Console.WriteLine("     |    [1] Go Outside       [2] Go to Living room    |");
+                        Console.WriteLine("     |    [3] Go Upstairs      [4] Go To Dining Room    |");
+                        Console.WriteLine("     |    [5] Check evidence   [6] Acuse the Murderer   |");
+                        Console.WriteLine("     |                                                  |");
+                        Console.WriteLine("     |                       |\\                         |");
+                        Console.WriteLine("     |                       | \\                        |");
+                        Console.WriteLine("     |                       | |                        |");
+                        Console.WriteLine("     |                       | |                        |");
+                        Console.WriteLine("     |                       ||                         |");
+                        Console.WriteLine("     |                       ||                         |");
+                        Console.WriteLine("     |__________________________________________________|");
 
-                        case "3":
-                            do
-                            {
-                                Upstairs();
-                            } while (backtomenu == false);
-                           
-                            break;
 
-                        case "4":
-                            do
-                            {
-                                dining_room();
-                            } while (backtomenu == false);
-                            
-                            break;
-
-                        case "5":
-
-                            do
-                            {
-                                backtomenu = false;
+                        Console.Write(" > ");
+                        usr_selection = Console.ReadLine();
+                        Console.Clear();
+                        switch (usr_selection)
+                        {
+                            case "1":
+                                do
+                                {
+                                    Outside();
+                                } while (backtomenu == false);
                                 Console.Clear();
-                                Console.WriteLine("");   //inventory//
-                                Console.WriteLine("      __________________________________________________");
-                                Console.WriteLine("     |                                                  |");
-                                Console.WriteLine("     |                                                  |");
-                                Console.WriteLine("     |                 Evidence Locker:                 |");
-                                Console.WriteLine("     |         < What would you like to look at:        |");
-                                Console.WriteLine("     |           [1] Caitlyn     [2] Hugo               |");
-                                Console.WriteLine("     |           [3] Molly       [4] Tom                |");
-                                Console.WriteLine("     |           [5] Mary        [6] Mr Penniworth      |");
-                                Console.WriteLine("     |           [7] Found items [8] Gardner            |");
-                                Console.WriteLine("     |           [9] Go Back                            |");
-                                Console.WriteLine("     |                       |\\                         |");
-                                Console.WriteLine("     |                       | \\                        |");
-                                Console.WriteLine("     |                       | |                        |");
-                                Console.WriteLine("     |                       | |                        |");
-                                Console.WriteLine("     |                       ||                         |");
-                                Console.WriteLine("     |                       ||                         |");
-                                Console.WriteLine("     |__________________________________________________|");
+                                break;
+
+                            case "2":
+
+
+                                living_room();
+                                break;
+
+                            case "3":
+                                do
+                                {
+                                    Upstairs();
+                                } while (backtomenu == false);
+
+                                break;
+
+                            case "4":
+                                do
+                                {
+                                    dining_room();
+                                } while (backtomenu == false);
+
+                                break;
+
+                            case "5":
 
                                 do
                                 {
-                                    backtoevidence = false;
-                                    Console.Write(" > ");
-                                    usr_selection = Console.ReadLine();
-                                    switch (usr_selection)
+                                    backtomenu = false;
+                                    Console.Clear();
+                                    Console.WriteLine("");   //inventory//
+                                    Console.WriteLine("      __________________________________________________");
+                                    Console.WriteLine("     |                                                  |");
+                                    Console.WriteLine("     |                                                  |");
+                                    Console.WriteLine("     |                 Evidence Locker:                 |");
+                                    Console.WriteLine("     |         < What would you like to look at:        |");
+                                    Console.WriteLine("     |           [1] Caitlyn     [2] Hugo               |");
+                                    Console.WriteLine("     |           [3] Molly       [4] Tom                |");
+                                    Console.WriteLine("     |           [5] Mary        [6] Mr Penniworth      |");
+                                    Console.WriteLine("     |           [7] Found items [8] Gardner            |");
+                                    Console.WriteLine("     |           [9] Go Back                            |");
+                                    Console.WriteLine("     |                       |\\                         |");
+                                    Console.WriteLine("     |                       | \\                        |");
+                                    Console.WriteLine("     |                       | |                        |");
+                                    Console.WriteLine("     |                       | |                        |");
+                                    Console.WriteLine("     |                       ||                         |");
+                                    Console.WriteLine("     |                       ||                         |");
+                                    Console.WriteLine("     |__________________________________________________|");
+
+                                    do
                                     {
-                                        case "1":
-                                            if (evidence_caityln_2 == true)
-                                            {
-                                                caitlyn_evidence2(); //all evidence found//
-                                                backtoevidence = true;
-                                                Console.ReadLine();
-                                                Console.Clear();
-                                            }
-                                            else if (evidence_caitlyn == true)
-                                            {
-                                                caitlyn_evidence1(); //half of the evidence
-                                                backtoevidence = true;
-                                                Console.ReadLine();
-                                                Console.Clear();
-                                            }
-                                            else
-                                            {
-                                                caitlyn_evidence0(); //no evidence yet//
-                                                backtoevidence = true;
-                                                Console.ReadLine();
-                                                Console.Clear();
-                                            }
-                                            break;
-                                        case "2":
-                                            if (evidence_hugo_2 == true)
-                                            {
-                                                hugo_evidence2(); //all evidence found//
-                                                backtoevidence = true;
-                                                Console.ReadLine();
-                                                Console.Clear();
-                                            }
-                                            else if (evidence_hugo == true)
-                                            {
-                                                hugo_evidence1(); //half of the evidence
-                                                backtoevidence = true;
-                                                Console.ReadLine();
-                                                Console.Clear();
-                                            }
-                                            else
-                                            {
-                                                hugo_evidence0(); //no evidence yet//
-                                                backtoevidence = true;
-                                                Console.ReadLine();
-                                                Console.Clear();
-                                            }
-                                            break;
-                                        case "3":
-                                            if (evidence_molly_2 == true)
-                                            {
-                                                molly_evidence2(); //all evidence found//
-                                                backtoevidence = true;
-                                                Console.ReadLine();
-                                                Console.Clear();
-                                            }
-                                            else if (evidence_molly == true)
-                                            {
-                                                molly_evidence1(); //half of the evidence
-                                                backtoevidence = true; 
-                                                Console.ReadLine();   
-                                                Console.Clear();
-                                            }
-                                            else
-                                            {
-                                                molly_evidence0(); //no evidence yet//
-                                                backtoevidence = true;
-                                                Console.ReadLine();
-                                                Console.Clear();
-                                            }
-                                            break;
-                                        case "4":
-                                            if (evidence_tom_2 == true)
-                                            {
-                                                tom_evidence2(); //all evidence found//
-                                                backtoevidence = true;
-                                                Console.ReadLine();
-                                                Console.Clear();
-                                            }
-                                            else if (evidence_tom == true)
-                                            {
-                                                tom_evidence1(); //half of the evidence
-                                                backtoevidence = true;
-                                                Console.ReadLine();
-                                                Console.Clear();
-                                            }
-                                            else
-                                            {
-                                                tom_evidence0(); //no evidence yet//
-                                                backtoevidence = true;
-                                                Console.ReadLine();
-                                                Console.Clear();
-                                            }
-                                            break;
-                                        case "5":
-                                            if (evidence_mary_2 == true)
-                                            {
-                                                mary_evidence2(); //all evidence found//
-                                                backtoevidence = true;
-                                                Console.ReadLine();
-                                                Console.Clear();
-                                            }
-                                            else if (evidence_mary == true)
-                                            {
-                                                mary_evidence1(); //half of the evidence
-                                                backtoevidence = true;
-                                                Console.ReadLine();
-                                                Console.Clear();
-                                            }
-                                            else
-                                            {
-                                                mary_evidence0(); //no evidence yet//
-                                                backtoevidence = true;
-                                                Console.ReadLine();
-                                                Console.Clear();
-                                            }
-                                            break;
-                                        case "6":
-                                            if(evidence_penniworth_1 == true)
-                                            {
-                                                penniworth_evidence_1();
-                                                backtoevidence = true;
-                                                Console.ReadLine();
-                                                Console.Clear();
-                                            }
-                                            else
-                                            {
-                                                penniworth_evidence_0();
-                                                backtoevidence = true;
-                                                Console.ReadLine();
-                                                Console.Clear();
-                                            }
-                                            break;
-                                        case "7":
-                                            if(hairfound == true && pillsfound == true)
-                                            {
-                                                Console.WriteLine(" Found items ");
-                                                Console.WriteLine(" - Blonde hair on Trevors desk next to pills. Tom, Molly, Hugo and The Gardner all have blonde hair. It could have been planted");
-                                                Console.WriteLine(" - Pills found in skip, similar to Trevors medicine");
-                                            }
-                                            else if(itemsfound == true)
-                                            {
-                                                if(pillsfound == true)
+                                        backtoevidence = false;
+                                        Console.Write(" > ");
+                                        usr_selection = Console.ReadLine();
+                                        switch (usr_selection)
+                                        {
+                                            case "1":
+                                                if (evidence_caityln_2 == true)
                                                 {
-                                                    Console.WriteLine(" Found items ");
-                                                    Console.WriteLine(" - Pills found in skip, similar to Trevors medicine");
+                                                    caitlyn_evidence2(); //all evidence found//
+                                                    backtoevidence = true;
+                                                    Console.ReadLine();
+                                                    Console.Clear();
+                                                }
+                                                else if (evidence_caitlyn == true)
+                                                {
+                                                    caitlyn_evidence1(); //half of the evidence
+                                                    backtoevidence = true;
+                                                    Console.ReadLine();
+                                                    Console.Clear();
                                                 }
                                                 else
                                                 {
+                                                    caitlyn_evidence0(); //no evidence yet//
+                                                    backtoevidence = true;
+                                                    Console.ReadLine();
+                                                    Console.Clear();
+                                                }
+                                                break;
+                                            case "2":
+                                                if (evidence_hugo_2 == true)
+                                                {
+                                                    hugo_evidence2(); //all evidence found//
+                                                    backtoevidence = true;
+                                                    Console.ReadLine();
+                                                    Console.Clear();
+                                                }
+                                                else if (evidence_hugo == true)
+                                                {
+                                                    hugo_evidence1(); //half of the evidence
+                                                    backtoevidence = true;
+                                                    Console.ReadLine();
+                                                    Console.Clear();
+                                                }
+                                                else
+                                                {
+                                                    hugo_evidence0(); //no evidence yet//
+                                                    backtoevidence = true;
+                                                    Console.ReadLine();
+                                                    Console.Clear();
+                                                }
+                                                break;
+                                            case "3":
+                                                if (evidence_molly_2 == true)
+                                                {
+                                                    molly_evidence2(); //all evidence found//
+                                                    backtoevidence = true;
+                                                    Console.ReadLine();
+                                                    Console.Clear();
+                                                }
+                                                else if (evidence_molly == true)
+                                                {
+                                                    molly_evidence1(); //half of the evidence
+                                                    backtoevidence = true;
+                                                    Console.ReadLine();
+                                                    Console.Clear();
+                                                }
+                                                else
+                                                {
+                                                    molly_evidence0(); //no evidence yet//
+                                                    backtoevidence = true;
+                                                    Console.ReadLine();
+                                                    Console.Clear();
+                                                }
+                                                break;
+                                            case "4":
+                                                if (evidence_tom_2 == true)
+                                                {
+                                                    tom_evidence2(); //all evidence found//
+                                                    backtoevidence = true;
+                                                    Console.ReadLine();
+                                                    Console.Clear();
+                                                }
+                                                else if (evidence_tom == true)
+                                                {
+                                                    tom_evidence1(); //half of the evidence
+                                                    backtoevidence = true;
+                                                    Console.ReadLine();
+                                                    Console.Clear();
+                                                }
+                                                else
+                                                {
+                                                    tom_evidence0(); //no evidence yet//
+                                                    backtoevidence = true;
+                                                    Console.ReadLine();
+                                                    Console.Clear();
+                                                }
+                                                break;
+                                            case "5":
+                                                if (evidence_mary_2 == true)
+                                                {
+                                                    mary_evidence2(); //all evidence found//
+                                                    backtoevidence = true;
+                                                    Console.ReadLine();
+                                                    Console.Clear();
+                                                }
+                                                else if (evidence_mary == true)
+                                                {
+                                                    mary_evidence1(); //half of the evidence
+                                                    backtoevidence = true;
+                                                    Console.ReadLine();
+                                                    Console.Clear();
+                                                }
+                                                else
+                                                {
+                                                    mary_evidence0(); //no evidence yet//
+                                                    backtoevidence = true;
+                                                    Console.ReadLine();
+                                                    Console.Clear();
+                                                }
+                                                break;
+                                            case "6":
+                                                if (evidence_penniworth_1 == true)
+                                                {
+                                                    penniworth_evidence_1();
+                                                    backtoevidence = true;
+                                                    Console.ReadLine();
+                                                    Console.Clear();
+                                                }
+                                                else
+                                                {
+                                                    penniworth_evidence_0();
+                                                    backtoevidence = true;
+                                                    Console.ReadLine();
+                                                    Console.Clear();
+                                                }
+                                                break;
+                                            case "7":
+                                                if (hairfound == true && pillsfound == true)
+                                                {
                                                     Console.WriteLine(" Found items ");
                                                     Console.WriteLine(" - Blonde hair on Trevors desk next to pills. Tom, Molly, Hugo and The Gardner all have blonde hair. It could have been planted");
+                                                    Console.WriteLine(" - Pills found in skip, similar to Trevors medicine");
                                                 }
-                                            }
-                                            else
-                                            {
-                                                Console.WriteLine(" Found items");
-                                                Console.WriteLine(" - No evidence found yet");
-                                                Console.ReadLine();
-                                                Console.Clear();
-                                                
-                                            }
-                                            backtoevidence = true;
-                                            break;
-                                        case "8":
-                                            if (evidence_gardner_1 == true)
-                                            {
-                                                gardner_evidence_1();
+                                                else if (itemsfound == true)
+                                                {
+                                                    if (pillsfound == true)
+                                                    {
+                                                        Console.WriteLine(" Found items ");
+                                                        Console.WriteLine(" - Pills found in skip, similar to Trevors medicine");
+                                                    }
+                                                    else
+                                                    {
+                                                        Console.WriteLine(" Found items ");
+                                                        Console.WriteLine(" - Blonde hair on Trevors desk next to pills. Tom, Molly, Hugo and The Gardner all have blonde hair. It could have been planted");
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    Console.WriteLine(" Found items");
+                                                    Console.WriteLine(" - No evidence found yet");
+                                                    Console.ReadLine();
+                                                    Console.Clear();
+
+                                                }
                                                 backtoevidence = true;
+                                                break;
+                                            case "8":
+                                                if (evidence_gardner_1 == true)
+                                                {
+                                                    gardner_evidence_1();
+                                                    backtoevidence = true;
+                                                    Console.ReadLine();
+                                                    Console.Clear();
+                                                }
+                                                else
+                                                {
+                                                    gardner_evidence_0();
+                                                    backtoevidence = true;
+                                                    Console.ReadLine();
+                                                    Console.Clear();
+                                                }
+                                                break;
+                                            case "9":
+                                                Console.WriteLine("Back to menu");
                                                 Console.ReadLine();
                                                 Console.Clear();
-                                            }
-                                            else
-                                            {
-                                                gardner_evidence_0();
+                                                backtomenu = true;
                                                 backtoevidence = true;
-                                                Console.ReadLine();
-                                                Console.Clear();
-                                            }
-                                            break;
-                                        case "9":
-                                            Console.WriteLine("Back to menu");
-                                            Console.ReadLine();
-                                            Console.Clear();
-                                            backtomenu = true;
-                                            backtoevidence = true;
-                                            break;
+                                                break;
 
-                                    }
-                                } while (backtoevidence == false);
-                            } while (backtomenu == false);
-                            break;
+                                        }
+                                    } while (backtoevidence == false);
+                                } while (backtomenu == false);
+                                break;
 
-                        case "6":
-                            Acuse();
-                            break;
+                            case "6":
+                                Acuse();
+                                break;
 
-                        default:
-                            invalidOperator = true;
-                            break;
-                    }
-                    if (invalidOperator == true)
-                    {
-                        Console.WriteLine(" [Console] < Invalid input");
+                            default:
+                                invalidOperator = true;
+                                break;
+                        }
+                        if (invalidOperator == true)
+                        {
+                            Console.WriteLine(" [Console] < Invalid input");
 
-                        invalidOperator = false;
-                        Console.ReadLine();
-                        Console.Clear();
-                    }
+                            invalidOperator = false;
+                            Console.ReadLine();
+                            Console.Clear();
+                        }
 
 
 
-                } while (backtogame == false);
+                    } while (backtogame == false);
 
 
-            }
-            else
-            {
-                Console.WriteLine("< We hope you reconsider your choice and come back soon");
-                Console.ReadLine();
-                playing = false;
-            }
+                }
+                else
+                {
+                    Console.WriteLine("< We hope you reconsider your choice and come back soon");
+                    Console.ReadLine();
+                    playing = false;
+                }
+            } while (wongame = false);
+        
+
         }
-
-
-
 
 
 
@@ -1505,32 +1508,135 @@ namespace UntitledBookGame
                             switch (usr_selection)
                             {
                                 case "1":
+                                    Console.WriteLine(" You have selected: Caitlyn");
+                                    Console.ReadLine();
+                                    Console.Clear();
 
+                                    Console.WriteLine(" You are in the living room");
+                                    Console.ReadLine();
+                                    Console.Clear();
+
+                                    Console.WriteLine($" [{name}] Everyone, Thank you for your Cooperation and patience. After some research we believe we have found the real killer");
+                                    Console.ReadLine();
+                                    Console.WriteLine($" [{name}] Caitlyn... would you please come with me, You are under arrest for the murder of your father");
+                                    Console.ReadLine();
+                                    Console.WriteLine(" [Caitlyn] what!! this is outrageous I loved my father more than anyone else why would I kill him!!");
+                                    Console.WriteLine(" [Mary] Im sorry there must be some mistake..");
+                                    Console.ReadLine();
+                                    Console.WriteLine($" [{name}] Because Hugo is cheating on Molly with you so you framed her to get her out of the picture by switching out Trevors pills");
+                                    Console.ReadLine();
+                                    Console.WriteLine(" [Hugo] What!! Caitlyn there was no need for any of this to happen...");
+                                    Console.WriteLine($" [Molly] Are you serious! were married for god sake Hugo... {name} please take her away... ");
+                                    Console.ReadLine();
+                                    Console.WriteLine($" [{name}] Come on Caitlyn... time to go");
+                                    Console.ReadLine();
                                     Win();
+                                    Console.WriteLine(" Pressing enter will return you to the main menu");
+                                    Console.ReadLine();
+                                    backtomenu = true;
+                                    wongame = true;
+                                    backtogame = true;
+                                    Console.Clear();
+                                    Console.BackgroundColor = ConsoleColor.Black;
+                                    Console.ForegroundColor = ConsoleColor.White;
+
                                     break;
                                 case "2":
+                                    Console.WriteLine(" You have selected: Hugo");
+                                    Console.ReadLine();
+                                    Console.Clear();
 
+                                    Console.WriteLine(" You are in the living room");
+                                    Console.ReadLine();
+                                    Console.Clear();
+
+                                    Console.WriteLine($" [{name}] Everyone, Thank you for your Cooperation and patience. After some research we believe we have found the real killer");
                                     Lose();
+                                    backtomenu = true;
+                                    wongame = true;
+                                    backtogame = true;
+                                    Console.BackgroundColor = ConsoleColor.Black;
+                                    Console.ForegroundColor = ConsoleColor.White;
                                     break;
                                 case "3":
+                                    Console.WriteLine(" You have selected: Molly");
+                                    Console.ReadLine();
+                                    Console.Clear();
 
+                                    Console.WriteLine(" You are in the living room");
+                                    Console.ReadLine();
+                                    Console.Clear();
+
+                                    Console.WriteLine($" [{name}] Everyone, Thank you for your Cooperation and patience. After some research we believe we have found the real killer");
                                     Lose();
+                                    backtomenu = true;
+                                    wongame = true;
+                                    backtogame = true;
+                                    Console.BackgroundColor = ConsoleColor.Black;
+                                    Console.ForegroundColor = ConsoleColor.White;
                                     break;
                                 case "4":
+                                    Console.WriteLine(" You have selected: Tom");
+                                    Console.ReadLine();
+                                    Console.Clear();
 
+                                    Console.WriteLine(" You are in the living room");
+                                    Console.ReadLine();
+                                    Console.Clear();
+
+                                    Console.WriteLine($" [{name}] Everyone, Thank you for your Cooperation and patience. After some research we believe we have found the real killer");
                                     Lose();
                                     break;
                                 case "5":
+                                    Console.WriteLine(" You have selected: Mary");
+                                    Console.ReadLine();
+                                    Console.Clear();
 
+                                    Console.WriteLine(" You are in the living room");
+                                    Console.ReadLine();
+                                    Console.Clear();
+
+                                    Console.WriteLine($" [{name}] Everyone, Thank you for your Cooperation and patience. After some research we believe we have found the real killer");
                                     Lose();
+                                    backtomenu = true;
+                                    wongame = true;
+                                    backtogame = true;
+                                    Console.BackgroundColor = ConsoleColor.Black;
+                                    Console.ForegroundColor = ConsoleColor.White;
                                     break;
                                 case "6":
+                                    Console.WriteLine(" You have selected: Mr Penniworth");
+                                    Console.ReadLine();
+                                    Console.Clear();
 
+                                    Console.WriteLine(" You are in the living room");
+                                    Console.ReadLine();
+                                    Console.Clear();
+
+                                    Console.WriteLine($" [{name}] Everyone, Thank you for your Cooperation and patience. After some research we believe we have found the real killer");
                                     Lose();
+                                    backtomenu = true;
+                                    wongame = true;
+                                    backtogame = true;
+                                    Console.BackgroundColor = ConsoleColor.Black;
+                                    Console.ForegroundColor = ConsoleColor.White;
                                     break;
                                 case "7":
+                                    Console.WriteLine(" You have selected: The Gardner");
+                                    Console.ReadLine();
+                                    Console.Clear();
 
+                                    Console.WriteLine(" You are in the living room");
+                                    Console.ReadLine();
+                                    Console.Clear();
+
+                                    Console.WriteLine($" [{name}] Everyone, Thank you for your Cooperation and patience. After some research we believe we have found the real killer");
                                     Lose();
+                                    backtomenu = true;
+                                    wongame = true;
+                                    backtogame = true;
+                                    Console.BackgroundColor = ConsoleColor.Black;
+                                    Console.ForegroundColor = ConsoleColor.White;
                                     break;
                                 case "8":
                                     backtomenu = true;
