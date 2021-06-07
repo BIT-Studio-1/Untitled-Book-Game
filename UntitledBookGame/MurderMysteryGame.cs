@@ -1546,11 +1546,7 @@ namespace UntitledBookGame
                                     Console.ReadLine();
                                     Console.Clear();
 
-                                    Console.WriteLine(" You are in the living room");
-                                    Console.ReadLine();
-                                    Console.Clear();
-
-                                    Console.WriteLine($" [{name}] Everyone, Thank you for your Cooperation and patience. After some research we believe we have found the real killer");
+                                   
                                     Lose();
                                     backtomenu = true;
                                     wongame = true;
@@ -1563,11 +1559,6 @@ namespace UntitledBookGame
                                     Console.ReadLine();
                                     Console.Clear();
 
-                                    Console.WriteLine(" You are in the living room");
-                                    Console.ReadLine();
-                                    Console.Clear();
-
-                                    Console.WriteLine($" [{name}] Everyone, Thank you for your Cooperation and patience. After some research we believe we have found the real killer");
                                     Lose();
                                     backtomenu = true;
                                     wongame = true;
@@ -1580,11 +1571,7 @@ namespace UntitledBookGame
                                     Console.ReadLine();
                                     Console.Clear();
 
-                                    Console.WriteLine(" You are in the living room");
-                                    Console.ReadLine();
-                                    Console.Clear();
-
-                                    Console.WriteLine($" [{name}] Everyone, Thank you for your Cooperation and patience. After some research we believe we have found the real killer");
+                                    
                                     Lose();
                                     break;
                                 case "5":
@@ -1592,11 +1579,7 @@ namespace UntitledBookGame
                                     Console.ReadLine();
                                     Console.Clear();
 
-                                    Console.WriteLine(" You are in the living room");
-                                    Console.ReadLine();
-                                    Console.Clear();
-
-                                    Console.WriteLine($" [{name}] Everyone, Thank you for your Cooperation and patience. After some research we believe we have found the real killer");
+                                   
                                     Lose();
                                     backtomenu = true;
                                     wongame = true;
@@ -1609,11 +1592,6 @@ namespace UntitledBookGame
                                     Console.ReadLine();
                                     Console.Clear();
 
-                                    Console.WriteLine(" You are in the living room");
-                                    Console.ReadLine();
-                                    Console.Clear();
-
-                                    Console.WriteLine($" [{name}] Everyone, Thank you for your Cooperation and patience. After some research we believe we have found the real killer");
                                     Lose();
                                     backtomenu = true;
                                     wongame = true;
@@ -1626,11 +1604,7 @@ namespace UntitledBookGame
                                     Console.ReadLine();
                                     Console.Clear();
 
-                                    Console.WriteLine(" You are in the living room");
-                                    Console.ReadLine();
-                                    Console.Clear();
-
-                                    Console.WriteLine($" [{name}] Everyone, Thank you for your Cooperation and patience. After some research we believe we have found the real killer");
+                          
                                     Lose();
                                     backtomenu = true;
                                     wongame = true;
