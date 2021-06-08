@@ -5,7 +5,18 @@ namespace UntitledBookGame
 {
     public partial class Program
     {
-        public static void RunPrisonEscapeGame()
+        static void instructions()
+        {
+            Console.Clear();
+            Console.WriteLine("type keys 'W' to move forward, 'D' to move right, 'A' to move left, 'S' to move back");
+            Console.WriteLine("'I' is used to acces your inventory, this tell you what you are currently holding");
+            Console.WriteLine("A description of your surroundings is given when you enter a new room");
+            Console.WriteLine("");
+            Console.WriteLine("Press enter to begin...");
+            Console.ReadLine();
+
+        }
+        static void RunPrisonEscapeGame()
         {
             string[] inventory = new string[3];
             inventory[1] = "Screwdriver";
@@ -40,11 +51,11 @@ namespace UntitledBookGame
             Console.WriteLine("");
             Console.WriteLine("");
             Console.WriteLine("");
-            Console.WriteLine("'type E' to exit");
+            Console.WriteLine("");
 
             temp = Console.ReadLine();
 
-            for (int load = 1; load >= 5; load++)
+            for (int load = 1; load <= 3; load++)
             {
                 Console.Clear();
                 Console.WriteLine("Loading |");
@@ -60,7 +71,7 @@ namespace UntitledBookGame
                 Thread.Sleep(300);
 
                 Console.Clear();
-                
+
             }
 
             do
@@ -68,13 +79,7 @@ namespace UntitledBookGame
                 switch (temp)
                 {
                     case "i":
-                        Console.Clear();
-                        Console.WriteLine("type keys 'W' to move forward, 'D' to move right, 'A' to move left, 'S' to move back");
-                        Console.WriteLine("'I' is used to acces your inventory, this tell you what you are currently holding");
-                        Console.WriteLine("A description of your surroundings is given when you enter a new room");
-                        Console.WriteLine("");
-                        Console.WriteLine("Press enter to begin...");
-                        Console.ReadLine();
+                        instructions();
                         break;
 
                     case "a":
@@ -113,7 +118,6 @@ namespace UntitledBookGame
                         Console.Clear();
                         Console.WriteLine("You find a screwdriver and a sock laying on the desk");
                         Console.WriteLine("Press 'I' to take items");
-                        Console.WriteLine("");
                         Console.WriteLine("Press enter to continue...");
                         takeItems = Console.ReadLine();
                         if (takeItems == "i")
@@ -212,10 +216,6 @@ namespace UntitledBookGame
 
             Console.ReadLine();
         }
-
-
-
-
         static void PrisonCell()
         {
 
@@ -285,7 +285,7 @@ namespace UntitledBookGame
         }
 
 
-        public static void CellItemsRemoved()
+        static void CellItemsRemoved()
         {
             string[] inventory = new string[3];
             inventory[1] = "Screwdriver";
@@ -340,10 +340,6 @@ namespace UntitledBookGame
                         Console.WriteLine("You currently have a" + inventory[1] + " and a " + inventory[2]);
                         break;
 
-                    case "e":
-                        func();
-                        break;
-
                     default:
                         Console.Clear();
                         Console.WriteLine("Nowhere to go");
@@ -352,11 +348,6 @@ namespace UntitledBookGame
 
                 }
             } while ((temp == "s") || (temp == "w") || (temp == "i") || (temp == "a"));
-        }
-
-        static void func()
-        {
-            Environment.Exit(0);
         }
     }
 }
