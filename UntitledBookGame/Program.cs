@@ -31,10 +31,10 @@ namespace UntitledBookGame
 
         private static Dictionary<string, string> BookDescriptions = new Dictionary<string, string>
         {
-            { "Cat Game",               "description..." },
-            { "Horror Game",            "description..." },
-            { "Murder Mystery Game",    "description..." },
-            { "Prison Escape Game",     "description..." }
+            { "Cat Game",               "Just a chill day in the life of a cat. " },
+            { "Horror Game",            "Lorem Ipsum Dolor Site Amet" },
+            { "Murder Mystery Game",    "Figure out who the killer is through multi-choice questions with consiquences for each question." },
+            { "Prison Escape Game",     "Time to put the greatest escape plan into action." }
         };
 
         private static int Selection
@@ -134,13 +134,18 @@ namespace UntitledBookGame
                 Console.SetCursorPosition((Console.WindowWidth / 2 - line.Length / 2), Console.WindowHeight - 10 + row++);
                 Console.WriteLine(line);
             }
+            PrintBookName(selection);
         }
 
 
         private static void PrintBookName(int index)
         {
             Console.SetCursorPosition(1, 1);
+            Console.Write(new string(' ', 30));
+            Console.SetCursorPosition(1, 1);
             Console.Write(BookDescriptions.ElementAt(index).Key);
+            Console.SetCursorPosition(1, 2);
+            Console.Write(new string(' ', Console.WindowWidth));
             Console.SetCursorPosition(1, 2);
             Console.Write(BookDescriptions.ElementAt(index).Value);
         }
