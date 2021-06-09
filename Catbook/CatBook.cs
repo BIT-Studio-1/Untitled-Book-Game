@@ -36,6 +36,7 @@ namespace CAT
             Console.WriteLine("USE object - uses an object");
             Console.WriteLine("DESTROY object - destroys an object");
             Console.WriteLine("EAT object - hongry kitty");
+            Console.WriteLine("EXIT - exit the game");
             input();
             whatDo();
         }
@@ -69,6 +70,7 @@ namespace CAT
             Console.Clear();
             currentRoom = "lounge";
             Console.WriteLine("This is lounge");
+            Console.WriteLine("There is a mouse house and a door to the hallway");
             Console.WriteLine("You hear mouse");
             if (state[1] == false)
             {
@@ -98,6 +100,7 @@ namespace CAT
             Console.Clear();
             currentRoom = "kitchen";
             Console.WriteLine("This is kitchen");
+            Console.WriteLine("There is a counter and a door to the hallway");
             if (state[4] == false)
             {
                 Console.WriteLine("There is stuff on the counter");
@@ -144,12 +147,13 @@ namespace CAT
                     {
                         Console.WriteLine("You ate some of the cheese");
                         Console.WriteLine("You now smell like a cheese");
-                        Console.WriteLine("You will regret this later");
+                        Console.ReadLine();
                         state[3] = true;
                     }
                     else
                     {
                         Console.WriteLine("No cheese");
+                        Console.ReadLine();
                     }
                     counter();
                     break;
@@ -158,11 +162,13 @@ namespace CAT
                     {
                         Console.WriteLine("You push the vase off the counter. It shatters");
                         Console.WriteLine("Very satisfying");
+                        Console.ReadLine();
                         state[4] = true;
                     }
                     else
                     {
                         Console.WriteLine("You already killed the vase");
+                        Console.ReadLine();
                     }
                     counter();
                     break;
@@ -181,6 +187,7 @@ namespace CAT
             Console.Clear();
             currentRoom = "bedroom";
             Console.WriteLine("This is bedroom");
+            Console.WriteLine("There is a door to the hallway");
             Console.WriteLine("You see your scratching post and your bed");
             input();
             switch (choice)
@@ -214,6 +221,8 @@ namespace CAT
             Console.Clear();
             currentRoom = "hallway";
             Console.WriteLine("This is hallway");
+            Console.WriteLine("There are three doors");
+            Console.WriteLine("They go to the kitchen, the bedroom and the lounge");
             if (state[0] == false)
             {
                 Console.WriteLine("Lounge door is closed");
@@ -237,40 +246,51 @@ namespace CAT
         //CATCH THE MOUSE
         public static void mousey()
         {
-            Console.Clear();
-            currentRoom = "mousey";
-            Console.WriteLine("It's the mouse");
-            Console.WriteLine("It must be destroyed");
-            input();
-            switch (choice)
+            if (state[1] == true)
             {
-                case "DESTROY MOUSE":
-                case "ATTACK MOUSE":
-                    //check for buffs
-                    if (state[3] == false)
-                    {
-                        Console.WriteLine("Mousey smells you coming, he hides");
-                        Console.WriteLine("Coward");
-                        lounge();
-                    }
-                    else if (state[2] == false)
-                    {
-                        Console.WriteLine("You pounce on mouse");
-                        Console.WriteLine("You are not sharp enough, mousey escapes");
-                        Console.WriteLine("Lucky.");
-                        lounge();
-                    }
-                    else if (state[2] == true && state[3] == true)
-                    {
-                        Console.WriteLine("You catch the mouse");
-                        Console.WriteLine("Vae Victis");
-                        Console.WriteLine("END OF CAT GAME");
-                        Console.ReadLine();
-                    }
-                    break;
-                default:
-                    whatDo();
-                    break;
+                Console.Clear();
+                currentRoom = "mousey";
+                Console.WriteLine("It's the mouse");
+                Console.WriteLine("It must be destroyed");
+                input();
+                switch (choice)
+                {
+                    case "DESTROY MOUSE":
+                    case "ATTACK MOUSE":
+                        //check for buffs
+                        if (state[3] == false)
+                        {
+                            Console.WriteLine("Mousey smells you coming, he hides");
+                            Console.WriteLine("Coward");
+                            Console.ReadLine();
+                            lounge();
+                        }
+                        else if (state[2] == false)
+                        {
+                            Console.WriteLine("You pounce on mouse");
+                            Console.WriteLine("You are not sharp enough, mousey escapes");
+                            Console.WriteLine("Lucky.");
+                            Console.ReadLine();
+                            lounge();
+                        }
+                        else if (state[2] == true && state[3] == true)
+                        {
+                            Console.WriteLine("You catch the mouse");
+                            Console.WriteLine("Vae Victis");
+                            Console.WriteLine("END OF CAT GAME");
+                            Console.ReadLine();
+                        }
+                        break;
+                    default:
+                        whatDo();
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("There is no mouse here");
+                Console.ReadLine();
+                roomReset();
             }
 
         }
@@ -345,6 +365,7 @@ namespace CAT
                 case "DESTROY BELL":
                     state[1] = true;
                     Console.WriteLine("You have killed the bell");
+                    Console.ReadLine();
                     roomReset();
                     break;
                 case "MEOW":
