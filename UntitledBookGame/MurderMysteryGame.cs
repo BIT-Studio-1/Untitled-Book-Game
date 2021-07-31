@@ -15,8 +15,8 @@ namespace UntitledBookGame
             do
             {
 
-
                 Console.BackgroundColor = ConsoleColor.Black;
+
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("");
                 Console.WriteLine("      __________________________________________________");
@@ -300,7 +300,7 @@ namespace UntitledBookGame
                                                 }
                                                 break;
                                             case "7":
-                                                if (hairfound == true && pillsfound == true)
+                                                if (hairfound == true && pillsfound == true) //evidence of found items//
                                                 {
                                                     Console.WriteLine(" Found items ");
                                                     Console.WriteLine(" - Blonde hair on Trevors desk next to pills. Tom, Molly, Hugo and The Gardner all have blonde hair. It could have been planted");
@@ -387,14 +387,14 @@ namespace UntitledBookGame
                     Console.ReadLine();
                     playing = false;
                 }
-            } while (wongame = false);
+            } while (wongame == false);
         
 
         }
 
 
 
-        // other game code, methods, etc.
+        // methods for interactions or evidence//
 
         public static void gardner_evidence_0()
         {
@@ -719,7 +719,7 @@ namespace UntitledBookGame
             Console.ReadLine();
         }
 
-        public static void living_room()
+        public static void living_room() //large method for living room//
         {
 
             Console.WriteLine(" < Who would you like to speak to?");
@@ -1065,7 +1065,7 @@ namespace UntitledBookGame
             }
         } 
 
-        public static void Outside()
+        public static void Outside() //method for when outside//
         {
             Console.WriteLine(" You are Outside");
             Console.ReadLine();
@@ -1104,7 +1104,7 @@ namespace UntitledBookGame
           
         }
 
-        public static void Upstairs()
+        public static void Upstairs() //method for dialog and movement upstairs//
         {
             Console.WriteLine(" You are Upstairs");
             Console.ReadLine();
@@ -1278,7 +1278,7 @@ namespace UntitledBookGame
             }
 
         }
-        public static void dining_room()
+        public static void dining_room() //method for dining room//
         {
             Console.WriteLine(" You are in the Dining Room");
             Console.ReadLine();
@@ -1326,7 +1326,7 @@ namespace UntitledBookGame
             }
         }
 
-        public static void gardner()
+        public static void gardner() //method for interaction outside//
         {
             Console.Clear();
             Console.WriteLine($" [{name}] Hello excuse me? Are you Mills Moffit?");
@@ -1345,7 +1345,7 @@ namespace UntitledBookGame
             evidence_caityln_2 = true;
         }
 
-        public static void outside_looking_around()
+        public static void outside_looking_around() //method for exploring outside//
         {
             
             Console.Clear();
@@ -1398,7 +1398,7 @@ namespace UntitledBookGame
         
 
 
-        public static void introduction(ref string name)
+        public static void introduction(ref string name) //introduction//
         {
 
             Console.WriteLine($" [Phone] RING.... RING... RING.. ");
@@ -1463,7 +1463,7 @@ namespace UntitledBookGame
             Console.Clear();
         }
 
-        public static void Acuse()
+        public static void Acuse() //method to acuse the murderer//
         {
             do
             {
