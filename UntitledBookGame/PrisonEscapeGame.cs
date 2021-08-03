@@ -5,18 +5,19 @@ namespace UntitledBookGame
 {
     public partial class Program
     {
-        static void instructions()
+        static void instructions() //How to play method
         {
             Console.Clear();
-            Console.WriteLine("type keys 'W' to move forward, 'D' to move right, 'A' to move left, 'S' to move back");
-            Console.WriteLine("'I' is used to acces your inventory, this tell you what you are currently holding");
+            Console.WriteLine("Type keys 'W' to move forward, 'D' to move right, 'A' to move left, 'S' to move back");
+            Console.WriteLine("'I' is used to access your inventory, this notifies you of what you have currently equipped");
             Console.WriteLine("A description of your surroundings is given when you enter a new room");
             Console.WriteLine("");
             Console.WriteLine("Press enter to begin...");
             Console.ReadLine();
+            RunPrisonEscapeGame();
 
         }
-        static void RunPrisonEscapeGame()
+        static void RunPrisonEscapeGame() //Main menu screen method
         {
             string[] inventory = new string[3];
             inventory[1] = "Screwdriver";
@@ -25,11 +26,11 @@ namespace UntitledBookGame
 
             Console.WriteLine("Welcome to Prison Escape!".PadLeft(60));
             Console.WriteLine();
-            Console.WriteLine("Created by Kanen Scheib");
+            Console.WriteLine("Developed by Kanen Scheib");
             Console.WriteLine("About: Prison Escape gives players an insight into the life of a prison inmate with the main objective being of course");
             Console.WriteLine("escaping!");
-            Console.WriteLine("type 'A' to begin...");
-            Console.WriteLine("Or type 'I' for Instructions");
+            Console.WriteLine("Type 'a' to begin...");
+            Console.WriteLine("Type 'i' for Instructions");
             Console.WriteLine("__________________________________");
             Console.WriteLine("     ||      ||      ||      ||");
             Console.WriteLine("     ||      ||, , , ||      ||");
@@ -55,7 +56,7 @@ namespace UntitledBookGame
 
             temp = Console.ReadLine();
 
-            for (int load = 1; load <= 3; load++)
+            for (int load = 1; load <= 3; load++) //Loading screen animation
             {
                 Console.Clear();
                 Console.WriteLine("Loading |");
@@ -92,9 +93,9 @@ namespace UntitledBookGame
                         Console.ReadLine();
                         Console.Clear();
                         Console.WriteLine("You are sitting upright in your bed facing the prison cell wall");
-                        Console.WriteLine("to the left is a close-coupled porcelain toilet");
+                        Console.WriteLine("To the left is a close-coupled porcelain toilet");
                         Console.WriteLine("To the right is a rectangle stanless detention desk with swivel stool");
-                        Console.WriteLine("above you is a vent that looks just big enough to fit through");
+                        Console.WriteLine("Above you is a vent that looks just big enough to fit through");
                         break;
                 }
 
@@ -117,7 +118,7 @@ namespace UntitledBookGame
                     case "d":
                         Console.Clear();
                         Console.WriteLine("You find a screwdriver and a sock laying on the desk");
-                        Console.WriteLine("Press 'I' to take items");
+                        Console.WriteLine("Press 'i' to take items");
                         Console.WriteLine("Press enter to continue...");
                         takeItems = Console.ReadLine();
                         if (takeItems == "i")
@@ -140,7 +141,7 @@ namespace UntitledBookGame
 
                     case "w":
                         Console.Clear();
-                        Console.WriteLine("just a wall, nothing special here");
+                        Console.WriteLine("Just a wall, nothing special here");
                         Console.WriteLine("");
                         break;
 
@@ -160,7 +161,7 @@ namespace UntitledBookGame
             do
             {
                 Console.WriteLine("");
-                Console.WriteLine("where to next?");
+                Console.WriteLine("Where to next?");
                 temp = Console.ReadLine();
 
                 switch (temp)
@@ -216,7 +217,7 @@ namespace UntitledBookGame
 
             Console.ReadLine();
         }
-        static void PrisonCell()
+        static void PrisonCell() // Room 1 prison cell
         {
 
             string[] inventory = new string[3];
@@ -266,7 +267,7 @@ namespace UntitledBookGame
 
                     case "w":
                         Console.Clear();
-                        Console.WriteLine("just a wall, nothing special here");
+                        Console.WriteLine("Just a wall, nothing special here");
                         Console.WriteLine("");
                         break;
 
@@ -285,7 +286,7 @@ namespace UntitledBookGame
         }
 
 
-        static void CellItemsRemoved()
+        static void CellItemsRemoved() //Items added to inventory executes CellItemsRemoved method
         {
             string[] inventory = new string[3];
             inventory[1] = "Screwdriver";
@@ -308,7 +309,7 @@ namespace UntitledBookGame
 
                     case "d":
                         Console.Clear();
-                        Console.WriteLine("not much use being behind these prison bars...I gotta find a way out");
+                        Console.WriteLine("Not much use being behind these prison bars...I gotta find a way out");
                         break;
 
                     case "a":
@@ -326,8 +327,8 @@ namespace UntitledBookGame
                         if (pryOpen == "o")
                         {
                             Console.WriteLine("");
-                            Console.WriteLine("open seasame!");
-                            Console.WriteLine("new location unlocked! you can now access the ceiling vent");
+                            Console.WriteLine("Open seasame!");
+                            Console.WriteLine("New location unlocked! you can now access the ceiling vent");
                         }
                         else
                         {
