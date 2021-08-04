@@ -5,10 +5,16 @@ using System.Collections.Generic;
 
 namespace Horror_Book
 {
-    class Program
+  public class Program
     {
+        
+        
+
+
         public static void Main(string[] args)
         {
+
+           
             Car();
             
 
@@ -16,7 +22,10 @@ namespace Horror_Book
         }
 
         public static void Car()
+
         {
+            Console.Clear();
+
             string UserInPut;
             //------------------------------
             //This just writes out the text one letter at a time \\
@@ -48,18 +57,21 @@ namespace Horror_Book
 
                 string Boot = "open boot", GloveBox = "open glove box", UnderSeat = " look under seat";
 
+            UserInPut.ToLower();
 
-                if (Boot.Contains(UserInPut))
+            
+
+                if (UserInPut == Boot)
                 {
 
                     BootMethod();
                 }
-                else if (GloveBox.Contains(UserInPut))
+                else if (UserInPut == GloveBox)
                 {
 
                     GloveBoxMethod();
                 }
-                else if (UnderSeat.Contains(UserInPut))
+                else if (UserInPut == UnderSeat)
                 {
 
                     UnderSeatMethod();
@@ -69,16 +81,16 @@ namespace Horror_Book
                     var DidNotUnderStand = "I Do Not UnderStand."
                     + Environment.NewLine + "Make Sure That You Are Not Using Capitals.";
 
-                    
+
 
                     foreach (var character in DidNotUnderStand)
                     {
                         Console.Write(character);
                         Thread.Sleep(30);
                     }
-                Thread.Sleep(3000);
+                    Thread.Sleep(1000);
 
-                Start();
+                   Car();
 
                 }
             
