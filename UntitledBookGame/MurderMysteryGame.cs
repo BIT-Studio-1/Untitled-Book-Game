@@ -1254,6 +1254,7 @@ namespace UntitledBookGame
                     Console.Clear();
                     break;
                 case "2":
+                    Console.Clear();
                     Console.WriteLine($" [{name}] Mr Penniworth? A word if you don't mind?");
                     Console.ReadLine();
                     Console.WriteLine($" [Mr Penniworth] Of course master {name} what can I help with?");
@@ -1434,6 +1435,7 @@ namespace UntitledBookGame
                 Console.WriteLine(" [Y] Yes or [N] No");
                 Console.Write(" > ");
                 usr_selection = Console.ReadLine();
+                Console.Clear();
                 switch (usr_selection)
                 {
                     case "y":
