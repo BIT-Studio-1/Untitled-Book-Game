@@ -7,13 +7,13 @@ namespace UntitledBookGame
         public static void RunCatGame()
         {
             //initial message
-            book();
+            Book();
                 Console.WriteLine("OH DANG! You're a cat!");
                 Console.WriteLine("Hello cat!");
                 Console.WriteLine("House has lounge, kitchen, bedroom, hallway");
                 Console.ReadLine();
 
-                bedroom();
+                Bedroom();
         }
 
         
@@ -29,7 +29,7 @@ namespace UntitledBookGame
 
 
             //BOOK LOOK
-        public static void book()
+        public static void Book()
         {
             Console.WriteLine(" ============================================================");
             Console.WriteLine(" ============================================================");
@@ -69,7 +69,7 @@ namespace UntitledBookGame
         }    
         
         //INPUT MAKER
-            public static void input()
+            public static void Input()
             {
                 Console.WriteLine("Meow?");
                 choice = Console.ReadLine();
@@ -78,7 +78,7 @@ namespace UntitledBookGame
             }
 
             //HELP TEXT
-            public static void help()
+            public static void Help()
             {
                 Console.Clear();
                 Console.WriteLine("This is the helptext");
@@ -88,22 +88,22 @@ namespace UntitledBookGame
                 Console.WriteLine("USE object - uses an object");
                 Console.WriteLine("DESTROY object - destroys an object");
                 Console.WriteLine("EAT object - hongry kitty");
-                input();
-                whatDo();
+                Input();
+                WhatDo();
             }
 
 
             //MEOW
-            public static void meow()
+            public static void Meow()
             {
                 Console.WriteLine("MEOW");
                 choice = Console.ReadLine();
                 choice = choice.ToUpper();
-                whatDo();
+                WhatDo();
             }
 
             //BELL INDICATION
-            public static void bell()
+            public static void Bell()
             {
                 if (state[1] == false)
                 {
@@ -114,7 +114,7 @@ namespace UntitledBookGame
             }
 
             //LOUNGE
-            public static void lounge()
+            public static void Lounge()
             {
                 //lounge will have one interact
                 //mouse house
@@ -127,24 +127,24 @@ namespace UntitledBookGame
                 {
                     Console.WriteLine("Mouse hears you");
                 }
-                input();
+                Input();
                 switch (choice)
                 {
                     case "GO MOUSE HOUSE":
                     case "GO MOUSE":
                     case "GO TO MOUSE":
                     case "GO TO MOUSE HOUSE":
-                        mousey();
+                        Mousey();
                         break;
                     default:
-                        whatDo();
+                        WhatDo();
                         break;
                 }
             }
 
 
             //KITCHEN
-            public static void kitchen()
+            public static void Kitchen()
             {
                 //kitchen will have one interact
                 //counter
@@ -156,22 +156,22 @@ namespace UntitledBookGame
                 {
                     Console.WriteLine("There is stuff on the counter");
                 }
-                input();
+                Input();
                 switch (choice)
                 {
                     case "GO COUNTER":
                     case "GO TO COUNTER":
-                        counter();
+                        Counter();
                         break;
                     default:
-                        whatDo();
+                        WhatDo();
                         break;
                 }
             }
 
 
             //COUNTER
-            public static void counter()
+            public static void Counter()
             {
                 //BREAK STUFF, STEAL CHEESE
                 Console.Clear();
@@ -190,7 +190,7 @@ namespace UntitledBookGame
                 {
                     Console.WriteLine("There is nothing here, how sad");
                 }
-                input();
+                Input();
                 switch (choice)
                 {
                     case "EAT CHEESE":
@@ -207,7 +207,7 @@ namespace UntitledBookGame
                             Console.WriteLine("No cheese");
                             Console.ReadLine();
                         }
-                        counter();
+                        Counter();
                         break;
                     case "DESTROY VASE":
                         if (state[4] == false)
@@ -222,17 +222,17 @@ namespace UntitledBookGame
                             Console.WriteLine("You already killed the vase");
                             Console.ReadLine();
                         }
-                        counter();
+                        Counter();
                         break;
                     default:
-                        whatDo();
+                        WhatDo();
                         break;
                 }
             }
 
 
             //BEDROOM
-            public static void bedroom()
+            public static void Bedroom()
             {
                 //lounge will have two interacts
                 //scratching post and bed
@@ -241,7 +241,7 @@ namespace UntitledBookGame
                 Console.WriteLine("This is bedroom");
                 Console.WriteLine("The door leads to hallway");
                 Console.WriteLine("You see your scratching post and your bed");
-                input();
+                Input();
                 switch (choice)
                 {
                     case "USE SCRATCHING POST":
@@ -249,16 +249,16 @@ namespace UntitledBookGame
                         state[2] = true;
                         Console.WriteLine("Sharp kitty");
                         Console.ReadLine();
-                        bedroom();
+                        Bedroom();
                         break;
                     case "SLEEP":
                     case "USE BED":
                         Console.WriteLine("Sleepy kitty, good nap");
                         Console.ReadLine();
-                        bedroom();
+                        Bedroom();
                         break;
                     default:
-                        whatDo();
+                        WhatDo();
                         break;
 
                 }
@@ -266,7 +266,7 @@ namespace UntitledBookGame
 
 
             //HALLWAY
-            public static void hallway()
+            public static void Hallway()
             {
                 //hallway will have one interact
                 //closed door
@@ -279,24 +279,24 @@ namespace UntitledBookGame
                 {
                     Console.WriteLine("Lounge door is closed");
                 }
-                input();
+                Input();
                 switch (choice)
                 {
                     case "OPEN DOOR":
                         Console.WriteLine("Door open now. Strong kitty");
                         Console.ReadLine();
                         state[0] = true;
-                        hallway();
+                        Hallway();
                         break;
                     default:
-                        whatDo();
+                        WhatDo();
                         break;
                 }
             }
 
 
             //CATCH THE MOUSE
-            public static void mousey()
+            public static void Mousey()
             {
                 Console.Clear();
                 currentRoom = "mousey";
@@ -304,7 +304,7 @@ namespace UntitledBookGame
             {
                 Console.WriteLine("It's the mouse");
                 Console.WriteLine("It must be destroyed");
-                input();
+                Input();
                 switch (choice)
                 {
                     case "DESTROY MOUSE":
@@ -323,18 +323,18 @@ namespace UntitledBookGame
                             Console.WriteLine("You are not sharp enough, mousey escapes");
                             Console.WriteLine("Lucky.");
                             Console.ReadLine();
-                            lounge();
+                            Lounge();
                         }
                         else if (state[3] == false)
                         {
                             Console.WriteLine("Mousey smells you coming, he hides");
                             Console.WriteLine("Coward");
                             Console.ReadLine();
-                            lounge();
+                            Lounge();
                         }
                         break;
                     default:
-                        whatDo();
+                        WhatDo();
                         break;
 
                 }
@@ -343,43 +343,43 @@ namespace UntitledBookGame
             {
                 Console.WriteLine("You are not very sneaky");
                 Console.WriteLine("Mouse is hiding");
-                input();
-                whatDo();
+                Input();
+                WhatDo();
             }               
             }
 
             //TELLS YOU WHAT ROOM IT IS
-            public static void roomReset()
+            public static void RoomReset()
             {
                 switch (currentRoom)
                 {
                     case "lounge":
-                        lounge();
+                        Lounge();
                         break;
                     case "kitchen":
-                        kitchen();
+                        Kitchen();
                         break;
                     case "counter":
-                        counter();
+                        Counter();
                         break;
                     case "bedroom":
-                        bedroom();
+                        Bedroom();
                         break;
                     case "hallway":
-                        hallway();
+                        Hallway();
                         break;
                     case "mousey":
-                        mousey();
+                        Mousey();
                         break;
                     default:
-                        whatDo();
+                        WhatDo();
                         break;
 
                 }
             }
 
             //DO A CHOOSE
-            public static void whatDo()
+            public static void WhatDo()
             {
 
                 switch (choice)
@@ -392,53 +392,53 @@ namespace UntitledBookGame
                         {
                             Console.WriteLine("Door is closed");
                             choice = Console.ReadLine();
-                            hallway();
+                            Hallway();
                         }
                         else
                         {
-                            bell();
-                            lounge();
+                            Bell();
+                            Lounge();
                         }
                         break;
                     case "GO KITCHEN":
                     case "GO TO KITCHEN":
-                        bell();
-                        kitchen();
+                        Bell();
+                        Kitchen();
                         break;
                     case "GO BEDROOM":
                     case "GO TO BEDROOM":
-                        bell();
-                        bedroom();
+                        Bell();
+                        Bedroom();
                         break;
                     case "GO HALLWAY":
                     case "GO TO HALLWAY":
-                        bell();
-                        hallway();
+                        Bell();
+                        Hallway();
                         break;
                     case "DESTROY BELL":
                         state[1] = true;
                         Console.WriteLine("You have killed the bell");
                         Console.ReadLine();
-                        roomReset();
+                        RoomReset();
                         break;
                     case "MEOW":
                     case "MEOW!":
                     case "MEOW.":
                     case "MEOWMEOW":
-                        meow();
+                        Meow();
                         break;
                     case "EXIT":
                         Console.WriteLine("Okaybye!");
                         Console.ReadLine();
                         break;
                     case "HELP":
-                        help();
+                        Help();
                         break;
                     default:
                         Console.WriteLine("Those aren't cat-approved words");
                         Console.WriteLine("Please try better");
                         Console.ReadLine();
-                        roomReset();
+                        RoomReset();
                         break;
                 }
             }
