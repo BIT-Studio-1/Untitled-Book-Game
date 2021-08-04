@@ -4,8 +4,8 @@ namespace UntitledBookGame
 {
     public partial class Program
     {
-        static string temp, play, name, usr_selection;
-        static bool playing = true, invalidOperator = false, leave = false, backtogame = false, leaveroom = false, evidence_caitlyn = false, evidence_caityln_2 = false, evidence_gardner_0 = false, evidence_hugo = false, evidence_molly = false, evidence_tom = false, evidence_penniworth = false, evidence_mary = false;
+        static string play, name, usr_selection;
+        static bool playing = true, invalidOperator = false, leave = false, backtogame = false, leaveroom = false, evidence_caitlyn = false, evidence_caityln_2 = false, evidence_hugo = false, evidence_molly = false, evidence_tom = false, evidence_mary = false;
       static bool backtoevidence = false, backtomenu = false, pillsfound = false, itemsfound = false, hairfound = false, goback = false, goback1 = false, wongame = false;
         static bool evidence_hugo_2 = false, evidence_molly_2 = false, evidence_tom_2 = false, evidence_mary_2 = false, evidence_gardner_1 = false, evidence_penniworth_1 = false, gobackinside = false;
         public static void RunMurderMysteryGame()
