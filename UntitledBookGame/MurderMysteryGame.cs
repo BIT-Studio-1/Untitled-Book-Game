@@ -4,9 +4,9 @@ namespace UntitledBookGame
 {
     public partial class Program
     {
-        static string temp, play, name, usr_selection;
-        static bool playing = true, invalidOperator = false, leave = false, backtogame = false, leaveroom = false, evidence_caitlyn = false, evidence_caityln_2 = false, evidence_gardner_0 = false, evidence_hugo = false, evidence_molly = false, evidence_tom = false, evidence_penniworth = false, evidence_mary = false;
-      static bool backtoevidence = false, backtomenu = false, pillsfound = false, itemsfound = false, hairfound = false, goback = false, goback1 = false, wongame = false;
+        static string play, name, usr_selection;
+        static bool playing = true, invalidOperator = false, leave = false, backtogame = false, leaveroom = false, evidence_caitlyn = false, evidence_caityln_2 = false, evidence_hugo = false, evidence_molly = false, evidence_tom = false, evidence_mary = false;
+        static bool backtoevidence = false, backtomenu = false, pillsfound = false, itemsfound = false, hairfound = false, goback = false, goback1 = false, wongame = false;
         static bool evidence_hugo_2 = false, evidence_molly_2 = false, evidence_tom_2 = false, evidence_mary_2 = false, evidence_gardner_1 = false, evidence_penniworth_1 = false, gobackinside = false;
         public static void RunMurderMysteryGame()
         {
@@ -15,8 +15,8 @@ namespace UntitledBookGame
             do
             {
 
-
                 Console.BackgroundColor = ConsoleColor.Black;
+
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("");
                 Console.WriteLine("      __________________________________________________");
@@ -100,7 +100,6 @@ namespace UntitledBookGame
                         Console.WriteLine("     |                       ||                         |");
                         Console.WriteLine("     |__________________________________________________|");
 
-
                         Console.Write(" > ");
                         usr_selection = Console.ReadLine();
                         Console.Clear();
@@ -115,8 +114,6 @@ namespace UntitledBookGame
                                 break;
 
                             case "2":
-
-
                                 living_room();
                                 break;
 
@@ -125,7 +122,6 @@ namespace UntitledBookGame
                                 {
                                     Upstairs();
                                 } while (backtomenu == false);
-
                                 break;
 
                             case "4":
@@ -133,11 +129,9 @@ namespace UntitledBookGame
                                 {
                                     dining_room();
                                 } while (backtomenu == false);
-
                                 break;
 
                             case "5":
-
                                 do
                                 {
                                     backtomenu = false;
@@ -300,7 +294,7 @@ namespace UntitledBookGame
                                                 }
                                                 break;
                                             case "7":
-                                                if (hairfound == true && pillsfound == true)
+                                                if (hairfound == true && pillsfound == true) //evidence of found items//
                                                 {
                                                     Console.WriteLine(" Found items ");
                                                     Console.WriteLine(" - Blonde hair on Trevors desk next to pills. Tom, Molly, Hugo and The Gardner all have blonde hair. It could have been planted");
@@ -325,7 +319,6 @@ namespace UntitledBookGame
                                                     Console.WriteLine(" - No evidence found yet");
                                                     Console.ReadLine();
                                                     Console.Clear();
-
                                                 }
                                                 backtoevidence = true;
                                                 break;
@@ -352,12 +345,10 @@ namespace UntitledBookGame
                                                 backtomenu = true;
                                                 backtoevidence = true;
                                                 break;
-
                                         }
                                     } while (backtoevidence == false);
                                 } while (backtomenu == false);
                                 break;
-
                             case "6":
                                 Acuse();
                                 break;
@@ -369,17 +360,11 @@ namespace UntitledBookGame
                         if (invalidOperator == true)
                         {
                             Console.WriteLine(" [Console] < Invalid input");
-
                             invalidOperator = false;
                             Console.ReadLine();
                             Console.Clear();
                         }
-
-
-
                     } while (backtogame == false);
-
-
                 }
                 else
                 {
@@ -387,15 +372,9 @@ namespace UntitledBookGame
                     Console.ReadLine();
                     playing = false;
                 }
-            } while (wongame = false);
-        
-
+            } while (wongame == false);
         }
-
-
-
-        // other game code, methods, etc.
-
+        // methods for interactions or evidence//
         public static void gardner_evidence_0()
         {
             Console.WriteLine("   The Gardner ");
@@ -507,7 +486,6 @@ namespace UntitledBookGame
             Console.ReadLine();
             Console.WriteLine(" [Hugo Tucker] Well if it was anyone it would have to be Tom, He hated him the most");
             Console.ReadLine();
-
         }
 
         public static void hugo_evidence0()
@@ -587,7 +565,6 @@ namespace UntitledBookGame
             Console.WriteLine(" - She doesn't know about Caitlyn and Hugo");
             Console.WriteLine(" - She thinks her mother could have killed Trevor");
             Console.ReadLine();
-
         }
 
         public static void molly_q_4(ref string name)
@@ -596,7 +573,6 @@ namespace UntitledBookGame
             Console.ReadLine();
             Console.WriteLine(" [Molly Tucker] Well he treated mum like shit for 30 years but I would have no clue");
             Console.ReadLine();
-
         }
         public static void tom_q_1(ref string name)
         {
@@ -608,7 +584,6 @@ namespace UntitledBookGame
             Console.ReadLine();
             Console.WriteLine(" [Tom Thompson] No, I was his only son and a disapointment so I wasn't given much time of day...");
             Console.ReadLine();
-
         }
         public static void tom_q_2(ref string name)
         {
@@ -616,7 +591,6 @@ namespace UntitledBookGame
             Console.ReadLine();
             Console.WriteLine(" [Tom Thompson] Thank you, the faster this is over with the faster I can get out of this awful house");
             Console.ReadLine();
-
         }
         public static void tom_q_3(ref string name)
         {
@@ -719,9 +693,8 @@ namespace UntitledBookGame
             Console.ReadLine();
         }
 
-        public static void living_room()
+        public static void living_room() //large method for living room//
         {
-
             Console.WriteLine(" < Who would you like to speak to?");
             Console.WriteLine(" [1] Caitlyn [2] Hugo [3] Molly [4] Tom [5] Mary [6] Leave room");
             Console.Write(" > ");
@@ -847,7 +820,6 @@ namespace UntitledBookGame
                             Console.ReadLine();
                             Console.Clear();
                         }
-
                     } while (leave == false);
 
                     break;
@@ -864,7 +836,6 @@ namespace UntitledBookGame
                     Console.WriteLine(" [Molly Tucker] yeah sure whatever...");
                     Console.ReadLine();
                     Console.Clear();
-
                     do
                     {
                         Console.WriteLine(" < What would you like to do?");
@@ -877,7 +848,7 @@ namespace UntitledBookGame
                             case "1":
                                 molly_q_1(ref name);
                                 Console.Clear();
-                                
+
                                 break;
                             case "2":
                                 molly_q_2(ref name);
@@ -941,7 +912,7 @@ namespace UntitledBookGame
                             case "1":
                                 tom_q_1(ref name);
                                 Console.Clear();
-                               
+
                                 break;
                             case "2":
                                 tom_q_2(ref name);
@@ -978,9 +949,6 @@ namespace UntitledBookGame
 
                     } while (leave == false);
                     break;
-
-
-
                 case "5":
                 case "Mary":
                 case "mary":
@@ -1063,9 +1031,8 @@ namespace UntitledBookGame
                 Console.ReadLine();
                 Console.Clear();
             }
-        } 
-
-        public static void Outside()
+        }
+        public static void Outside() //method for when outside//
         {
             Console.WriteLine(" You are Outside");
             Console.ReadLine();
@@ -1074,17 +1041,16 @@ namespace UntitledBookGame
             Console.Write(" > ");
             usr_selection = Console.ReadLine();
             switch (usr_selection)
-            { 
+            {
                 case "1":
                     gardner();
                     break;
                 case "2":
-
                     do
                     {
-                     outside_looking_around();
+                        outside_looking_around();
                     } while (goback == false);
-                    break; 
+                    break;
                 case "3":
                     backtomenu = true;
                     Console.Clear();
@@ -1096,15 +1062,12 @@ namespace UntitledBookGame
             if (invalidOperator == true)
             {
                 Console.WriteLine(" [Console] < Invalid input");
-
                 invalidOperator = false;
                 Console.ReadLine();
                 Console.Clear();
             }
-          
         }
-
-        public static void Upstairs()
+        public static void Upstairs() //method for dialog and movement upstairs//
         {
             Console.WriteLine(" You are Upstairs");
             Console.ReadLine();
@@ -1113,7 +1076,7 @@ namespace UntitledBookGame
             Console.Write(" > ");
             usr_selection = Console.ReadLine();
             Console.Clear();
-            
+
             switch (usr_selection)
             {
                 case "1":
@@ -1135,7 +1098,7 @@ namespace UntitledBookGame
                                 Console.WriteLine(" You should check somewhere else...");
                                 Console.ReadLine();
                                 Console.Clear();
-                               
+
                                 break;
                             case "2":
                                 Console.WriteLine(" You walk over to the window");
@@ -1143,7 +1106,7 @@ namespace UntitledBookGame
                                 Console.WriteLine(" You find muddy fronts on the window sill, facing inwards from outside, someone has come in through here");
                                 Console.ReadLine();
                                 Console.Clear();
-                                
+
                                 break;
                             case "3":
                                 goback1 = true;
@@ -1160,7 +1123,7 @@ namespace UntitledBookGame
                             Console.ReadLine();
                             Console.Clear();
                         }
-                    
+
                     } while (goback1 == false);
                     break;
                 case "2":
@@ -1184,7 +1147,7 @@ namespace UntitledBookGame
                                 Console.WriteLine(" You can't find anything of use maybe you should check somewhere else...");
                                 Console.ReadLine();
                                 Console.Clear();
-                                
+
                                 break;
                             case "2":
                                 Console.WriteLine(" You walk over to the desk");
@@ -1192,7 +1155,6 @@ namespace UntitledBookGame
                                 Console.WriteLine(" You find a container of pills spilt on the desk, just regular painkillers");
                                 Console.ReadLine();
                                 Console.Clear();
-                                
                                 break;
                             case "3":
                                 goback1 = true;
@@ -1211,7 +1173,7 @@ namespace UntitledBookGame
                         }
 
                     } while (goback1 == false);
-            
+
                     break;
                 case "3":
                     do
@@ -1232,7 +1194,6 @@ namespace UntitledBookGame
                                 Console.WriteLine(" You should check somewhere else...");
                                 Console.ReadLine();
                                 Console.Clear();
-                                
                                 break;
                             case "2":
                                 Console.WriteLine(" You walk over to the bed");
@@ -1240,7 +1201,6 @@ namespace UntitledBookGame
                                 Console.WriteLine(" You find one side of the bed has been used recently, the other hasn't. Mary and Trevor must have had issues recently");
                                 Console.ReadLine();
                                 Console.Clear();
-                                                      
                                 break;
                             case "3":
                                 goback1 = true;
@@ -1278,7 +1238,7 @@ namespace UntitledBookGame
             }
 
         }
-        public static void dining_room()
+        public static void dining_room() //method for dining room//
         {
             Console.WriteLine(" You are in the Dining Room");
             Console.ReadLine();
@@ -1294,6 +1254,7 @@ namespace UntitledBookGame
                     Console.Clear();
                     break;
                 case "2":
+                    Console.Clear();
                     Console.WriteLine($" [{name}] Mr Penniworth? A word if you don't mind?");
                     Console.ReadLine();
                     Console.WriteLine($" [Mr Penniworth] Of course master {name} what can I help with?");
@@ -1305,9 +1266,9 @@ namespace UntitledBookGame
                     Console.WriteLine($" [{name}] Thank you for your time");
                     evidence_penniworth_1 = true;
                     Console.Clear();
-                   
+
                     break;
-               
+
                 case "3":
                     backtomenu = true;
                     Console.Clear();
@@ -1326,7 +1287,7 @@ namespace UntitledBookGame
             }
         }
 
-        public static void gardner()
+        public static void gardner() //method for interaction outside//
         {
             Console.Clear();
             Console.WriteLine($" [{name}] Hello excuse me? Are you Mills Moffit?");
@@ -1345,9 +1306,9 @@ namespace UntitledBookGame
             evidence_caityln_2 = true;
         }
 
-        public static void outside_looking_around()
+        public static void outside_looking_around() //method for exploring outside//
         {
-            
+
             Console.Clear();
             Console.WriteLine(" < You are outside where would you like to look?");
             Console.WriteLine(" [1] In the bushes [2] By the windows [3] In the shed [4] In the rubbish skip [5] Go back");
@@ -1395,10 +1356,10 @@ namespace UntitledBookGame
                 Console.Clear();
             }
         }
-        
 
 
-        public static void introduction(ref string name)
+
+        public static void introduction(ref string name) //introduction//
         {
 
             Console.WriteLine($" [Phone] RING.... RING... RING.. ");
@@ -1463,7 +1424,7 @@ namespace UntitledBookGame
             Console.Clear();
         }
 
-        public static void Acuse()
+        public static void Acuse() //method to acuse the murderer//
         {
             do
             {
@@ -1474,6 +1435,7 @@ namespace UntitledBookGame
                 Console.WriteLine(" [Y] Yes or [N] No");
                 Console.Write(" > ");
                 usr_selection = Console.ReadLine();
+                Console.Clear();
                 switch (usr_selection)
                 {
                     case "y":
@@ -1546,7 +1508,7 @@ namespace UntitledBookGame
                                     Console.ReadLine();
                                     Console.Clear();
 
-                                   
+
                                     Lose();
                                     backtomenu = true;
                                     wongame = true;
@@ -1571,7 +1533,7 @@ namespace UntitledBookGame
                                     Console.ReadLine();
                                     Console.Clear();
 
-                                    
+
                                     Lose();
                                     break;
                                 case "5":
@@ -1579,7 +1541,7 @@ namespace UntitledBookGame
                                     Console.ReadLine();
                                     Console.Clear();
 
-                                   
+
                                     Lose();
                                     backtomenu = true;
                                     wongame = true;
@@ -1604,7 +1566,7 @@ namespace UntitledBookGame
                                     Console.ReadLine();
                                     Console.Clear();
 
-                          
+
                                     Lose();
                                     backtomenu = true;
                                     wongame = true;
@@ -1638,7 +1600,7 @@ namespace UntitledBookGame
                     Console.ReadLine();
                     Console.Clear();
                 }
-            
+
             } while (backtomenu == false);
         }
 
