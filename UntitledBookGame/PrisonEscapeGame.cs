@@ -130,7 +130,6 @@ namespace UntitledBookGame
                             inventory[1] = "sock";
                             Console.WriteLine("");
                             Console.WriteLine(inventory[0] + " and a " + inventory[1] + " have been added to your inventory!");
-                            Console.ReadLine();
                             FirstRoomPrisonCellStage2();
                         }
                         else
@@ -282,23 +281,23 @@ namespace UntitledBookGame
                 {
                     case "w":
                         Console.Clear();
-                        Console.WriteLine();
+                        Console.WriteLine("I hear the guards nearby,  let's try another way");
                         Console.Write(">");
                         break;
 
                     case "d":
                         Console.Clear();
-                        Console.WriteLine();
+                        Console.WriteLine("Dead end...going back");
                         break;
 
                     case "a":
                         Console.Clear();
-                        Console.WriteLine();
+                        Console.WriteLine("You climb your way through the ceiling...this feels like a right way to go");
                         break;
 
                     case "s":
                         Console.Clear();
-                        Console.WriteLine();
+                        Console.WriteLine("I can see a light at the end of the vent...hopefully this leads closer to a way out");
                         break;
 
                     case "q":
@@ -317,7 +316,6 @@ namespace UntitledBookGame
                             }
                         break;
 
-
                         default:
                         Console.Clear();
                         Console.WriteLine("Invalid Input, enter directional keys 'WASD' to move");
@@ -325,7 +323,8 @@ namespace UntitledBookGame
                         break;
                 }
 
-            } while ((temp == "w") || (temp == "d") || (temp == "s") || (temp == "i")); 
+            } while ((temp == "w") || (temp == "d") || (temp == "s"));
+            Console.ReadLine();
         }
     }
 }
