@@ -8,19 +8,24 @@ namespace UntitledBookGame
 {
     public partial class Program
     {
-        private static int  width       = Console.WindowWidth,
-                            height      = Console.WindowHeight;
+	// Delcare variables
+
+        private static int  width = Console.WindowWidth,
+                            height = Console.WindowHeight;
 
         private static Thread physicsThread;
+	
+	// book indexing and selection
+        private static bool selecting = true;
+        private static int  selection = 0;
 
-        private static bool selecting   = true;
-        private static int  selection   = 0;
-
+	// position vectors for selector coordiantes
         private static int[,] BookSelectors = new int[4,2]
         {
             { 0,8 }, { 8,6 }, { 14,8 }, { 22,7 }
         };
 
+	// store methods to run books in Action array
         private static Action[] Books = new Action[4]
         {
             RunCatGame,
@@ -29,6 +34,7 @@ namespace UntitledBookGame
             RunPrisonEscapeGame
         };
 
+	// store book names bound to descriptions
         private static Dictionary<string, string> BookDescriptions = new Dictionary<string, string>
         {
             { "Cat Game",               "Just a chill day in the life of a cat. " },
@@ -37,6 +43,8 @@ namespace UntitledBookGame
             { "Prison Escape Game",     "Time to put the greatest escape plan into action." }
         };
 
+	// selection property
+	// prevents selection being outside range of books
         private static int Selection
         {
             get => selection;
@@ -111,9 +119,11 @@ namespace UntitledBookGame
                     }
                 }
                 while (selecting);
-
+		
+		// print the name of the selected book
                 PrintBookName(Selection);
 
+		// await thread terminating
                 do { } while (physicsThread.IsAlive);
 
                 // open the selected book, clearing the bookshelf graphic away
@@ -131,6 +141,7 @@ namespace UntitledBookGame
             int row = 0;
             foreach (string line in File.ReadAllLines("assets/bookshelf.txt"))
             {
+		// center the cursor on the bookselfs top left based on the screen width
                 Console.SetCursorPosition((Console.WindowWidth / 2 - line.Length / 2), Console.WindowHeight - 10 + row++);
                 Console.WriteLine(line);
             }
@@ -140,8 +151,11 @@ namespace UntitledBookGame
 
         private static void PrintBookName(int index)
         {
+	    // overwrite the previous book name and author
             Console.SetCursorPosition(1, 1);
             Console.Write(new string(' ', 30));
+
+	    // draw the current books name and author
             Console.SetCursorPosition(1, 1);
             Console.Write(BookDescriptions.ElementAt(index).Key);
             Console.SetCursorPosition(1, 2);
@@ -154,19 +168,19 @@ namespace UntitledBookGame
         // prints the book selector to the screen
         private static void PrintSelector(int index)
         {
+	    // make the box yellow
             Console.ForegroundColor = ConsoleColor.Yellow;
-
+		
+            // determine the top left corner of the selector
             int bookshelfWidth  = File.ReadAllLines("assets/bookshelf.txt")[0].Length,
                 X               = (Console.WindowWidth / 2 - bookshelfWidth / 2) + 2,
                 Y               = Console.WindowHeight - 9;
 
             // draw top of selector
-
             Console.SetCursorPosition(X + BookSelectors[index, 0], Y);
             Console.Write(new string('█', BookSelectors[index, 1] + 2));
 
             // draw sides
-
             for (Y++; Y < 30; Y++)
             {
                 Console.SetCursorPosition(X + BookSelectors[index, 0], Y);
