@@ -79,7 +79,7 @@ namespace UntitledBookGame
 
             if (temp == "i")
             {
-                instructions();
+                instructions(); //Instruction method is called here when user enters "i"
             }
             
              
@@ -93,7 +93,7 @@ namespace UntitledBookGame
             Console.WriteLine("To the right is a rectangle stanless detention desk with swivel stool");
             Console.WriteLine("");
 
-            FirstRoomPrisonCell();
+            FirstRoomPrisonCell(); //First room method is called
 
         }
 
@@ -134,7 +134,7 @@ namespace UntitledBookGame
                         }
                         else
                         {
-                            FirstRoomPrisonCellStage2();
+                            FirstRoomPrisonCell(); //reverts back to the start if items are not collected
                         }
                         break;
 
@@ -166,7 +166,7 @@ namespace UntitledBookGame
                             {
                                 Console.WriteLine(s);
                             }
-                            FirstRoomPrisonCell();
+                            FirstRoomPrisonCell(); //after invenotry is displayed to the screen, reverts back to strart of the method
                         }
                         break;
 
@@ -229,13 +229,13 @@ namespace UntitledBookGame
                             Console.WriteLine("");
                             Console.WriteLine("open seasame!");
                             Console.WriteLine("new location unlocked! you can now access the ceiling vent");
-                            ceiling();
+                            ceiling(); //after vent has been opened the next room is called in method ceiling
                         }                        
                         if (inventory[0] != "screwdriver")
                         {
                             Console.WriteLine("You need additional items to progress further");
                             Console.WriteLine("");
-                            FirstRoomPrisonCell();
+                            FirstRoomPrisonCell(); //first room is called in method FirstRoomPrisonCell if the screwdriver has not been added to inventory
 
                         }
                         break;
@@ -245,22 +245,22 @@ namespace UntitledBookGame
                         if ((inventory[0] != "screwdriver") && (inventory[1] != "sock"))
                         {
                             Console.WriteLine("Nothing in inventory");
-                            FirstRoomPrisonCell();
+                            FirstRoomPrisonCellStage2();
                         }
                         else
                         {
-                            foreach (string s in inventory)
+                            foreach (string s in inventory) //iterates through inventory and displays items to the screen
                             {
                                 Console.WriteLine(s);
                             }
-                            FirstRoomPrisonCellStage2();
+                            FirstRoomPrisonCellStage2(); //reverts back to the top of the method
                         }
                         break;
 
                     default:
                         Console.Clear();
                         Console.WriteLine("Invalid Input, enter directional keys 'WASD' to move");
-                        FirstRoomPrisonCellStage2();
+                        FirstRoomPrisonCellStage2(); //reverts back to the top of the method if user input is invalid
                         break;
 
                 }
@@ -304,7 +304,7 @@ namespace UntitledBookGame
                         Console.Clear();
                         Console.WriteLine("You are now back in the prison cell");
                         Console.WriteLine("");
-                        FirstRoomPrisonCellStage2();
+                        FirstRoomPrisonCellStage2(); //calling previous room method
                         break;
 
                     case "i":
@@ -319,7 +319,7 @@ namespace UntitledBookGame
                         default:
                         Console.Clear();
                         Console.WriteLine("Invalid Input, enter directional keys 'WASD' to move");
-                        ceiling();
+                        ceiling(); //back to the top of the method if invalid input is entered by user
                         break;
                 }
 
