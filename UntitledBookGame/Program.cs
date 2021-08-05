@@ -142,7 +142,7 @@ namespace UntitledBookGame
             foreach (string line in File.ReadAllLines("assets/bookshelf.txt"))
             {
 		// center the cursor on the bookselfs top left based on the screen width
-                Console.SetCursorPosition((Console.WindowWidth / 2 - line.Length / 2), Console.WindowHeight - 10 + row++);
+                Console.SetCursorPosition((Console.WindowWidth / 2 - line.Length / 2), Console.WindowHeight - 18 + row++);
                 Console.WriteLine(line);
             }
             PrintBookName(selection);
@@ -168,20 +168,23 @@ namespace UntitledBookGame
         // prints the book selector to the screen
         private static void PrintSelector(int index)
         {
+
+            Console.CursorVisible = false;
 	    // make the box yellow
             Console.ForegroundColor = ConsoleColor.Yellow;
 		
             // determine the top left corner of the selector
             int bookshelfWidth  = File.ReadAllLines("assets/bookshelf.txt")[0].Length,
                 X               = (Console.WindowWidth / 2 - bookshelfWidth / 2) + 2,
-                Y               = Console.WindowHeight - 9;
+                Y               = Console.WindowHeight - 18;
 
             // draw top of selector
             Console.SetCursorPosition(X + BookSelectors[index, 0], Y);
             Console.Write(new string('█', BookSelectors[index, 1] + 2));
 
             // draw sides
-            for (Y++; Y < 30; Y++)
+            int startY = Y;
+            for (Y++; Y < startY + 10; Y++)
             {
                 Console.SetCursorPosition(X + BookSelectors[index, 0], Y);
                 Console.Write("██");
