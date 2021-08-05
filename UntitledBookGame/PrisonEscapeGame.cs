@@ -97,11 +97,14 @@ namespace UntitledBookGame
 
         }
 
-        static void FirstRoomPrisonCell()
+        static void FirstRoomPrisonCell() //Starting room
         {
             do
             {
                 Console.WriteLine("Where to next?");
+                Console.WriteLine("press 'i' for inventory");
+                Console.Write("");
+                Console.Write(">");
                 temp = Console.ReadLine();
 
 
@@ -111,12 +114,15 @@ namespace UntitledBookGame
                         Console.Clear();
                         Console.WriteLine("Nothing to salavge from the toilet...gross");
                         Console.WriteLine("");
+                        Console.Write(">");
                         break;
 
                     case "d":
                         Console.Clear();
-                        Console.WriteLine("You find a screwdriver and a sock laying on the desk");
+                        Console.WriteLine("You open one of the drawers of the desk to find one of the maintence workers left a screwdriver and a sock");
                         Console.WriteLine("Press 'i' to take items");
+                        Console.Write("");
+                        Console.Write(">");
                         takeItems = Console.ReadLine();
                         if (takeItems == "i")
                         {
@@ -126,7 +132,6 @@ namespace UntitledBookGame
                             Console.WriteLine(inventory[0] + " and a " + inventory[1] + " have been added to your inventory!");
                             Console.ReadLine();
                             FirstRoomPrisonCellStage2();
-
                         }
                         else
                         {
@@ -139,17 +144,31 @@ namespace UntitledBookGame
                         Console.WriteLine("You stand on top of the bed, that vent looks to be in reach now");
                         Console.WriteLine("You will need to pry it open with something");
                         Console.WriteLine("");
+                        Console.Write(">");
                         break;
 
                     case "w":
                         Console.Clear();
                         Console.WriteLine("Just a wall, nothing special here");
                         Console.WriteLine("");
+                        Console.Write(">");
                         break;
 
                     case "i":
                         Console.Clear();
-                        Console.WriteLine("Nothing in inventory");
+                        if ((inventory[0] != "screwdriver") && (inventory[1] != "sock"))
+                        {
+                            Console.WriteLine("Nothing in inventory");
+                            FirstRoomPrisonCell();
+                        }
+                        else
+                        {
+                            foreach (string s in inventory)
+                            {
+                                Console.WriteLine(s);
+                            }
+                            FirstRoomPrisonCell();
+                        }
                         break;
 
                     default:
@@ -162,12 +181,14 @@ namespace UntitledBookGame
             } while ((temp == "s") || (temp == "w") || (temp == "i") || (temp == "a"));
         }
 
-        static void FirstRoomPrisonCellStage2()
+        static void FirstRoomPrisonCellStage2() //initiating stage 2 of the changes made in room 1 where items have been added to inventory 
         {
             do
             {
-                Console.WriteLine("");
                 Console.WriteLine("Where to next?");
+                Console.WriteLine("Press 'i' for inventory");
+                Console.WriteLine("");
+                Console.Write(">");
                 temp = Console.ReadLine();
 
                 switch (temp)
@@ -175,16 +196,22 @@ namespace UntitledBookGame
                     case "w":
                         Console.Clear();
                         Console.WriteLine("Desk top is empty");
+                        Console.WriteLine("");
+                        Console.Write(">");
                         break;
 
                     case "d":
                         Console.Clear();
                         Console.WriteLine("not much use being behind these prison bars...I gotta find a way out");
+                        Console.WriteLine("");
+                        Console.Write(">");
                         break;
 
                     case "a":
                         Console.Clear();
                         Console.WriteLine("Nothing to salavge from the toilet...gross");
+                        Console.WriteLine("");
+                        Console.Write(">");
                         break;
 
                     case "s":
@@ -194,6 +221,8 @@ namespace UntitledBookGame
                         if (inventory[0] == "screwdriver")
                         {
                             Console.WriteLine("Press 'o' to pry vent open with screwdriver");
+                            Console.WriteLine("");
+                            Console.Write(">");
                             pryOpen = Console.ReadLine();
 
                         }if (pryOpen == "o")
@@ -201,9 +230,9 @@ namespace UntitledBookGame
                             Console.WriteLine("");
                             Console.WriteLine("open seasame!");
                             Console.WriteLine("new location unlocked! you can now access the ceiling vent");
-                            //Pull ceiling method here:
+                            ceiling();
                         }                        
-                        else
+                        if (inventory[0] != "screwdriver")
                         {
                             Console.WriteLine("You need additional items to progress further");
                             Console.WriteLine("");
@@ -214,19 +243,89 @@ namespace UntitledBookGame
 
                     case "i":
                         Console.Clear();
-                        Console.WriteLine("You currently have a" + inventory[1] + " and a " + inventory[2]);
+                        if ((inventory[0] != "screwdriver") && (inventory[1] != "sock"))
+                        {
+                            Console.WriteLine("Nothing in inventory");
+                            FirstRoomPrisonCell();
+                        }
+                        else
+                        {
+                            foreach (string s in inventory)
+                            {
+                                Console.WriteLine(s);
+                            }
+                            FirstRoomPrisonCellStage2();
+                        }
                         break;
 
                     default:
                         Console.Clear();
-                        Console.WriteLine("Nowhere to go");
+                        Console.WriteLine("Invalid Input, enter directional keys 'WASD' to move");
                         FirstRoomPrisonCellStage2();
                         break;
 
                 }
             } while ((temp == "w") || (temp == "d") || (temp == "a") || (temp == "i"));
+        }
 
-            Console.ReadLine();
+        static void ceiling() //Initiating room 3
+        {
+            do
+            {
+                Console.WriteLine("Where to next?");
+                Console.WriteLine("Press 'q' to go back to previous location");
+                Console.WriteLine("");
+                Console.Write(">");
+                temp = Console.ReadLine();
+
+                switch (temp)
+                {
+                    case "w":
+                        Console.Clear();
+                        Console.WriteLine();
+                        Console.Write(">");
+                        break;
+
+                    case "d":
+                        Console.Clear();
+                        Console.WriteLine();
+                        break;
+
+                    case "a":
+                        Console.Clear();
+                        Console.WriteLine();
+                        break;
+
+                    case "s":
+                        Console.Clear();
+                        Console.WriteLine();
+                        break;
+
+                    case "q":
+                        Console.Clear();
+                        Console.WriteLine("You are now back in the prison cell");
+                        Console.WriteLine("");
+                        FirstRoomPrisonCellStage2();
+                        break;
+
+                    case "i":
+                        Console.Clear();
+                            foreach (string s in inventory)
+                            {
+                                Console.WriteLine(s);
+                                ceiling();
+                            }
+                        break;
+
+
+                        default:
+                        Console.Clear();
+                        Console.WriteLine("Invalid Input, enter directional keys 'WASD' to move");
+                        ceiling();
+                        break;
+                }
+
+            } while ((temp == "w") || (temp == "d") || (temp == "s") || (temp == "i")); 
         }
     }
 }
