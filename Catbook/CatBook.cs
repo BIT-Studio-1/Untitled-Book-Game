@@ -20,9 +20,7 @@ namespace CAT
         public static void input()
         {
             Console.WriteLine("Meow?");
-            choice = Console.ReadLine();
-            choice = choice.ToUpper();
-
+            choice = Console.ReadLine().ToUpper();
         }
 
         //HELP TEXT
@@ -46,8 +44,7 @@ namespace CAT
         public static void meow()
         {
             Console.WriteLine("MEOW");
-            choice = Console.ReadLine();
-            choice = choice.ToUpper();
+            choice = Console.ReadLine().ToUpper();
             whatDo();
         }
 
