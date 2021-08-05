@@ -7,18 +7,10 @@ namespace Horror_Book
 {
   public class Program
     {
-        
-        
-
 
         public static void Main(string[] args)
         {
-
-           
             Car();
-            
-
-            
         }
 
         public static void Car()
@@ -49,11 +41,6 @@ namespace Horror_Book
             // {
             //   "Open boot", "Open glove box", "Look under seat" 
             //};
-
-
-
-            
-                
 
                 string Boot = "open boot", GloveBox = "open glove box", UnderSeat = " look under seat";
 
@@ -105,11 +92,6 @@ namespace Horror_Book
           //  {
           //   Console.WriteLine("I dont Know What that is");
           //}
-
-
-
-
-
 
 
             Console.ReadLine();
