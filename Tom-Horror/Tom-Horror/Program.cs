@@ -5,18 +5,19 @@ using System.Collections.Generic;
 
 namespace Horror_Book
 {
-    class Program
+    public class Program
     {
+
         public static void Main(string[] args)
         {
             Car();
-            
-
-            
         }
 
         public static void Car()
+
         {
+            Console.Clear();
+
             string UserInPut;
             //------------------------------
             //This just writes out the text one letter at a time \\
@@ -31,74 +32,65 @@ namespace Horror_Book
                 Thread.Sleep(30);
             }
 
-            
-                Console.WriteLine();
-                UserInPut = Console.ReadLine();
+            //This takes the users input and converts it to lower
+            //Then cheacks it to the string and sees if it matchs if it does it goes to that method.
+            Console.WriteLine();
+            UserInPut = Console.ReadLine();
+
+            string Boot = "open boot", GloveBox = "open glove box", UnderSeat = " look under seat", North = "go north", South = "go south", 
+                East = " go east", West = "go West";
+
+            UserInPut.ToLower();
 
 
-            //List<string> Car = new List<string>()
-            // {
-            //   "Open boot", "Open glove box", "Look under seat" 
-            //};
+            if (UserInPut == Boot)
+            {
+
+                BootMethod();
+            }
+            else if (UserInPut == GloveBox)
+            {
+
+                GloveBoxMethod();
+            }
+            else if (UserInPut == UnderSeat)
+            {
+
+                UnderSeatMethod();
+            }
+            else if (North.Contains(UserInPut))
+            {
+                North1();
+            }
+            else if (South.Contains(UserInPut))
+            {
+                South1();
+            }
+            else if (East.Contains(UserInPut))
+            {
+                East1();
+            }
+            else if (West.Contains(UserInPut))
+            {
+                West1();
+            }
+            else
+            {
+                var DidNotUnderStand = "I Do Not UnderStand."
+                + Environment.NewLine + "Make Sure That You Are Not Using Capitals.";
 
 
 
-            
-                
-
-                string Boot = "open boot", GloveBox = "open glove box", UnderSeat = " look under seat";
-
-
-                if (Boot.Contains(UserInPut))
+                foreach (var character in DidNotUnderStand)
                 {
-
-                    BootMethod();
+                    Console.Write(character);
+                    Thread.Sleep(30);
                 }
-                else if (GloveBox.Contains(UserInPut))
-                {
-
-                    GloveBoxMethod();
-                }
-                else if (UnderSeat.Contains(UserInPut))
-                {
-
-                    UnderSeatMethod();
-                }
-                else
-                {
-                    var DidNotUnderStand = "I Do Not UnderStand."
-                    + Environment.NewLine + "Make Sure That You Are Not Using Capitals.";
-
-                    
-
-                    foreach (var character in DidNotUnderStand)
-                    {
-                        Console.Write(character);
-                        Thread.Sleep(30);
-                    }
-                Thread.Sleep(3000);
+                Thread.Sleep(1000);
 
                 Start();
 
-                }
-            
-            
-
-
-          //  if (Car.Contains(UserInPut, Car))
-          //  {
-          //    Console.WriteLine("Works");
-          // }
-          //  else
-          //  {
-          //   Console.WriteLine("I dont Know What that is");
-          //}
-
-
-
-
-
-
+            }
 
             Console.ReadLine();
         }
@@ -138,6 +130,8 @@ namespace Horror_Book
                 Console.Write(character);
                 Thread.Sleep(30);
             }
+
+
         }
 
         public static void UnderSeatMethod()
@@ -145,31 +139,29 @@ namespace Horror_Book
             Console.Clear();
             var UnderSeat = "You Are Under The Seat." +
                 Environment.NewLine + "Lint";
-                
+
 
             foreach (var character in UnderSeat)
             {
                 Console.Write(character);
                 Thread.Sleep(30);
             }
-            
-        }
-
-        public static void Items()
-        {
 
         }
+
+
 
         public static void Start()
         {
             Console.Clear();
             Console.WriteLine("You are still in the car.");
-            
+
             string UserInPut;
 
             UserInPut = Console.ReadLine();
 
-            string Boot = "open boot", GloveBox = "open glove box", UnderSeat = " look under seat";
+            string Boot = "open boot", GloveBox = "open glove box", UnderSeat = " look under seat", North = "go north", South = "go south", 
+                East = " go east", West = "go West";
 
 
             if (Boot.Contains(UserInPut))
@@ -187,12 +179,28 @@ namespace Horror_Book
 
                 UnderSeatMethod();
             }
+            else if (North.Contains(UserInPut))
+            {
+                North1();
+            }
+            else if (South.Contains(UserInPut))
+            {
+                South1();
+            }
+            else if (East.Contains(UserInPut))
+            {
+                East1();
+            }
+            else if (West.Contains(UserInPut))
+            {
+                West1();
+            }
             else
             {
-                
+
                 var DidNotUnderStand = "I Do Not UnderStand."
-                + Environment.NewLine + "Make Sure That You Are Not Using Capitals.";
-                
+                + Environment.NewLine + "Make Sure Your Spelling Is Right";
+
 
 
                 foreach (var character in DidNotUnderStand)
@@ -206,7 +214,37 @@ namespace Horror_Book
                 Start();
 
             }
+
+
         }
-       
+
+        // this is more rroms depending on what way you go. 
+
+        public static void North1()
+        {
+            Console.WriteLine("North1 method");
+
+        }
+
+        public static void South1()
+        {
+            Console.WriteLine("south1 method");
+
+
+        }
+
+        public static void East1()
+        {
+            Console.WriteLine("East1 method");
+
+
+        }
+
+        public static void West1()
+        {
+            Console.WriteLine("West1 method");
+
+
+        }
     }
 }
